@@ -15,6 +15,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.ui.navigation.AppScreens
+import novalogics.android.harrysspellbook.ui.screen.home.HomeScreen
 import novalogics.android.harrysspellbook.ui.screen.mainscreen.component.BottomNavigationBar
 
 
@@ -46,6 +47,7 @@ fun SpellBookMainScreen(
 
             composable(route = AppScreens.Home.name) {
                 HomeScreen(
+                    contentPadding = innerPadding
                 )
             }
 
@@ -57,10 +59,6 @@ fun SpellBookMainScreen(
     }
 }
 
-@Composable
-fun HomeScreen() {
-    Text(text = "Home Screen", modifier = Modifier.fillMaxSize())
-}
 
 @Composable
 fun SpellBookScreen() {
