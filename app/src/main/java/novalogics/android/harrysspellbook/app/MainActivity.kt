@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import novalogics.android.harrysspellbook.ui.theme.HarrysSpellbookTheme
+import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
         }
         enableEdgeToEdge()
         setContent {
-            HarrysSpellbookTheme {
+            SpellBookTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
@@ -48,7 +48,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    HarrysSpellbookTheme {
+    SpellBookTheme {
         Greeting("Android")
     }
 }
