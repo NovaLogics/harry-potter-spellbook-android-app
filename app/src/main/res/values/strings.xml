@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Harry\'s Spellbook</string>
+    <string name="app_name">Harry\'s SpellBook</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_spell_book">SpellBook</string>
+
+    <string-array name="tab_items">
+        <item>Home</item>
+        <item>SpellBook</item>
+    </string-array>
 </resources>
