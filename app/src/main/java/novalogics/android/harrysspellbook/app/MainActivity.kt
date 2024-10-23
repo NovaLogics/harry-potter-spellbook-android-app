@@ -1,20 +1,19 @@
 package novalogics.android.harrysspellbook.app
 
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
+import novalogics.android.harrysspellbook.ui.screen.mainscreen.SpellBookMainScreen
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
+import novalogics.android.harrysspellbook.util.Constants
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,29 +25,25 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SpellBookTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                SpellBookMainScreen()
             }
         }
     }
 }
 
+@Preview(
+    name = Constants.MODE_LIGHT,
+    showBackground = true,
+    uiMode = UI_MODE_NIGHT_NO
+)
+@Preview(
+    name = Constants.MODE_NIGHT,
+    showBackground = true,
+    uiMode = UI_MODE_NIGHT_YES
+)
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
+fun AppPreview() {
     SpellBookTheme {
-        Greeting("Android")
+        SpellBookMainScreen()
     }
 }
