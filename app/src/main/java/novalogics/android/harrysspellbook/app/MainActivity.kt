@@ -1,4 +1,4 @@
-package novalogics.android.harrysspellbook
+package novalogics.android.harrysspellbook.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
