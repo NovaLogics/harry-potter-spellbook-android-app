@@ -118,13 +118,13 @@ fun ScreenFlow(
 }
 
 @Composable
-fun SectionElement(
+fun SectionHeader(
 
-){
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-    ){
+    ) {
 
         Image(
             painter = painterResource(id = R.drawable.element_bookmark_purple),
@@ -135,7 +135,6 @@ fun SectionElement(
                 .height(64.dp)
                 .padding(4.dp)
         )
-
         StyledText(
             stringValue = stringResource(id = R.string.section_title, "A"),
             letterSpacing = R.dimen.Latter_space_small_2dp,
@@ -147,10 +146,14 @@ fun SectionElement(
                     start = dimensionResource(id = R.dimen.padding_large_24dp),
                 )
         )
-
-
     }
 
+}
+
+@Composable
+fun SectionBodyElement(
+
+) {
 
 }
 
@@ -174,7 +177,7 @@ fun HomeScreenPreview() {
         null)
 
     SpellBookTheme {
-        SectionElement()
+        SectionHeader()
 //        ScreenFlow(
 //            uiState = uiState
 //        )
