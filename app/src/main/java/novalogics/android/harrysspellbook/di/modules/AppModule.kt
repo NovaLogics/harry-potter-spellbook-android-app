@@ -22,7 +22,9 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideRepository(): HomeRepositoryOffline {
-        return HomeRepositoryOffline()
+    fun provideRepository(
+        @ApplicationContext context: Context
+    ): HomeRepositoryOffline {
+        return HomeRepositoryOffline(context)
     }
 }
