@@ -30,10 +30,44 @@ fun StyledText(
     isUppercase: Boolean = false,
     makeSyllable: Boolean = false,
 ) {
-    val textValue = when {
+    val textValue : String = when {
         isUppercase -> stringResource(id = stringResId).uppercase(Locale.ROOT)
         makeSyllable -> "- ${stringResource(id = stringResId).uppercase(Locale.ROOT)} -"
         else -> stringResource(id = stringResId)
+    }
+
+    StyledText(
+        stringValue = textValue,
+        style = style,
+        letterSpacing =  letterSpacing,
+        fontSize =  fontSize,
+        fontWeight = fontWeight,
+        color = color,
+        modifier = modifier
+    )
+}
+
+
+
+
+@Composable
+fun StyledText(
+    modifier: Modifier = Modifier,
+    stringValue: String,
+    @DimenRes
+    letterSpacing: Int = R.dimen.Latter_space_small_1dp,
+    @DimenRes
+    fontSize: Int = R.dimen.text_size_large_18sp,
+    style: TextStyle = typography.displaySmall,
+    color: Color = colorScheme.onPrimaryContainer,
+    fontWeight: FontWeight = FontWeight.Bold,
+    isUppercase: Boolean = false,
+    makeSyllable: Boolean = false,
+) {
+    val textValue = when {
+        isUppercase -> stringValue.uppercase(Locale.ROOT)
+        makeSyllable -> "- ${stringValue.uppercase(Locale.ROOT)} -"
+        else -> stringValue
     }
 
     Text(
