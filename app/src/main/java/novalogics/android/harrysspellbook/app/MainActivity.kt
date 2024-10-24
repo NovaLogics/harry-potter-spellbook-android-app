@@ -15,13 +15,15 @@ import kotlinx.coroutines.runBlocking
 import novalogics.android.harrysspellbook.ui.screen.mainscreen.SpellBookMainScreen
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
 import novalogics.android.harrysspellbook.util.Constants
+import novalogics.android.harrysspellbook.util.Constants.DELAY_1_SECOND
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         installSplashScreen().setKeepOnScreenCondition {
-            runBlocking { delay(1000) }
+            runBlocking { delay( DELAY_1_SECOND ) }
             false
         }
         enableEdgeToEdge()

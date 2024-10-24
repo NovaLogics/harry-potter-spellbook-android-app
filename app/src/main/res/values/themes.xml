@@ -31,10 +31,11 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
 
         <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowLightStatusBar">false</item>
+
         <item name="android:windowTranslucentNavigation">false</item>
         <item name="android:fitsSystemWindows">true</item>
 
-        <item name="android:windowLightStatusBar">false</item>
     </style>
 
 

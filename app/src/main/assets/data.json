@@ -1,0 +1,57 @@
+[
+  {
+    "spell_id": "section_a",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "section": "A",
+    "is_section": true
+  },
+  {
+    "spell_id": "a_aberto",
+    "spell_name": "Aberto",
+    "description": "A spell used to open doors; it is probably related to Alohamora.",
+    "type": "Charm",
+    "light_color": "Blue",
+    "pronunciation": "Ah-bare-toh",
+    "effect": "Opened doors",
+    "section": "A",
+    "is_section": false
+  },
+  {
+    "spell_id": "a_accio",
+    "spell_name": "Accio",
+    "description": "The Summoning Charm (Accio) allows the caster to summon objects toward themselves, either in direct line of sight or out of view, by calling the object's name aloud after the incantation (unless cast nonverbally). Successful casting requires the caster to have a clear mental image of the object. The charm's opposite is the Banishing Charm.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "Various, including: AK-ee-oh, AK-see-oh, AS-see-oh (US), and AT-chee-oh (Anglo-Catholic pronunciation)",
+    "effect": "Summoned an object",
+    "section": "A",
+    "is_section": false
+  },
+  {
+    "spell_id": "section_b",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "section": "B",
+    "is_section": true
+  },
+  {
+    "spell_id": "b_bat_bogey_xex",
+    "spell_name": "Bat-Bogey Hex",
+    "description": "Transforms the target's bogeys into large bats that fly out of the victim's nose. It was invented by Miranda Goshawk.",
+    "type": "Hex",
+    "light_color": "None",
+    "pronunciation": "Bat-Bogey Hex",
+    "effect": "Transformed target's bogeys into bats that flew out of the victim's nose",
+    "section": "A",
+    "is_section": false
+  }
+]
