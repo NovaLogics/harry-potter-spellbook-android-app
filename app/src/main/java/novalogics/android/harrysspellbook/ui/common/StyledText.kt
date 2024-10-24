@@ -21,7 +21,7 @@ fun StyledText(
     @StringRes
     stringResId: Int,
     @DimenRes
-    letterSpacing: Int = R.dimen.Latter_space_small_1dp,
+    letterSpacing: Int = R.dimen.latter_space_small_1dp,
     @DimenRes
     fontSize: Int = R.dimen.text_size_large_18sp,
     style: TextStyle = typography.displaySmall,
@@ -55,7 +55,7 @@ fun StyledText(
     modifier: Modifier = Modifier,
     stringValue: String,
     @DimenRes
-    letterSpacing: Int = R.dimen.Latter_space_small_1dp,
+    letterSpacing: Int = R.dimen.latter_space_small_1dp,
     @DimenRes
     fontSize: Int = R.dimen.text_size_large_18sp,
     style: TextStyle = typography.displaySmall,
