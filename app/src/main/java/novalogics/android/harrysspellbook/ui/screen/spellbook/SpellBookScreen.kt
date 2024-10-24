@@ -18,6 +18,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
+import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -25,11 +26,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.harrysspellbook.R
+import novalogics.android.harrysspellbook.ui.common.StyledText
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
 import novalogics.android.harrysspellbook.util.Constants
 
@@ -113,6 +117,43 @@ fun ScreenFlow(
     }
 }
 
+@Composable
+fun SectionElement(
+
+){
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+    ){
+
+        Image(
+            painter = painterResource(id = R.drawable.element_bookmark_purple),
+            contentDescription = null,
+            contentScale = ContentScale.FillBounds,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(64.dp)
+                .padding(4.dp)
+        )
+
+        StyledText(
+            stringValue = stringResource(id = R.string.section_title, "A"),
+            letterSpacing = R.dimen.Latter_space_small_2dp,
+            style = typography.displayMedium,
+            color = colorScheme.secondary,
+            modifier = Modifier
+                .padding(
+                    top = dimensionResource(id = R.dimen.padding_medium_20dp),
+                    start = dimensionResource(id = R.dimen.padding_large_24dp),
+                )
+        )
+
+
+    }
+
+
+}
+
 
 @Preview(
     name = Constants.MODE_LIGHT,
@@ -133,8 +174,9 @@ fun HomeScreenPreview() {
         null)
 
     SpellBookTheme {
-        ScreenFlow(
-            uiState = uiState
-        )
+        SectionElement()
+//        ScreenFlow(
+//            uiState = uiState
+//        )
     }
 }
