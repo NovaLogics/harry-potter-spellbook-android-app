@@ -1,4 +1,4 @@
-package novalogics.android.harrysspellbook.ui.screen.home
+package novalogics.android.harrysspellbook.ui.screen.spellbook
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
@@ -35,8 +35,8 @@ import novalogics.android.harrysspellbook.util.Constants
 
 
 @Composable
-fun HomeScreen(
-    viewModel: HomeViewModel = hiltViewModel(),
+fun SpellBookScreen(
+    viewModel: SpellBookViewModel = hiltViewModel(),
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -48,7 +48,7 @@ fun HomeScreen(
 
 @Composable
 fun ScreenFlow(
-    uiState : HomeUiState
+    uiState : SpellBookUiState
 ){
     Box(
         modifier = Modifier
@@ -102,7 +102,7 @@ fun ScreenFlow(
                     bottom = 16.dp
                 )
         ) {
-
+            
             Text(
                 text = uiState.data,
                 color = colorScheme.onBackground
@@ -127,7 +127,7 @@ fun ScreenFlow(
 @Composable
 fun HomeScreenPreview() {
 
-    val uiState = HomeUiState(
+    val uiState = SpellBookUiState(
         true,
         "Welcome to Home",
         null)
