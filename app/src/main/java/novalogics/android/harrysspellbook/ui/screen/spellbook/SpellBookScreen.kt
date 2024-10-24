@@ -193,49 +193,71 @@ fun SectionBodyElement(
         colors = CardDefaults.cardColors(colorScheme.surface)
     ) {
 
-        Column {
-            StyledText(
-                stringValue = "Aberto",
-                fontSize = R.dimen.text_size_small_14sp,
-                letterSpacing = R.dimen.latter_space_small_1dp,
-                style = typography.labelSmall,
-                isUppercase = true,
-                modifier = Modifier.padding(
-                    top = dimensionResource(id = R.dimen.padding_regular_8dp),
-                    start = dimensionResource(id = R.dimen.padding_regular_8dp)
-                ),
-            )
+        Row (
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ){
+
+            Column (modifier = Modifier.weight(1f)){
+                StyledText(
+                    stringValue = "Aberto",
+                    fontSize = R.dimen.text_size_small_14sp,
+                    letterSpacing = R.dimen.latter_space_small_1dp,
+                    style = typography.labelSmall,
+                    isUppercase = true,
+                    modifier = Modifier.padding(
+                        top = dimensionResource(id = R.dimen.padding_regular_8dp),
+                        start = dimensionResource(id = R.dimen.padding_regular_8dp)
+                    ),
+                )
 
 
-            StyledText(
-                stringValue = "A spell used to open doors;",
-                fontSize = R.dimen.text_size_small_12sp,
-                letterSpacing = R.dimen.latter_space_small_1dp,
-                style = typography.displayMedium,
-                isUppercase = true,
-                modifier = Modifier.padding(
-                    top = dimensionResource(id = R.dimen.padding_regular_8dp),
-                    start = dimensionResource(id = R.dimen.padding_regular_8dp)
-                ),
-            )
+                StyledText(
+                    stringValue = "A spell used to open doors;",
+                    fontSize = R.dimen.text_size_small_12sp,
+                    letterSpacing = R.dimen.latter_space_small_1dp,
+                    style = typography.displayMedium,
+                    isUppercase = true,
+                    modifier = Modifier.padding(
+                        top = dimensionResource(id = R.dimen.padding_regular_8dp),
+                        start = dimensionResource(id = R.dimen.padding_regular_8dp)
+                    ),
+                )
 
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp,
-                        start = 8.dp,
-                        bottom = 8.dp),
-                horizontalArrangement = Arrangement.Start
-            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            top = 16.dp,
+                            start = 8.dp,
+                            bottom = 8.dp
+                        ),
+                    horizontalArrangement = Arrangement.Start
+                ) {
 
-                IconWithText(R.drawable.ic_nav_home, "Type: Charm")
-                Spacer(modifier = Modifier.padding(8.dp))
-                IconWithText(R.drawable.ic_nav_fire, "Light: Golden")
+                    IconWithText(R.drawable.ic_nav_home, "Type: Charm")
+                    Spacer(modifier = Modifier.padding(8.dp))
+                    IconWithText(R.drawable.ic_nav_fire, "Light: Golden")
 
+                }
             }
-        }
 
+
+            Icon(
+                imageVector = ImageVector.vectorResource(id = R.drawable.ic_star_normal),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(36.dp)
+            )
+            Spacer(modifier = Modifier.padding(4.dp))
+
+
+
+        }
 
     }
 }
