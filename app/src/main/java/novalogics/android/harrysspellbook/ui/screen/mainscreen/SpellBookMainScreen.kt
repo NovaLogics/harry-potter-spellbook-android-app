@@ -17,6 +17,7 @@ import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.ui.navigation.AppScreens
 import novalogics.android.harrysspellbook.ui.screen.home.HomeScreen
 import novalogics.android.harrysspellbook.ui.screen.mainscreen.component.BottomNavigationBar
+import novalogics.android.harrysspellbook.ui.screen.spellbook.SpellBookScreen
 
 
 @Composable
@@ -52,15 +53,11 @@ fun SpellBookMainScreen(
             }
 
             composable(route = AppScreens.SpellBook.name) {
-                SpellBookScreen()
+                SpellBookScreen(
+                    contentPadding = innerPadding
+                )
             }
 
         }
     }
-}
-
-
-@Composable
-fun SpellBookScreen() {
-    Text(text = " SpellBook Screen", modifier = Modifier.fillMaxSize())
 }

@@ -76,7 +76,7 @@ fun ScreenFlow(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorScheme.surface)
+            .background(colorScheme.background)
     ) {
 
         Image(
@@ -95,25 +95,19 @@ fun ScreenFlow(
                 columns = GridCells.Fixed(1),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(dimensionResource(id = R.dimen.size_4xlarge_600dp))
-                    .background(colorScheme.background),
+                    .height(dimensionResource(id = R.dimen.size_4xlarge_600dp)),
                 content = {
                     items(uiState.spellList) { spell ->
                         if(spell.isSection){
                             SectionHeader(stringResource(id = R.string.section_title, spell.section))
                         }
                         else{
-
+                            SectionBodyElement(spell = spell)
                         }
                     }
                 }
             )
-
         }
-
-
-
-
 
     }
 }
@@ -182,7 +176,7 @@ spell: Spell
         modifier = Modifier
             .fillMaxWidth()
             .border(
-                BorderStroke(width = 1.dp, color = colorScheme.background)
+                BorderStroke(width = 1.dp, color = colorScheme.onSurfaceVariant)
             ),
 
         elevation = CardDefaults.cardElevation(
@@ -233,9 +227,9 @@ spell: Spell
                         ),
                     horizontalArrangement = Arrangement.Start
                 ) {
-                    IconWithText(R.drawable.ic_nav_fire, "Light: Golden")
+                    IconWithText(R.drawable.ic_nav_fire, stringResource(id = R.string.light_value, spell.lightColor))
                     Spacer(modifier = Modifier.padding(8.dp))
-                    IconWithText(R.drawable.ic_nav_home, "Type: Charm")
+                    IconWithText(R.drawable.ic_nav_home, spell.type)
 
                 }
             }
@@ -249,10 +243,7 @@ spell: Spell
             )
             Spacer(modifier = Modifier.padding(4.dp))
 
-
-
         }
-
     }
 }
 

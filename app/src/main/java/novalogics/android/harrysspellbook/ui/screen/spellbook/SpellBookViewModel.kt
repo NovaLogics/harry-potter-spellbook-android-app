@@ -25,6 +25,7 @@ class SpellBookViewModel @Inject constructor(
         _uiState.update { ui ->
             ui.copy(
                 isLoading = true,
+                spellList = repositoryOffline.getJsonData(),
                 data = repositoryOffline.getTestData(),
             )
         }

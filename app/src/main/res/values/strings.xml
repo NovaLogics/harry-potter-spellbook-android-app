@@ -5,6 +5,7 @@
     <string name="nav_spell_book">SpellBook</string>
 
     <string name="section_title">Section : %s</string>
+    <string name="light_value">Light : %s</string>
 
     <string-array name="tab_items">
         <item>Home</item>
