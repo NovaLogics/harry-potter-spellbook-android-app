@@ -2,21 +2,27 @@ package novalogics.android.harrysspellbook.ui.screen.spellbook
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.MaterialTheme.typography
@@ -30,10 +36,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -211,21 +219,39 @@ fun SectionBodyElement(
                 ),
             )
 
-            StyledText(
-                stringValue = "Type: Charm",
-                fontSize = R.dimen.text_size_small_12sp,
-                letterSpacing = R.dimen.latter_space_small_1dp,
-                style = typography.displayMedium,
-                isUppercase = true,
-                modifier = Modifier.padding(
-                    top = dimensionResource(id = R.dimen.padding_regular_8dp),
-                    start = dimensionResource(id = R.dimen.padding_regular_8dp),
-                    bottom = dimensionResource(id = R.dimen.padding_regular_8dp)
-                ),
-            )
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp,
+                        start = 8.dp,
+                        bottom = 8.dp),
+                horizontalArrangement = Arrangement.Start
+            ) {
+
+                IconWithText(R.drawable.ic_nav_home, "Type: Charm")
+                Spacer(modifier = Modifier.padding(8.dp))
+                IconWithText(R.drawable.ic_nav_fire, "Light: Golden")
+
+            }
         }
 
 
+    }
+}
+
+@Composable
+fun IconWithText(@DrawableRes icon: Int, text: String) {
+    Row(
+        modifier = Modifier,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Icon(
+            imageVector = ImageVector.vectorResource(id = icon),
+            contentDescription = null,
+            modifier = Modifier.size(16.dp) // Set the icon size to 16x16 dp
+        )
+        Text(text = text, style = MaterialTheme.typography.bodyMedium)
     }
 }
 
