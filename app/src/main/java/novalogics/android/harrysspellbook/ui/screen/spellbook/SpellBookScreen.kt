@@ -19,6 +19,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -42,11 +45,14 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.harrysspellbook.R
+import novalogics.android.harrysspellbook.data.model.Spell
 import novalogics.android.harrysspellbook.ui.common.StyledText
+import novalogics.android.harrysspellbook.ui.common.textSizeResource
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
 import novalogics.android.harrysspellbook.util.Constants
 
@@ -82,50 +88,32 @@ fun ScreenFlow(
                 .alpha(0.5F)
         )
 
-        ElevatedCard(
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(24.dp)
-                .border(
-                    BorderStroke(width = 1.dp, color = colorScheme.background),
-                    shape = MaterialTheme.shapes.medium
-                ),
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = 8.dp
-            ),
-            shape = MaterialTheme.shapes.medium
-        ) {
 
+        Column {
 
-        }
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(1),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(dimensionResource(id = R.dimen.size_4xlarge_600dp))
+                    .background(colorScheme.background),
+                content = {
+                    items(uiState.spellList) { spell ->
+                        if(spell.isSection){
+                            SectionHeader(stringResource(id = R.string.section_title, spell.section))
+                        }
+                        else{
 
-        Image(
-            painter = painterResource(id = R.drawable.img_crossed_wands),
-            contentDescription = null,
-            contentScale = ContentScale.Fit,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(72.dp)
-                .padding(4.dp)
-        )
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(
-                    top = 96.dp,
-                    start = 16.dp,
-                    end = 16.dp,
-                    bottom = 16.dp
-                )
-        ) {
-            
-            Text(
-                text = uiState.data,
-                color = colorScheme.onBackground
+                        }
+                    }
+                }
             )
 
         }
+
+
+
+
 
     }
 }
@@ -134,16 +122,27 @@ fun ScreenFlow(
 fun SectionElement(
 
 ) {
+   val spell = Spell(
+       "a_aberto",
+    "Aberto",
+   "A spell used to open doors; it is probably related to Alohamora.",
+    "Charm",
+    "Blue",
+    "Ah-bare-toh",
+   "Opened doors",
+    "A",
+    false
+    )
     Column (modifier = Modifier.padding(8.dp)){
-        SectionHeader()
-        SectionBodyElement()
+        SectionHeader(stringResource(id = R.string.section_title, "A"))
+        SectionBodyElement(spell)
     }
 
 }
 
 @Composable
 fun SectionHeader(
-
+ stringValue: String
 ) {
     Box(
         modifier = Modifier
@@ -161,7 +160,7 @@ fun SectionHeader(
                 .padding(0.dp)
         )
         StyledText(
-            stringValue = stringResource(id = R.string.section_title, "A"),
+            stringValue = stringValue,
             letterSpacing = R.dimen.latter_space_small_2dp,
             style = typography.displayMedium,
             color = colorScheme.secondary,
@@ -177,7 +176,7 @@ fun SectionHeader(
 
 @Composable
 fun SectionBodyElement(
-
+spell: Spell
 ) {
     ElevatedCard(
         modifier = Modifier
@@ -203,7 +202,7 @@ fun SectionBodyElement(
 
             Column (modifier = Modifier.weight(1f)){
                 StyledText(
-                    stringValue = "Aberto",
+                    stringValue = spell.spellName,
                     fontSize = R.dimen.text_size_small_14sp,
                     letterSpacing = R.dimen.latter_space_small_1dp,
                     style = typography.labelSmall,
@@ -215,18 +214,14 @@ fun SectionBodyElement(
                 )
 
 
-                StyledText(
-                    stringValue = "A spell used to open doors;",
-                    fontSize = R.dimen.text_size_small_12sp,
-                    letterSpacing = R.dimen.latter_space_small_1dp,
-                    style = typography.displayMedium,
-                    isUppercase = true,
-                    modifier = Modifier.padding(
-                        top = dimensionResource(id = R.dimen.padding_regular_8dp),
-                        start = dimensionResource(id = R.dimen.padding_regular_8dp)
-                    ),
+                Text(
+                    text = spell.description,
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontSize = textSizeResource(id = R.dimen.text_size_small_14sp),
+                    maxLines = 2, // Limit to a single line
+                    overflow = TextOverflow.Ellipsis, // Add ellipsis if the text overflows
+                    modifier = Modifier.padding(start = 8.dp, top = 12.dp, end = 16.dp) // Optional: Add padding
                 )
-
 
                 Row(
                     modifier = Modifier
@@ -238,10 +233,9 @@ fun SectionBodyElement(
                         ),
                     horizontalArrangement = Arrangement.Start
                 ) {
-
-                    IconWithText(R.drawable.ic_nav_home, "Type: Charm")
-                    Spacer(modifier = Modifier.padding(8.dp))
                     IconWithText(R.drawable.ic_nav_fire, "Light: Golden")
+                    Spacer(modifier = Modifier.padding(8.dp))
+                    IconWithText(R.drawable.ic_nav_home, "Type: Charm")
 
                 }
             }
@@ -293,6 +287,7 @@ fun HomeScreenPreview() {
 
     val uiState = SpellBookUiState(
         true,
+        emptyList(),
         "Welcome to Home",
         null)
 
