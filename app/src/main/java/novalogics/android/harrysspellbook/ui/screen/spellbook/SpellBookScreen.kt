@@ -174,11 +174,9 @@ fun SectionBodyElement(
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(64.dp)
             .border(
                 BorderStroke(width = 1.dp, color = colorScheme.background)
-            )
-           ,
+            ),
 
         elevation = CardDefaults.cardElevation(
             defaultElevation = 8.dp
@@ -186,17 +184,47 @@ fun SectionBodyElement(
         shape = MaterialTheme.shapes.small,
         colors = CardDefaults.cardColors(colorScheme.surface)
     ) {
-        StyledText(
-            stringValue = "Aberto (Opening Charm)",
-            fontSize = R.dimen.text_size_small_12sp,
-            letterSpacing = R.dimen.latter_space_small_1dp,
-            style = typography.labelSmall,
-            isUppercase = true,
-            modifier = Modifier.padding(
-                top = dimensionResource(id = R.dimen.padding_regular_8dp),
-                start = dimensionResource(id = R.dimen.padding_regular_8dp)
-            ),
-        )
+
+        Column {
+            StyledText(
+                stringValue = "Aberto",
+                fontSize = R.dimen.text_size_small_14sp,
+                letterSpacing = R.dimen.latter_space_small_1dp,
+                style = typography.labelSmall,
+                isUppercase = true,
+                modifier = Modifier.padding(
+                    top = dimensionResource(id = R.dimen.padding_regular_8dp),
+                    start = dimensionResource(id = R.dimen.padding_regular_8dp)
+                ),
+            )
+
+
+            StyledText(
+                stringValue = "A spell used to open doors;",
+                fontSize = R.dimen.text_size_small_12sp,
+                letterSpacing = R.dimen.latter_space_small_1dp,
+                style = typography.displayMedium,
+                isUppercase = true,
+                modifier = Modifier.padding(
+                    top = dimensionResource(id = R.dimen.padding_regular_8dp),
+                    start = dimensionResource(id = R.dimen.padding_regular_8dp)
+                ),
+            )
+
+            StyledText(
+                stringValue = "Type: Charm",
+                fontSize = R.dimen.text_size_small_12sp,
+                letterSpacing = R.dimen.latter_space_small_1dp,
+                style = typography.displayMedium,
+                isUppercase = true,
+                modifier = Modifier.padding(
+                    top = dimensionResource(id = R.dimen.padding_regular_8dp),
+                    start = dimensionResource(id = R.dimen.padding_regular_8dp),
+                    bottom = dimensionResource(id = R.dimen.padding_regular_8dp)
+                ),
+            )
+        }
+
 
     }
 }
