@@ -83,7 +83,7 @@ fun ScreenFlow(
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxSize()
-                .alpha(0.4F)
+                .alpha(0.1F)
         )
 
         Column {
@@ -133,6 +133,7 @@ fun SectionHeader(
             stringValue = stringValue,
             letterSpacing = R.dimen.latter_space_small_2dp,
             style = typography.displayMedium,
+            fontSize = R.dimen.text_size_xlarge_24sp,
             color = colorScheme.secondary,
             modifier = Modifier
                 .padding(
@@ -151,12 +152,12 @@ fun SectionEntity(
             .fillMaxWidth()
             .border(
                 BorderStroke(
-                    width = dimensionResource(id = R.dimen.border_stroke_medium_1dp),
+                    width = dimensionResource(id = R.dimen.border_stroke_small_0_5dp),
                     color = colorScheme.onPrimaryContainer
                 )
             ),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = dimensionResource(id = R.dimen.elevation_large_8dp)
+            defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
         ),
         shape = MaterialTheme.shapes.small,
         colors = CardDefaults.cardColors(colorScheme.surface)
@@ -172,9 +173,9 @@ fun SectionEntity(
 
                 StyledText(
                     stringValue = spell.spellName,
-                    fontSize = R.dimen.text_size_small_14sp,
-                    letterSpacing = R.dimen.latter_space_small_1dp,
-                    style = typography.labelSmall,
+                    fontSize = R.dimen.text_size_large_20sp,
+                    letterSpacing = R.dimen.latter_space_medium_4dp,
+                    style = typography.displayLarge,
                     isUppercase = true,
                     modifier = Modifier.padding(
                         top = dimensionResource(id = R.dimen.padding_small_4dp),
@@ -185,7 +186,7 @@ fun SectionEntity(
                 Text(
                     text = spell.description,
                     style = typography.bodyMedium,
-                    fontSize = textSizeResource(id = R.dimen.text_size_small_14sp),
+                    fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
