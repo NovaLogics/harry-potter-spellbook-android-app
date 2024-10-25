@@ -110,7 +110,6 @@ fun ScreenFlow(
                 columns = GridCells.Fixed(1),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(dimensionResource(id = R.dimen.size_4xlarge_600dp))
                     .padding(12.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 content = {
