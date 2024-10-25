@@ -44,6 +44,7 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.data.model.Spell
@@ -222,14 +223,14 @@ fun SectionEntity(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = dimensionResource(id = R.dimen.padding_regular_8dp),
+                            top = dimensionResource(id = R.dimen.padding_regular_12dp),
                             start = dimensionResource(id = R.dimen.padding_regular_8dp),
                             bottom = dimensionResource(id = R.dimen.padding_small_4dp)
                         ),
                     horizontalArrangement = Arrangement.Start
                 ) {
                     IconWithText(
-                        R.drawable.ic_nav_fire,
+                        R.drawable.ic_wand_sparkles,
                         stringResource(id = R.string.light_value, spell.lightColor)
                     )
                     Spacer(
@@ -238,7 +239,7 @@ fun SectionEntity(
                         )
                     )
                     IconWithText(
-                        R.drawable.ic_nav_home,
+                        R.drawable.ic_doubled,
                         stringResource(id = R.string.type_value, spell.type)
                     )
                 }
@@ -272,7 +273,7 @@ fun IconWithText(
             contentDescription = text,
             modifier = Modifier.size(size = dimensionResource(id = R.dimen.icon_size_xsmall_16dp))
         )
-        Text(text = text, style = typography.bodyMedium)
+        Text(text = text, style = typography.displayMedium.copy(fontSize = 12.sp))
     }
 }
 
