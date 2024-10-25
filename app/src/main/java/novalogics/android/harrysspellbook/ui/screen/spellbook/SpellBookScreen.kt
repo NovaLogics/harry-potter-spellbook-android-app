@@ -171,10 +171,12 @@ fun SectionEntity(
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
-            .border(BorderStroke(
+            .border(
+                BorderStroke(
                     width = dimensionResource(id = R.dimen.border_stroke_medium_1dp),
                     color = colorScheme.onPrimaryContainer
-                )),
+                )
+            ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(id = R.dimen.elevation_large_8dp)
         ),
@@ -230,9 +232,15 @@ fun SectionEntity(
                         R.drawable.ic_nav_fire,
                         stringResource(id = R.string.light_value, spell.lightColor)
                     )
-                    Spacer(modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_regular_8dp)))
-                    IconWithText(R.drawable.ic_nav_home, spell.type)
-
+                    Spacer(
+                        modifier = Modifier.padding(
+                            all = dimensionResource(id = R.dimen.padding_regular_8dp)
+                        )
+                    )
+                    IconWithText(
+                        R.drawable.ic_nav_home,
+                        stringResource(id = R.string.type_value, spell.type)
+                    )
                 }
             }
 

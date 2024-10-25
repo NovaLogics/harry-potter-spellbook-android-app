@@ -6,6 +6,7 @@
 
     <string name="section_title">Section : %s</string>
     <string name="light_value">Light : %s</string>
+    <string name="type_value">Type : %s</string>
 
     <string-array name="tab_items">
         <item>Home</item>
