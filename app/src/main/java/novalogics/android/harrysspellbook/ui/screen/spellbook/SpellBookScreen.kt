@@ -36,6 +36,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -46,8 +47,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.data.model.Spell
+import novalogics.android.harrysspellbook.data.repository.HomeRepositoryOffline
 import novalogics.android.harrysspellbook.ui.common.StyledText
 import novalogics.android.harrysspellbook.ui.common.textSizeResource
+import novalogics.android.harrysspellbook.ui.navigation.AppScreens
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
 import novalogics.android.harrysspellbook.util.Constants
 
@@ -90,7 +93,9 @@ fun ScreenFlow(
                 columns = GridCells.Fixed(1),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(dimensionResource(id = R.dimen.size_4xlarge_600dp)),
+                    .height(dimensionResource(id = R.dimen.size_4xlarge_600dp))
+                    .padding(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
                 content = {
                     items(uiState.spellList) { spell ->
                         if(spell.isSection){
@@ -98,6 +103,7 @@ fun ScreenFlow(
                         }
                         else{
                             SectionBodyElement(spell = spell)
+                            Spacer(modifier = Modifier.padding(16.dp))
                         }
                     }
                 }
@@ -131,22 +137,17 @@ fun SectionElement(
 
 @Composable
 fun SectionHeader(
- stringValue: String
+    stringValue: String
 ) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-    ) {
-
+    Box(modifier = Modifier.fillMaxWidth()) {
         Image(
             painter = painterResource(id = R.drawable.element_bookmark_purple),
-            contentDescription = null,
+            contentDescription = stringValue,
             contentScale = ContentScale.FillBounds,
             alignment = Alignment.CenterStart,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(64.dp)
-                .padding(0.dp)
+                .height(dimensionResource(id = R.dimen.size_xlarge_64dp))
         )
         StyledText(
             stringValue = stringValue,
@@ -160,7 +161,6 @@ fun SectionHeader(
                 )
         )
     }
-
 }
 
 @Composable
@@ -170,9 +170,8 @@ spell: Spell
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
-            .border(
-                BorderStroke(width = 1.dp, color = colorScheme.onSurfaceVariant)
-            ),
+            .border(BorderStroke(width = 1.dp, color = colorScheme.onSurfaceVariant))
+            .padding(4.dp),
 
         elevation = CardDefaults.cardElevation(
             defaultElevation = 8.dp
@@ -205,11 +204,11 @@ spell: Spell
 
                 Text(
                     text = spell.description,
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = typography.bodyMedium,
                     fontSize = textSizeResource(id = R.dimen.text_size_small_14sp),
-                    maxLines = 2, // Limit to a single line
-                    overflow = TextOverflow.Ellipsis, // Add ellipsis if the text overflows
-                    modifier = Modifier.padding(start = 8.dp, top = 12.dp, end = 16.dp) // Optional: Add padding
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.padding(start = 8.dp, top = 12.dp, end = 16.dp)
                 )
 
                 Row(
@@ -240,6 +239,8 @@ spell: Spell
 
         }
     }
+
+
 }
 
 @Composable
@@ -251,9 +252,9 @@ fun IconWithText(@DrawableRes icon: Int, text: String) {
         Icon(
             imageVector = ImageVector.vectorResource(id = icon),
             contentDescription = null,
-            modifier = Modifier.size(16.dp) // Set the icon size to 16x16 dp
+            modifier = Modifier.size(16.dp)
         )
-        Text(text = text, style = MaterialTheme.typography.bodyMedium)
+        Text(text = text, style = typography.bodyMedium)
     }
 }
 
@@ -271,16 +272,18 @@ fun IconWithText(@DrawableRes icon: Int, text: String) {
 @Composable
 fun HomeScreenPreview() {
 
+    val context = LocalContext.current
+
     val uiState = SpellBookUiState(
         true,
-        emptyList(),
+        HomeRepositoryOffline(context).getJsonData(),
         "Welcome to Home",
         null)
 
     SpellBookTheme {
-        SectionElement()
-//        ScreenFlow(
-//            uiState = uiState
-//        )
+       // SectionElement()
+        ScreenFlow(
+            uiState = uiState
+        )
     }
 }
