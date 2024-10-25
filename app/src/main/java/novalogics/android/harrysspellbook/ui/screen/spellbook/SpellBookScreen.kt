@@ -244,15 +244,20 @@ spell: Spell
 }
 
 @Composable
-fun IconWithText(@DrawableRes icon: Int, text: String) {
+fun IconWithText(
+    @DrawableRes icon: Int,
+    text: String
+) {
     Row(
         modifier = Modifier,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        horizontalArrangement = Arrangement.spacedBy(
+            space = dimensionResource(id = R.dimen.space_regular_8dp)
+        )
     ) {
         Icon(
             imageVector = ImageVector.vectorResource(id = icon),
-            contentDescription = null,
-            modifier = Modifier.size(16.dp)
+            contentDescription = text,
+            modifier = Modifier.size(size = dimensionResource(id = R.dimen.icon_size_xsmall_16dp))
         )
         Text(text = text, style = typography.bodyMedium)
     }
