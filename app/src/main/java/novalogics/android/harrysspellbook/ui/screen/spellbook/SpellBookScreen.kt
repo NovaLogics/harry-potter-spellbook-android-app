@@ -86,9 +86,7 @@ fun ScreenFlow(
                 .alpha(0.5F)
         )
 
-
         Column {
-
             LazyVerticalGrid(
                 columns = GridCells.Fixed(1),
                 modifier = Modifier
@@ -113,27 +111,6 @@ fun ScreenFlow(
     }
 }
 
-@Composable
-fun SectionElement(
-
-) {
-   val spell = Spell(
-       "a_aberto",
-    "Aberto",
-   "A spell used to open doors; it is probably related to Alohamora.",
-    "Charm",
-    "Blue",
-    "Ah-bare-toh",
-   "Opened doors",
-    "A",
-    false
-    )
-    Column (modifier = Modifier.padding(8.dp)){
-        SectionHeader(stringResource(id = R.string.section_title, "A"))
-        SectionEntity(spell)
-    }
-
-}
 
 @Composable
 fun SectionHeader(
