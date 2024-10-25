@@ -93,7 +93,7 @@ fun ScreenFlow(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(dimensionResource(id = R.dimen.size_4xlarge_600dp))
-                    .padding(8.dp),
+                    .padding(12.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 content = {
                     items(uiState.spellList) { spell ->
@@ -138,7 +138,10 @@ fun SectionElement(
 fun SectionHeader(
     stringValue: String
 ) {
-    Box(modifier = Modifier.fillMaxWidth()) {
+    Box(
+        modifier = Modifier.fillMaxWidth(),
+        contentAlignment = Alignment.CenterStart
+    ) {
         Image(
             painter = painterResource(id = R.drawable.element_bookmark_purple),
             contentDescription = stringValue,
@@ -146,7 +149,7 @@ fun SectionHeader(
             alignment = Alignment.CenterStart,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(dimensionResource(id = R.dimen.size_xlarge_64dp))
+                .height(dimensionResource(id = R.dimen.size_large_48dp))
         )
         StyledText(
             stringValue = stringValue,
@@ -155,8 +158,7 @@ fun SectionHeader(
             color = colorScheme.secondary,
             modifier = Modifier
                 .padding(
-                    top = dimensionResource(id = R.dimen.padding_medium_20dp),
-                    start = dimensionResource(id = R.dimen.padding_large_24dp),
+                    start = dimensionResource(id = R.dimen.padding_regular_12dp),
                 )
         )
     }
@@ -169,28 +171,25 @@ fun SectionEntity(
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
-            .border(
-                BorderStroke(
+            .border(BorderStroke(
                     width = dimensionResource(id = R.dimen.border_stroke_medium_1dp),
                     color = colorScheme.onPrimaryContainer
-                )
-            ),
+                )),
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(id = R.dimen.elevation_large_8dp)
         ),
         shape = MaterialTheme.shapes.small,
         colors = CardDefaults.cardColors(colorScheme.surface)
     ) {
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp),
+                .padding(all = dimensionResource(id = R.dimen.padding_regular_8dp)),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-
             Column(modifier = Modifier.weight(1f)) {
+
                 StyledText(
                     stringValue = spell.spellName,
                     fontSize = R.dimen.text_size_small_14sp,
@@ -198,11 +197,10 @@ fun SectionEntity(
                     style = typography.labelSmall,
                     isUppercase = true,
                     modifier = Modifier.padding(
-                        top = dimensionResource(id = R.dimen.padding_regular_8dp),
+                        top = dimensionResource(id = R.dimen.padding_small_4dp),
                         start = dimensionResource(id = R.dimen.padding_regular_8dp)
                     ),
                 )
-
 
                 Text(
                     text = spell.description,
@@ -210,16 +208,21 @@ fun SectionEntity(
                     fontSize = textSizeResource(id = R.dimen.text_size_small_14sp),
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.padding(start = 8.dp, top = 12.dp, end = 16.dp)
+                    modifier = Modifier
+                        .padding(
+                        start = 8.dp,
+                        top = 12.dp,
+                        end = 16.dp
+                        )
                 )
 
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = 16.dp,
-                            start = 8.dp,
-                            bottom = 8.dp
+                            top = dimensionResource(id = R.dimen.padding_regular_8dp),
+                            start = dimensionResource(id = R.dimen.padding_regular_8dp),
+                            bottom = dimensionResource(id = R.dimen.padding_small_4dp)
                         ),
                     horizontalArrangement = Arrangement.Start
                 ) {
@@ -227,20 +230,19 @@ fun SectionEntity(
                         R.drawable.ic_nav_fire,
                         stringResource(id = R.string.light_value, spell.lightColor)
                     )
-                    Spacer(modifier = Modifier.padding(8.dp))
+                    Spacer(modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_regular_8dp)))
                     IconWithText(R.drawable.ic_nav_home, spell.type)
 
                 }
             }
 
-
             Icon(
                 imageVector = ImageVector.vectorResource(id = R.drawable.ic_star_normal),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(36.dp)
+                    .size(size = dimensionResource(id = R.dimen.size_medium_32dp))
             )
-            Spacer(modifier = Modifier.padding(4.dp))
+            Spacer(modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_small_4dp)))
 
         }
     }
