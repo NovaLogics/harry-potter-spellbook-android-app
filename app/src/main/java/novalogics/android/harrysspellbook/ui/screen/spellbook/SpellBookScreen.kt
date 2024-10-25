@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -86,7 +87,25 @@ fun ScreenFlow(
                 .alpha(0.1F)
         )
 
+
         Column {
+            ElevatedCard(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(16.dp)
+                    .border(
+                        BorderStroke(width = 1.dp, color = colorScheme.background),
+                        shape = MaterialTheme.shapes.medium
+                    ),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 16.dp
+                ),
+                shape = MaterialTheme.shapes.medium,
+                colors = CardDefaults.cardColors(colorScheme.background)
+            ) {
+
+
+            }
             LazyVerticalGrid(
                 columns = GridCells.Fixed(1),
                 modifier = Modifier
