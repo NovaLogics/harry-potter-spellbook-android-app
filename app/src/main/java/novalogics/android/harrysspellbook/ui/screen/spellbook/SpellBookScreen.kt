@@ -74,7 +74,7 @@ fun ScreenFlow(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorScheme.background)
+            .background(colorScheme.surface)
     ) {
 
         Image(
@@ -83,7 +83,7 @@ fun ScreenFlow(
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxSize()
-                .alpha(0.5F)
+                .alpha(0.4F)
         )
 
         Column {
