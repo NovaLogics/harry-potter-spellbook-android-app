@@ -20,6 +20,7 @@
 
     <dimen name="latter_space_small_1dp">1sp</dimen>
     <dimen name="latter_space_small_2dp">2sp</dimen>
+    <dimen name="latter_space_medium_4dp">4sp</dimen>
 
     <!-- Text Sizes -->
     <dimen name="text_size_xsmall_10sp">10sp</dimen>
@@ -40,7 +41,7 @@
     <dimen name="elevation_xlarge_16dp">16dp</dimen>
 
     <!-- Border Stroke -->
-    <dimen name="border_stroke_small_0.5dp">0.5dp</dimen>
+    <dimen name="border_stroke_small_0_5dp">0.5dp</dimen>
     <dimen name="border_stroke_medium_1dp">1dp</dimen>
     <dimen name="border_stroke_medium_2dp">2dp</dimen>
 
