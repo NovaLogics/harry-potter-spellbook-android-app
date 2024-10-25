@@ -50,7 +50,6 @@ import novalogics.android.harrysspellbook.data.model.Spell
 import novalogics.android.harrysspellbook.data.repository.HomeRepositoryOffline
 import novalogics.android.harrysspellbook.ui.common.StyledText
 import novalogics.android.harrysspellbook.ui.common.textSizeResource
-import novalogics.android.harrysspellbook.ui.navigation.AppScreens
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
 import novalogics.android.harrysspellbook.util.Constants
 
@@ -102,7 +101,7 @@ fun ScreenFlow(
                             SectionHeader(stringResource(id = R.string.section_title, spell.section))
                         }
                         else{
-                            SectionBodyElement(spell = spell)
+                            SectionEntity(spell = spell)
                             Spacer(modifier = Modifier.padding(16.dp))
                         }
                     }
@@ -130,7 +129,7 @@ fun SectionElement(
     )
     Column (modifier = Modifier.padding(8.dp)){
         SectionHeader(stringResource(id = R.string.section_title, "A"))
-        SectionBodyElement(spell)
+        SectionEntity(spell)
     }
 
 }
@@ -164,31 +163,34 @@ fun SectionHeader(
 }
 
 @Composable
-fun SectionBodyElement(
-spell: Spell
+fun SectionEntity(
+    spell: Spell
 ) {
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
-            .border(BorderStroke(width = 1.dp, color = colorScheme.onSurfaceVariant))
-            .padding(4.dp),
-
+            .border(
+                BorderStroke(
+                    width = dimensionResource(id = R.dimen.border_stroke_medium_1dp),
+                    color = colorScheme.onPrimaryContainer
+                )
+            ),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 8.dp
+            defaultElevation = dimensionResource(id = R.dimen.elevation_large_8dp)
         ),
         shape = MaterialTheme.shapes.small,
         colors = CardDefaults.cardColors(colorScheme.surface)
     ) {
 
-        Row (
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
-        ){
+        ) {
 
-            Column (modifier = Modifier.weight(1f)){
+            Column(modifier = Modifier.weight(1f)) {
                 StyledText(
                     stringValue = spell.spellName,
                     fontSize = R.dimen.text_size_small_14sp,
@@ -221,7 +223,10 @@ spell: Spell
                         ),
                     horizontalArrangement = Arrangement.Start
                 ) {
-                    IconWithText(R.drawable.ic_nav_fire, stringResource(id = R.string.light_value, spell.lightColor))
+                    IconWithText(
+                        R.drawable.ic_nav_fire,
+                        stringResource(id = R.string.light_value, spell.lightColor)
+                    )
                     Spacer(modifier = Modifier.padding(8.dp))
                     IconWithText(R.drawable.ic_nav_home, spell.type)
 
@@ -239,8 +244,6 @@ spell: Spell
 
         }
     }
-
-
 }
 
 @Composable
