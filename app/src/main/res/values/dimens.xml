@@ -38,6 +38,11 @@
     <dimen name="elevation_xlarge_12dp">12dp</dimen>
     <dimen name="elevation_xlarge_16dp">16dp</dimen>
 
+    <!-- Border Stroke -->
+    <dimen name="border_stroke_small_0.5dp">0.5dp</dimen>
+    <dimen name="border_stroke_medium_1dp">1dp</dimen>
+    <dimen name="border_stroke_medium_2dp">2dp</dimen>
+
     <!-- Corner Radius -->
     <dimen name="corner_radius_xsmall_2dp">2dp</dimen>
     <dimen name="corner_radius_small_4dp">4dp</dimen>
