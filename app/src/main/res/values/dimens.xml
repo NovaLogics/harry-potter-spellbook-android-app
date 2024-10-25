@@ -4,6 +4,7 @@
     <dimen name="padding_xsmall_2dp">2dp</dimen>
     <dimen name="padding_small_4dp">4dp</dimen>
     <dimen name="padding_regular_8dp">8dp</dimen>
+    <dimen name="padding_regular_12dp">12dp</dimen>
     <dimen name="padding_medium_16dp">16dp</dimen>
     <dimen name="padding_medium_20dp">20dp</dimen>
     <dimen name="padding_large_24dp">24dp</dimen>
@@ -19,6 +20,7 @@
 
     <dimen name="latter_space_small_1dp">1sp</dimen>
     <dimen name="latter_space_small_2dp">2sp</dimen>
+    <dimen name="latter_space_medium_4dp">4sp</dimen>
 
     <!-- Text Sizes -->
     <dimen name="text_size_xsmall_10sp">10sp</dimen>
@@ -37,6 +39,11 @@
     <dimen name="elevation_xlarge_10dp">10dp</dimen>
     <dimen name="elevation_xlarge_12dp">12dp</dimen>
     <dimen name="elevation_xlarge_16dp">16dp</dimen>
+
+    <!-- Border Stroke -->
+    <dimen name="border_stroke_small_0_5dp">0.5dp</dimen>
+    <dimen name="border_stroke_medium_1dp">1dp</dimen>
+    <dimen name="border_stroke_medium_2dp">2dp</dimen>
 
     <!-- Corner Radius -->
     <dimen name="corner_radius_xsmall_2dp">2dp</dimen>

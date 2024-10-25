@@ -51,7 +51,29 @@
     "light_color": "None",
     "pronunciation": "Bat-Bogey Hex",
     "effect": "Transformed target's bogeys into bats that flew out of the victim's nose",
-    "section": "A",
+    "section": "B",
+    "is_section": false
+  },
+  {
+    "spell_id": "b_baubillious",
+    "spell_name": "Baubillious",
+    "description": "The exact effects of the spell are unknown, though it presumably is of damaging nature and it produces a bolt of white light from the tip of the wand.",
+    "type": "Charm",
+    "light_color": "White",
+    "pronunciation": "baw-BILL-ee-us",
+    "effect": "Jet of white sparks",
+    "section": "B",
+    "is_section": false
+  },
+  {
+    "spell_id": "b_bombarda",
+    "spell_name": "Bombarda (Bombardment Spell)",
+    "description": "Transforms the target's bogeys into large bats that fly out of the victim's nose. It was invented by Miranda Goshawk.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "bom-BAR-dah",
+    "effect": "Small explosion",
+    "section": "B",
     "is_section": false
   }
 ]

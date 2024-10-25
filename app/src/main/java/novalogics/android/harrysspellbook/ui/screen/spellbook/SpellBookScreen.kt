@@ -22,14 +22,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.MaterialTheme.typography
-import androidx.compose.material3.Shapes
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -37,10 +35,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -48,9 +45,11 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.data.model.Spell
+import novalogics.android.harrysspellbook.data.repository.HomeRepositoryOffline
 import novalogics.android.harrysspellbook.ui.common.StyledText
 import novalogics.android.harrysspellbook.ui.common.textSizeResource
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
@@ -76,7 +75,7 @@ fun ScreenFlow(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorScheme.background)
+            .background(colorScheme.surface)
     ) {
 
         Image(
@@ -85,24 +84,42 @@ fun ScreenFlow(
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxSize()
-                .alpha(0.5F)
+                .alpha(0.1F)
         )
 
 
         Column {
+            ElevatedCard(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(16.dp)
+                    .border(
+                        BorderStroke(width = 1.dp, color = colorScheme.background),
+                        shape = MaterialTheme.shapes.medium
+                    ),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 16.dp
+                ),
+                shape = MaterialTheme.shapes.medium,
+                colors = CardDefaults.cardColors(colorScheme.background)
+            ) {
 
+
+            }
             LazyVerticalGrid(
                 columns = GridCells.Fixed(1),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(dimensionResource(id = R.dimen.size_4xlarge_600dp)),
+                    .padding(12.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
                 content = {
                     items(uiState.spellList) { spell ->
                         if(spell.isSection){
                             SectionHeader(stringResource(id = R.string.section_title, spell.section))
                         }
                         else{
-                            SectionBodyElement(spell = spell)
+                            SectionEntity(spell = spell)
+                            Spacer(modifier = Modifier.padding(16.dp))
                         }
                     }
                 }
@@ -112,153 +129,147 @@ fun ScreenFlow(
     }
 }
 
-@Composable
-fun SectionElement(
-
-) {
-   val spell = Spell(
-       "a_aberto",
-    "Aberto",
-   "A spell used to open doors; it is probably related to Alohamora.",
-    "Charm",
-    "Blue",
-    "Ah-bare-toh",
-   "Opened doors",
-    "A",
-    false
-    )
-    Column (modifier = Modifier.padding(8.dp)){
-        SectionHeader(stringResource(id = R.string.section_title, "A"))
-        SectionBodyElement(spell)
-    }
-
-}
 
 @Composable
 fun SectionHeader(
- stringValue: String
+    stringValue: String
 ) {
     Box(
-        modifier = Modifier
-            .fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
+        contentAlignment = Alignment.CenterStart
     ) {
-
         Image(
             painter = painterResource(id = R.drawable.element_bookmark_purple),
-            contentDescription = null,
+            contentDescription = stringValue,
             contentScale = ContentScale.FillBounds,
             alignment = Alignment.CenterStart,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(64.dp)
-                .padding(0.dp)
+                .height(dimensionResource(id = R.dimen.size_large_48dp))
         )
         StyledText(
             stringValue = stringValue,
             letterSpacing = R.dimen.latter_space_small_2dp,
             style = typography.displayMedium,
+            fontSize = R.dimen.text_size_xlarge_24sp,
             color = colorScheme.secondary,
             modifier = Modifier
                 .padding(
-                    top = dimensionResource(id = R.dimen.padding_medium_20dp),
-                    start = dimensionResource(id = R.dimen.padding_large_24dp),
+                    start = dimensionResource(id = R.dimen.padding_regular_12dp),
                 )
         )
     }
-
 }
 
 @Composable
-fun SectionBodyElement(
-spell: Spell
+fun SectionEntity(
+    spell: Spell
 ) {
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
             .border(
-                BorderStroke(width = 1.dp, color = colorScheme.onSurfaceVariant)
+                BorderStroke(
+                    width = dimensionResource(id = R.dimen.border_stroke_small_0_5dp),
+                    color = colorScheme.onPrimaryContainer
+                )
             ),
-
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 8.dp
+            defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
         ),
         shape = MaterialTheme.shapes.small,
         colors = CardDefaults.cardColors(colorScheme.surface)
     ) {
-
-        Row (
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp),
+                .padding(all = dimensionResource(id = R.dimen.padding_regular_8dp)),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
-        ){
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
 
-            Column (modifier = Modifier.weight(1f)){
                 StyledText(
                     stringValue = spell.spellName,
-                    fontSize = R.dimen.text_size_small_14sp,
-                    letterSpacing = R.dimen.latter_space_small_1dp,
-                    style = typography.labelSmall,
+                    fontSize = R.dimen.text_size_large_20sp,
+                    letterSpacing = R.dimen.latter_space_medium_4dp,
+                    style = typography.displayLarge,
                     isUppercase = true,
                     modifier = Modifier.padding(
-                        top = dimensionResource(id = R.dimen.padding_regular_8dp),
+                        top = dimensionResource(id = R.dimen.padding_small_4dp),
                         start = dimensionResource(id = R.dimen.padding_regular_8dp)
                     ),
                 )
 
-
                 Text(
                     text = spell.description,
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontSize = textSizeResource(id = R.dimen.text_size_small_14sp),
-                    maxLines = 2, // Limit to a single line
-                    overflow = TextOverflow.Ellipsis, // Add ellipsis if the text overflows
-                    modifier = Modifier.padding(start = 8.dp, top = 12.dp, end = 16.dp) // Optional: Add padding
+                    style = typography.bodyMedium,
+                    fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier
+                        .padding(
+                        start = 8.dp,
+                        top = 12.dp,
+                        end = 16.dp
+                        )
                 )
 
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = 16.dp,
-                            start = 8.dp,
-                            bottom = 8.dp
+                            top = dimensionResource(id = R.dimen.padding_regular_12dp),
+                            start = dimensionResource(id = R.dimen.padding_regular_8dp),
+                            bottom = dimensionResource(id = R.dimen.padding_small_4dp)
                         ),
                     horizontalArrangement = Arrangement.Start
                 ) {
-                    IconWithText(R.drawable.ic_nav_fire, stringResource(id = R.string.light_value, spell.lightColor))
-                    Spacer(modifier = Modifier.padding(8.dp))
-                    IconWithText(R.drawable.ic_nav_home, spell.type)
-
+                    IconWithText(
+                        R.drawable.ic_wand_sparkles,
+                        stringResource(id = R.string.light_value, spell.lightColor)
+                    )
+                    Spacer(
+                        modifier = Modifier.padding(
+                            all = dimensionResource(id = R.dimen.padding_regular_8dp)
+                        )
+                    )
+                    IconWithText(
+                        R.drawable.ic_doubled,
+                        stringResource(id = R.string.type_value, spell.type)
+                    )
                 }
             }
-
 
             Icon(
                 imageVector = ImageVector.vectorResource(id = R.drawable.ic_star_normal),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(36.dp)
+                    .size(size = dimensionResource(id = R.dimen.size_medium_32dp))
             )
-            Spacer(modifier = Modifier.padding(4.dp))
+            Spacer(modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_small_4dp)))
 
         }
     }
 }
 
 @Composable
-fun IconWithText(@DrawableRes icon: Int, text: String) {
+fun IconWithText(
+    @DrawableRes icon: Int,
+    text: String
+) {
     Row(
         modifier = Modifier,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        horizontalArrangement = Arrangement.spacedBy(
+            space = dimensionResource(id = R.dimen.space_regular_8dp)
+        )
     ) {
         Icon(
             imageVector = ImageVector.vectorResource(id = icon),
-            contentDescription = null,
-            modifier = Modifier.size(16.dp) // Set the icon size to 16x16 dp
+            contentDescription = text,
+            modifier = Modifier.size(size = dimensionResource(id = R.dimen.icon_size_xsmall_16dp))
         )
-        Text(text = text, style = MaterialTheme.typography.bodyMedium)
+        Text(text = text, style = typography.displayMedium.copy(fontSize = 12.sp))
     }
 }
 
@@ -276,16 +287,18 @@ fun IconWithText(@DrawableRes icon: Int, text: String) {
 @Composable
 fun HomeScreenPreview() {
 
+    val context = LocalContext.current
+
     val uiState = SpellBookUiState(
         true,
-        emptyList(),
+        HomeRepositoryOffline(context).getJsonData(),
         "Welcome to Home",
         null)
 
     SpellBookTheme {
-        SectionElement()
-//        ScreenFlow(
-//            uiState = uiState
-//        )
+       // SectionElement()
+        ScreenFlow(
+            uiState = uiState
+        )
     }
 }
