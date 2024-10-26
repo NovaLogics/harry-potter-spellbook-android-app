@@ -104,6 +104,19 @@
     "is_section": false
   },
   {
+    "spell_id": "a_ascendio",
+    "spell_name": "Ascendio",
+    "description": "Lifts the caster high into the air. The charm also works underwater, propelling the caster above the surface.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "ah-SEN-dee-oh",
+    "effect": "Propels caster into the air",
+    "origin": "Latin 'ascendo' meaning 'I rise'.",
+    "notes": "Useful for escaping from underwater or low places.",
+    "section": "A",
+    "is_section": false
+  },
+  {
     "spell_id": "section_b",
     "spell_name": "",
     "description": "",
