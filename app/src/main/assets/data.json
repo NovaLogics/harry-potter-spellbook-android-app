@@ -664,5 +664,23 @@
     "notes": "Useful for private conversations in public places.",
     "section": "M",
     "is_section": false
+  },
+  {
+    "spell_id": "section_n",
+    "section": "N",
+    "is_section": true
+  },
+  {
+    "spell_id": "n_nox",
+    "spell_name": "Nox",
+    "description": "The counter-charm to Lumos, extinguishing the light produced by the wand.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "NOKS",
+    "effect": "Extinguishes light",
+    "origin": "Latin 'nox' meaning 'night'.",
+    "notes": "Used to turn off the light when no longer needed.",
+    "section": "N",
+    "is_section": false
   }
 ]
