@@ -449,5 +449,36 @@
     "notes": "Commonly used in emergencies for rapid escape.",
     "section": "G",
     "is_section": false
+  },
+  {
+    "spell_id": "section_h",
+    "section": "H",
+    "is_section": true
+  },
+  {
+    "spell_id": "h_homenum_revelio",
+    "spell_name": "Homenum Revelio",
+    "description": "A charm that reveals the presence of another person nearby, often used to detect hidden individuals.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "HOH-meh-num reh-VEL-ee-oh",
+    "effect": "Detects the presence of humans",
+    "origin": "Latin 'hominem' meaning 'human' and 'revelare' meaning 'to reveal'.",
+    "notes": "Particularly useful for locating people in an area.",
+    "section": "H",
+    "is_section": false
+  },
+  {
+    "spell_id": "h_homonculus_charm",
+    "spell_name": "Homonculus Charm",
+    "description": "A spell that detects anyone's true identity and location on a piece of parchment, famously used in the creation of the Marauder's Map.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "hoh-MON-cue-lus charm",
+    "effect": "Shows the identity and location of individuals on a map",
+    "origin": "Latin 'homunculus' meaning 'little man'.",
+    "notes": "This charm is highly complex and used to track people within a specific area.",
+    "section": "H",
+    "is_section": false
   }
 ]
