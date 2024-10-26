@@ -40,7 +40,7 @@ val Montserrat = FontFamily(
 // Set of Material typography styles to start with
 val Typography = Typography(
     displayLarge = TextStyle(
-        fontFamily = Botanist,
+        fontFamily = Religath,
         fontWeight = FontWeight.Thin,
         fontSize = 36.sp
     ),
