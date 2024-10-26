@@ -16,6 +16,10 @@ val Botanist = FontFamily(
     Font(R.font.botanist)
 )
 
+val Religath = FontFamily(
+    Font(R.font.religath)
+)
+
 val AbrilFatFace = FontFamily(
     Font(R.font.abril_fatface_regular)
 )
@@ -36,7 +40,7 @@ val Montserrat = FontFamily(
 // Set of Material typography styles to start with
 val Typography = Typography(
     displayLarge = TextStyle(
-        fontFamily = Klarissa,
+        fontFamily = Botanist,
         fontWeight = FontWeight.Thin,
         fontSize = 36.sp
     ),
