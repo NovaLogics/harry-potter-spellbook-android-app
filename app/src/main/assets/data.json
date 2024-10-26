@@ -1,14 +1,6 @@
 [
   {
     "spell_id": "section_a",
-    "spell_name": "",
-    "description": "",
-    "type": "",
-    "light_color": "",
-    "pronunciation": "",
-    "effect": "",
-    "origin": "",
-    "notes": "",
     "section": "A",
     "is_section": true
   },
