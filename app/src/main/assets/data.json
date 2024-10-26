@@ -91,6 +91,19 @@
     "is_section": false
   },
   {
+    "spell_id": "a_apparate",
+    "spell_name": "Apparate",
+    "description": "Allows a witch or wizard to teleport instantly to another location. Disapparating is the opposite.",
+    "type": "Transportation",
+    "light_color": "None",
+    "pronunciation": "AP-par-ate",
+    "effect": "Transports the caster instantly to another place",
+    "origin": "Latin 'appareo' meaning 'to appear'.",
+    "notes": "Requires a license and is risky if performed improperly.",
+    "section": "A",
+    "is_section": false
+  },
+  {
     "spell_id": "section_b",
     "spell_name": "",
     "description": "",
