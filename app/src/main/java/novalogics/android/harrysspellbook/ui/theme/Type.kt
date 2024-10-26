@@ -8,6 +8,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import novalogics.android.harrysspellbook.R
 
+val Klarissa = FontFamily(
+    Font(R.font.klarissa)
+)
+
+val Botanist = FontFamily(
+    Font(R.font.botanist)
+)
+
+val Religath = FontFamily(
+    Font(R.font.religath)
+)
+
 val AbrilFatFace = FontFamily(
     Font(R.font.abril_fatface_regular)
 )
@@ -28,8 +40,8 @@ val Montserrat = FontFamily(
 // Set of Material typography styles to start with
 val Typography = Typography(
     displayLarge = TextStyle(
-        fontFamily = Dalmais,
-        fontWeight = FontWeight.Normal,
+        fontFamily = Religath,
+        fontWeight = FontWeight.Thin,
         fontSize = 36.sp
     ),
     displayMedium = TextStyle(
