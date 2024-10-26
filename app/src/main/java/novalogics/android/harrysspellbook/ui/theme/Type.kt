@@ -8,6 +8,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import novalogics.android.harrysspellbook.R
 
+val Klarissa = FontFamily(
+    Font(R.font.klarissa)
+)
+
 val AbrilFatFace = FontFamily(
     Font(R.font.abril_fatface_regular)
 )
