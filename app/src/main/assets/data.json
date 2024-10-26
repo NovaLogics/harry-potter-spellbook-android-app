@@ -809,5 +809,75 @@
     "notes": "Cannot block The Killing Curse; often used in dueling.",
     "section": "P",
     "is_section": false
+  },
+  {
+    "spell_id": "section_r",
+    "section": "R",
+    "is_section": true
+  },
+  {
+    "spell_id": "r_reducio",
+    "spell_name": "Reducio",
+    "description": "Shrinks an enlarged object to its regular size.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "reh-DU-see-oh",
+    "effect": "Reduces size of objects",
+    "origin": "Latin 'reducere' meaning 'to bring back'.",
+    "notes": "Often used in conjunction with the Engorgio spell.",
+    "section": "R",
+    "is_section": false
+  },
+  {
+    "spell_id": "r_renneverate",
+    "spell_name": "Renneverate",
+    "description": "Awakens or revives the target from a state of unconsciousness.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "re-NEV-er-ate",
+    "effect": "Revives the target",
+    "origin": "From the prefix 're-' meaning 'again' and 'neverate' suggesting awakening.",
+    "notes": "Useful for bringing someone back to consciousness.",
+    "section": "R",
+    "is_section": false
+  },
+  {
+    "spell_id": "r_reparifors",
+    "spell_name": "Reparifors",
+    "description": "Heals magical ailments like poisoning or paralysis.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "reh-PAR-ih-fors",
+    "effect": "Heals magical ailments",
+    "origin": "From Latin 'reparare' meaning 'to repair'.",
+    "notes": "A general healing spell for various magical conditions.",
+    "section": "R",
+    "is_section": false
+  },
+  {
+    "spell_id": "r_reparo",
+    "spell_name": "Reparo",
+    "description": "Fixes broken objects, restoring them to their original state.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "reh-PAH-roh",
+    "effect": "Repairs broken objects",
+    "origin": "Latin 'reparare' meaning 'to repair'.",
+    "notes": "Commonly used to mend broken items.",
+    "section": "R",
+    "is_section": false
+  },
+  {
+    "spell_id": "r_riddikulus",
+    "spell_name": "Riddikulus",
+    "description": "Used to defeat a Boggart; it allows the creature to assume a comedic form, disarming it.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "rih-DIK-yoo-lus",
+    "effect": "Transforms Boggart into something humorous",
+    "origin": "A play on the word 'ridiculous'.",
+    "notes": "Effective against fear; humor is key to disarming the creature.",
+    "section": "R",
+    "is_section": false
   }
 ]
