@@ -879,5 +879,101 @@
     "notes": "Effective against fear; humor is key to disarming the creature.",
     "section": "R",
     "is_section": false
+  },
+  {
+    "spell_id": "section_s",
+    "section": "S",
+    "is_section": true
+  },
+  {
+    "spell_id": "s_scourgify",
+    "spell_name": "Scourgify",
+    "description": "Cleans objects thoroughly, removing dirt and grime.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "SKUR-ji-fy",
+    "effect": "Cleans objects",
+    "origin": "From Latin 'scourgere' meaning 'to scour'.",
+    "notes": "Commonly used for cleaning purposes in the wizarding world.",
+    "section": "S",
+    "is_section": false
+  },
+  {
+    "spell_id": "s_sectumsempra",
+    "spell_name": "Sectumsempra",
+    "description": "Inflicts severe lacerations and hemorrhaging on the target.",
+    "type": "Curse",
+    "light_color": "None",
+    "pronunciation": "sek-TUM-sem-pra",
+    "effect": "Causes deep wounds",
+    "origin": "Latin 'sectum' meaning 'cut' and 'semper' meaning 'always'.",
+    "notes": "Considered very dark magic; known to be used by Severus Snape.",
+    "section": "S",
+    "is_section": false
+  },
+  {
+    "spell_id": "s_serpensortia",
+    "spell_name": "Serpensortia",
+    "description": "Conjures a live snake.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "ser-pen-SOR-tee-ah",
+    "effect": "Conjures a snake",
+    "origin": "From Latin 'serpens' meaning 'snake'.",
+    "notes": "Often used by Parselmouths; the snake can act on command.",
+    "section": "S",
+    "is_section": false
+  },
+  {
+    "spell_id": "s_silencio",
+    "spell_name": "Silencio",
+    "description": "Silences the target, preventing any sound.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "si-LEN-see-oh",
+    "effect": "Silences the target",
+    "origin": "From Latin 'silere' meaning 'to be silent'.",
+    "notes": "Useful in situations where quiet is necessary.",
+    "section": "S",
+    "is_section": false
+  },
+  {
+    "spell_id": "s_sonorus",
+    "spell_name": "Sonorus",
+    "description": "Amplifies the caster's voice, making it much louder.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "so-NOR-us",
+    "effect": "Amplifies voice",
+    "origin": "From Latin 'sonorus' meaning 'resounding'.",
+    "notes": "Often used to make announcements or command attention.",
+    "section": "S",
+    "is_section": false
+  },
+  {
+    "spell_id": "s_spongify",
+    "spell_name": "Spongify",
+    "description": "Softens the target, making it more pliable or cushioned.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "SPON-ji-fy",
+    "effect": "Softens the target",
+    "origin": "Derived from the word 'sponge'.",
+    "notes": "Useful for cushioning falls or impacts.",
+    "section": "S",
+    "is_section": false
+  },
+  {
+    "spell_id": "s_stupefy",
+    "spell_name": "Stupefy",
+    "description": "The Stunning Spell; freezes objects and renders living targets unconscious.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "STU-puh-fy",
+    "effect": "Stuns the target",
+    "origin": "From Latin 'stupefacere' meaning 'to stun'.",
+    "notes": "Widely used in dueling; effective against attackers.",
+    "section": "S",
+    "is_section": false
   }
 ]
