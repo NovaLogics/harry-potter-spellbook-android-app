@@ -993,5 +993,23 @@
     "notes": "Often used to embarrass opponents.",
     "section": "T",
     "is_section": false
+  },
+  {
+    "spell_id": "section_u",
+    "section": "U",
+    "is_section": true
+  },
+  {
+    "spell_id": "u_unbreakable_vow",
+    "spell_name": "Unbreakable Vow",
+    "description": "A magically binding contract that results in the death of whoever breaks it.",
+    "type": "Curse",
+    "light_color": "None",
+    "pronunciation": "un-BREAK-uh-bul vow",
+    "effect": "Creates a binding magical contract",
+    "origin": "Concept of binding oaths.",
+    "notes": "Very dangerous; both parties must fully agree.",
+    "section": "U",
+    "is_section": false
   }
 ]
