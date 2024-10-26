@@ -682,5 +682,62 @@
     "notes": "Used to turn off the light when no longer needed.",
     "section": "N",
     "is_section": false
+  },
+  {
+    "spell_id": "section_o",
+    "section": "O",
+    "is_section": true
+  },
+  {
+    "spell_id": "o_obliviate",
+    "spell_name": "Obliviate",
+    "description": "Erases specific memories from the target's mind.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "oh-BLIV-ee-ayt",
+    "effect": "Erases memories",
+    "origin": "Latin 'obliviscor' meaning 'to forget'.",
+    "notes": "Often used to protect the wizarding world from exposure to non-magical individuals.",
+    "section": "O",
+    "is_section": false
+  },
+  {
+    "spell_id": "o_obscuro",
+    "spell_name": "Obscuro",
+    "description": "Conjures a blindfold over the target's eyes, blocking their vision.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "ob-SKYOOR-oh",
+    "effect": "Blindfolds the target",
+    "origin": "Latin 'obscurus' meaning 'dark' or 'obscure'.",
+    "notes": "Useful for confusion or preventing sight.",
+    "section": "O",
+    "is_section": false
+  },
+  {
+    "spell_id": "o_oculus_reparo",
+    "spell_name": "Oculus Reparo",
+    "description": "Repairs broken eyeglasses or similar items.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "OK-uh-lus reh-PAH-roh",
+    "effect": "Repairs broken items",
+    "origin": "Latin 'oculus' meaning 'eye' and 'reparo' meaning 'to repair'.",
+    "notes": "Commonly used to fix spectacles.",
+    "section": "O",
+    "is_section": false
+  },
+  {
+    "spell_id": "o_oppugno",
+    "spell_name": "Oppugno",
+    "description": "Directs an object or person to attack a victim at the caster's command.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "op-PYOON-oh",
+    "effect": "Commands objects or beings to attack",
+    "origin": "Latin 'oppugno' meaning 'to attack'.",
+    "notes": "Can be used to send enchanted objects or creatures towards a target.",
+    "section": "O",
+    "is_section": false
   }
 ]
