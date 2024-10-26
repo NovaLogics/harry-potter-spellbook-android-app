@@ -4,16 +4,18 @@ import com.google.gson.annotations.SerializedName
 
 data class Spell(
     @SerializedName("spell_id")
-    val spellId: String,
+    val spellId: String = String(),
     @SerializedName("spell_name")
-    val spellName: String,
-    val description: String,
-    val type: String,
+    val spellName: String  = String(),
+    val description: String = String(),
+    val type: String = String(),
     @SerializedName("light_color")
-    val lightColor: String,
-    val pronunciation: String,
-    val effect: String,
-    val section: String,
+    val lightColor: String = String(),
+    val pronunciation: String = String(),
+    val effect: String = String(),
+    val origin: String = String(),
+    val notes: String = String(),
+    val section: String = String(),
     @SerializedName("is_section")
-    val isSection: Boolean
+    val isSection: Boolean = false
 )
