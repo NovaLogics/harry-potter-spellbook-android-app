@@ -20,7 +20,7 @@
     "light_color": "Blue",
     "pronunciation": "Ah-bare-toh",
     "effect": "Opened doors",
-    "origin": "",
+    "origin": "Portuguese for 'open'. Compare Spanish 'abierto'.",
     "notes": "",
     "section": "A",
     "is_section": false
@@ -32,9 +32,9 @@
     "type": "Charm",
     "light_color": "None",
     "pronunciation": "Various, including: AK-ee-oh, AK-see-oh, AS-see-oh (US), and AT-chee-oh (Anglo-Catholic pronunciation)",
-    "effect": "Summoned an object",
-    "origin": "",
-    "notes": "",
+    "effect": "Summons an object from a distance",
+    "origin": "The Latin word accio means \"I call\" or \"I summon\".",
+    "notes": "The Summoning Charm could not be used on buildings. In addition, it did not work on most living things, and those few on which it did were generally not considered worth Summoning, such as flobberworms.",
     "section": "A",
     "is_section": false
   },
