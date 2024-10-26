@@ -130,6 +130,19 @@
     "is_section": false
   },
   {
+    "spell_id": "a_avis",
+    "spell_name": "Avis",
+    "description": "Conjures a flock of birds from the tip of the wand. When used in conjunction with Oppugno, it can be used offensively.",
+    "type": "Conjuration Charm",
+    "light_color": "None",
+    "pronunciation": "AH-vis",
+    "effect": "Creates a flock of small birds",
+    "origin": "Latin 'avis' meaning 'bird'.",
+    "notes": "Primarily used for entertainment or distraction.",
+    "section": "A",
+    "is_section": false
+  },
+  {
     "spell_id": "section_b",
     "spell_name": "",
     "description": "",
