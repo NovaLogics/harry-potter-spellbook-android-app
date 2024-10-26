@@ -291,5 +291,75 @@
     "notes": "Requires a license and is risky if performed improperly.",
     "section": "D",
     "is_section": false
+  },
+  {
+    "spell_id": "section_e",
+    "section": "E",
+    "is_section": true
+  },
+  {
+    "spell_id": "e_engorgio",
+    "spell_name": "Engorgio",
+    "description": "Causes rapid growth in the targeted object, making it expand to many times its original size.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "en-GOR-gee-oh",
+    "effect": "Enlarges an object",
+    "origin": "Derived from 'engorge', meaning to swell with fluid.",
+    "notes": "Overuse can lead to unstable results and is hard to reverse.",
+    "section": "E",
+    "is_section": false
+  },
+  {
+    "spell_id": "e_expecto_patronum",
+    "spell_name": "Expecto Patronum",
+    "description": "The Patronus Charm creates a powerful projection of hope and happiness, which repels Dementors. A corporeal Patronus takes the shape of an animal representing the caster, while a non-corporeal Patronus appears as a wisp of light.",
+    "type": "Charm",
+    "light_color": "Bright silver or white",
+    "pronunciation": "ex-PEK-toh pah-TROH-num",
+    "effect": "Summons a Patronus to protect against dark creatures",
+    "origin": "Latin 'expecto' meaning 'I await' and 'patronus' meaning 'protector'.",
+    "notes": "Harry Potter was the youngest known wizard to cast a corporeal Patronus at age 13.",
+    "section": "E",
+    "is_section": false
+  },
+  {
+    "spell_id": "e_erecto",
+    "spell_name": "Erecto",
+    "description": "Allows a witch or wizard to build or set up a structure, such as a tent.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "ee-REK-toh",
+    "effect": "Constructs or assembles a structure",
+    "origin": "Latin 'erectus' meaning 'raised up'.",
+    "notes": "Commonly used for setting up camps or temporary structures.",
+    "section": "E",
+    "is_section": false
+  },
+  {
+    "spell_id": "e_evanesco",
+    "spell_name": "Evanesco",
+    "description": "Vanishes objects, making them disappear completely.",
+    "type": "Vanishing Spell",
+    "light_color": "None",
+    "pronunciation": "ee-vah-NES-koh",
+    "effect": "Makes objects vanish",
+    "origin": "Latin 'evanesco' meaning 'to disappear'.",
+    "notes": "Usually requires some skill to make objects reappear after vanishing.",
+    "section": "E",
+    "is_section": false
+  },
+  {
+    "spell_id": "e_expelliarmus",
+    "spell_name": "Expelliarmus",
+    "description": "The Disarming Charm, used to force an opponent to drop whatever they are holding. Often used in duels.",
+    "type": "Charm",
+    "light_color": "Red",
+    "pronunciation": "ex-PEL-ee-AR-mus",
+    "effect": "Disarms the opponent",
+    "origin": "Latin 'expellere' meaning 'to drive out' and 'arma' meaning 'weapon'.",
+    "notes": "Known as Harry Potter's signature spell.",
+    "section": "E",
+    "is_section": false
   }
 ]
