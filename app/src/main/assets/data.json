@@ -39,6 +39,19 @@
     "is_section": false
   },
   {
+    "spell_id": "a_aguamenti",
+    "spell_name": "Aguamenti",
+    "description": "Produces a clean, drinkable jet of water from the wand tip.",
+    "type": "Charm",
+    "light_color": "Blue",
+    "pronunciation": "AH-gwah-MEN-tee",
+    "effect": "Produces water",
+    "origin": "Derived from Latin 'aqua' meaning 'water' and 'menti', likely referring to 'mind'.",
+    "notes": "This spell can be used to extinguish fires, hydrate people, or fill containers with water.",
+    "section": "A",
+    "is_section": false
+  },
+  {
     "spell_id": "section_b",
     "spell_name": "",
     "description": "",
