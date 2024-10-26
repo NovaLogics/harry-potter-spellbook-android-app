@@ -620,5 +620,49 @@
     "notes": "One of the most commonly used charms for visibility in the dark.",
     "section": "L",
     "is_section": false
+  },
+  {
+    "spell_id": "section_m",
+    "section": "M",
+    "is_section": true
+  },
+  {
+    "spell_id": "m_morsmordre",
+    "spell_name": "Morsmordre",
+    "description": "Conjures and projects Lord Voldemort's Dark Mark into the sky, signaling his followers.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "MORZ-mor-dray",
+    "effect": "Summons the Dark Mark",
+    "origin": "Latin 'mors' meaning 'death' and 'mordre' meaning 'to bite'.",
+    "notes": "A symbol of fear and allegiance to Voldemort; often used during Death Eater attacks.",
+    "section": "M",
+    "is_section": false
+  },
+  {
+    "spell_id": "m_mucus_ad_nauseam",
+    "spell_name": "Mucus Ad Nauseam",
+    "description": "Inflicts an extreme runny nose or cold on the target, causing discomfort.",
+    "type": "Jinx",
+    "light_color": "None",
+    "pronunciation": "MOO-kus ad NAW-zee-um",
+    "effect": "Causes extreme nasal mucus production",
+    "origin": "Latin 'mucus' meaning 'mucus' and 'ad nauseam' meaning 'to sickness'.",
+    "notes": "More of a prank than a serious spell.",
+    "section": "M",
+    "is_section": false
+  },
+  {
+    "spell_id": "m_muffliato",
+    "spell_name": "Muffliato",
+    "description": "Creates a buzzing sound in the target's ears, preventing them from overhearing conversations.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "muh-FLEE-ah-toe",
+    "effect": "Prevents eavesdropping",
+    "origin": "Latin 'mufflo' meaning 'to muffle'.",
+    "notes": "Useful for private conversations in public places.",
+    "section": "M",
+    "is_section": false
   }
 ]
