@@ -177,5 +177,75 @@
     "notes": "",
     "section": "B",
     "is_section": false
+  },
+  {
+    "spell_id": "section_c",
+    "section": "C",
+    "is_section": true
+  },
+  {
+    "spell_id": "c_capacious_extremis",
+    "spell_name": "Capacious Extremis",
+    "description": "Known as the Extension Charm, it greatly expands or extends the capacity of an object or space without affecting its external dimensions.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "kah-PAY-shus ex-TRE-mis",
+    "effect": "Increases the internal space of an object",
+    "origin": "Latin 'capacious' meaning 'capable of holding much' and 'extremis' meaning 'utmost'.",
+    "notes": "Commonly used on bags to carry large amounts of items.",
+    "section": "C",
+    "is_section": false
+  },
+  {
+    "spell_id": "c_confundo",
+    "spell_name": "Confundo",
+    "description": "Known as the Confundus Charm, it causes confusion in the target, making them disoriented or easily tricked.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "con-FUN-doh",
+    "effect": "Induces confusion",
+    "origin": "Latin 'confundo' meaning 'to confuse'.",
+    "notes": "Often used in duels or to disorient opponents.",
+    "section": "C",
+    "is_section": false
+  },
+  {
+    "spell_id": "c_conjunctivitis_curse",
+    "spell_name": "Conjunctivitis Curse",
+    "description": "Affects the eyes and sight of the target, causing discomfort and impaired vision.",
+    "type": "Curse",
+    "light_color": "None",
+    "pronunciation": "con-junc-TIV-ih-tis",
+    "effect": "Impairs eyesight",
+    "origin": "Named after 'conjunctivitis', an eye inflammation.",
+    "notes": "Effective against creatures with sensitive vision.",
+    "section": "C",
+    "is_section": false
+  },
+  {
+    "spell_id": "c_crinus_muto",
+    "spell_name": "Crinus Muto",
+    "description": "Changes the hair color and style of the target.",
+    "type": "Transfiguration Spell",
+    "light_color": "None",
+    "pronunciation": "KRI-nus MYOO-toh",
+    "effect": "Alters hair color and style",
+    "origin": "Latin 'crinis' meaning 'hair' and 'muto' meaning 'to change'.",
+    "notes": "Often used for temporary changes in appearance.",
+    "section": "C",
+    "is_section": false
+  },
+  {
+    "spell_id": "c_crucio",
+    "spell_name": "Crucio",
+    "description": "One of the three Unforgivable Curses, it inflicts unbearable pain on the target without causing physical harm.",
+    "type": "Curse",
+    "light_color": "Red",
+    "pronunciation": "KROO-see-oh",
+    "effect": "Causes unbearable pain",
+    "origin": "Latin 'crucio' meaning 'I torture'.",
+    "notes": "One of the most feared spells, as it causes immense suffering.",
+    "section": "C",
+    "is_section": false
   }
 ]
