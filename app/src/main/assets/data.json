@@ -550,5 +550,75 @@
     "notes": "Useful for both practical and defensive purposes.",
     "section": "I",
     "is_section": false
+  },
+  {
+    "spell_id": "section_l",
+    "section": "L",
+    "is_section": true
+  },
+  {
+    "spell_id": "l_langlock",
+    "spell_name": "Langlock",
+    "description": "Causes the target's tongue to stick to the roof of their mouth, preventing speech.",
+    "type": "Jinx",
+    "light_color": "None",
+    "pronunciation": "LANG-lock",
+    "effect": "Prevents the target from speaking",
+    "origin": "English 'lang' meaning 'tongue' and 'lock'.",
+    "notes": "Useful for silencing others temporarily.",
+    "section": "L",
+    "is_section": false
+  },
+  {
+    "spell_id": "l_legilimens",
+    "spell_name": "Legilimens",
+    "description": "A spell that allows the caster to invade or navigate another person's mind, often used to read thoughts and memories.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "le-JIL-ih-mens",
+    "effect": "Allows mind reading and navigation of thoughts",
+    "origin": "Latin 'legere' meaning 'to read' and 'mens' meaning 'mind'.",
+    "notes": "Highly advanced and often invasive; requires considerable skill.",
+    "section": "L",
+    "is_section": false
+  },
+  {
+    "spell_id": "l_levicorpus",
+    "spell_name": "Levicorpus",
+    "description": "Levitates the target by their ankle, often used as a prank to dangle individuals upside down.",
+    "type": "Jinx",
+    "light_color": "None",
+    "pronunciation": "LEV-ee-COR-pus",
+    "effect": "Lifts the target by their ankle",
+    "origin": "Latin 'levare' meaning 'to lift' and 'corpus' meaning 'body'.",
+    "notes": "Can be countered by 'Liberacorpus.'",
+    "section": "L",
+    "is_section": false
+  },
+  {
+    "spell_id": "l_locomotor_mortis",
+    "spell_name": "Locomotor Mortis",
+    "description": "The Leg-Locker Curse binds the target's legs together, preventing them from walking.",
+    "type": "Curse",
+    "light_color": "None",
+    "pronunciation": "loh-ko-MOH-tor MOR-tis",
+    "effect": "Binds the target’s legs",
+    "origin": "Latin 'loco' meaning 'place' and 'mortis' meaning 'of death'.",
+    "notes": "Often used in dueling to immobilize opponents.",
+    "section": "L",
+    "is_section": false
+  },
+  {
+    "spell_id": "l_lumos",
+    "spell_name": "Lumos",
+    "description": "A spell that illuminates the caster's wand, allowing them to see in dark places.",
+    "type": "Charm",
+    "light_color": "White",
+    "pronunciation": "LOO-mos",
+    "effect": "Produces light from the caster’s wand",
+    "origin": "Latin 'lumen' meaning 'light'.",
+    "notes": "One of the most commonly used charms for visibility in the dark.",
+    "section": "L",
+    "is_section": false
   }
 ]
