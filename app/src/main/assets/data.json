@@ -52,6 +52,19 @@
     "is_section": false
   },
   {
+    "spell_id": "a_alohomora",
+    "spell_name": "Alohomora",
+    "description": "Unlocks objects such as doors and windows.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "al-LOH-ha-MOR-ah",
+    "effect": "Unlocks locks on doors or windows",
+    "origin": "From the West African Sidiki dialect meaning 'friendly to thieves'.",
+    "notes": "Cannot unlock magically protected locks.",
+    "section": "A",
+    "is_section": false
+  },
+  {
     "spell_id": "section_b",
     "spell_name": "",
     "description": "",
