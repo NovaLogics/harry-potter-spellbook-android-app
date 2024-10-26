@@ -739,5 +739,75 @@
     "notes": "Can be used to send enchanted objects or creatures towards a target.",
     "section": "O",
     "is_section": false
+  },
+  {
+    "spell_id": "section_p",
+    "section": "P",
+    "is_section": true
+  },
+  {
+    "spell_id": "p_petrificus_totalus",
+    "spell_name": "Petrificus Totalus",
+    "description": "Temporarily freezes or petrifies the body of the target, rendering them immobile.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "peh-TRIF-i-kus toh-TAL-us",
+    "effect": "Petrifies the target",
+    "origin": "Latin 'petrificare' meaning 'to turn to stone'.",
+    "notes": "Commonly used to incapacitate enemies without causing harm.",
+    "section": "P",
+    "is_section": false
+  },
+  {
+    "spell_id": "p_periculum",
+    "spell_name": "Periculum",
+    "description": "Conjures flares or red sparks, often used to signal for help.",
+    "type": "Charm",
+    "light_color": "Red",
+    "pronunciation": "peh-RIK-oo-lum",
+    "effect": "Creates flares",
+    "origin": "Latin 'periculum' meaning 'danger' or 'risk'.",
+    "notes": "Can be used to attract attention or as a warning.",
+    "section": "P",
+    "is_section": false
+  },
+  {
+    "spell_id": "p_piertotum_locomotor",
+    "spell_name": "Piertotum Locomotor",
+    "description": "Animates inanimate objects and artifacts, bringing them to life for a short period.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "peer-TOH-tum loh-koh-MOH-tor",
+    "effect": "Animates inanimate objects",
+    "origin": "Latin 'pietas' meaning 'piety' and 'locomotor' meaning 'mover'.",
+    "notes": "Used in dueling or for entertainment purposes.",
+    "section": "P",
+    "is_section": false
+  },
+  {
+    "spell_id": "p_protean_charm",
+    "spell_name": "Protean Charm",
+    "description": "Links objects together for better communication, allowing them to mirror each other's actions.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "PRO-teh-an",
+    "effect": "Links objects for communication",
+    "origin": "From 'Proteus', a Greek god who could change form.",
+    "notes": "Useful for sending messages between linked items.",
+    "section": "P",
+    "is_section": false
+  },
+  {
+    "spell_id": "p_protego",
+    "spell_name": "Protego",
+    "description": "Casts an invisible shield around the caster, protecting against spells and physical objects.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "pro-TAY-go",
+    "effect": "Creates a protective shield",
+    "origin": "Latin 'protego' meaning 'to protect'.",
+    "notes": "Cannot block The Killing Curse; often used in dueling.",
+    "section": "P",
+    "is_section": false
   }
 ]
