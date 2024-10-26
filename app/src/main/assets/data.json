@@ -975,5 +975,23 @@
     "notes": "Widely used in dueling; effective against attackers.",
     "section": "S",
     "is_section": false
+  },
+  {
+    "spell_id": "section_t",
+    "section": "T",
+    "is_section": true
+  },
+  {
+    "spell_id": "t_tarantallegra",
+    "spell_name": "Tarantallegra",
+    "description": "Aimed at the legs, causes uncontrollable dancing movement.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "tah-RAHN-tahl-eh-grah",
+    "effect": "Induces dancing",
+    "origin": "From Italian 'tarantella', a lively dance.",
+    "notes": "Often used to embarrass opponents.",
+    "section": "T",
+    "is_section": false
   }
 ]
