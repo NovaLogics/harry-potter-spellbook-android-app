@@ -78,6 +78,19 @@
     "is_section": false
   },
   {
+    "spell_id": "a_aparecium",
+    "spell_name": "Aparecium",
+    "description": "Reveals hidden or invisible messages, particularly those written in invisible ink.",
+    "type": "Revealing Charm",
+    "light_color": "None",
+    "pronunciation": "ah-puh-REE-see-um",
+    "effect": "Makes invisible ink visible",
+    "origin": "Latin 'appareo' meaning 'to appear'.",
+    "notes": "Often used to read hidden or enchanted texts.",
+    "section": "A",
+    "is_section": false
+  },
+  {
     "spell_id": "section_b",
     "spell_name": "",
     "description": "",
