@@ -418,5 +418,36 @@
     "notes": "Useful in duels or emergencies to counter ongoing magical effects.",
     "section": "F",
     "is_section": false
+  },
+  {
+    "spell_id": "section_g",
+    "section": "G",
+    "is_section": true
+  },
+  {
+    "spell_id": "g_geminio",
+    "spell_name": "Geminio",
+    "description": "The Doubling Charm, used to duplicate an object, creating an exact copy.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "jeh-MIN-ee-oh",
+    "effect": "Duplicates an object",
+    "origin": "Latin 'gemini' meaning 'twins'.",
+    "notes": "While it duplicates objects, it can cause complications with enchanted items.",
+    "section": "G",
+    "is_section": false
+  },
+  {
+    "spell_id": "g_glisseo",
+    "spell_name": "Glisseo",
+    "description": "Transforms a staircase into a smooth slide, allowing quick descent.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "GLIS-ee-oh",
+    "effect": "Creates a slide from a staircase",
+    "origin": "French 'glisser' meaning 'to slide'.",
+    "notes": "Commonly used in emergencies for rapid escape.",
+    "section": "G",
+    "is_section": false
   }
 ]
