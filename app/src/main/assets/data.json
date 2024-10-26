@@ -65,6 +65,19 @@
     "is_section": false
   },
   {
+    "spell_id": "a_anapneo",
+    "spell_name": "Anapneo",
+    "description": "Clears someone's airway if they are choking.",
+    "type": "Healing Spell",
+    "light_color": "None",
+    "pronunciation": "ah-NAP-nee-oh",
+    "effect": "Clears a person's airway",
+    "origin": "Derived from Greek 'anapneo', meaning 'I breathe'.",
+    "notes": "Useful for first-aid situations.",
+    "section": "A",
+    "is_section": false
+  },
+  {
     "spell_id": "section_b",
     "spell_name": "",
     "description": "",
