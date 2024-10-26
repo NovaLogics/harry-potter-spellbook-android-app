@@ -1011,5 +1011,23 @@
     "notes": "Very dangerous; both parties must fully agree.",
     "section": "U",
     "is_section": false
+  },
+  {
+    "spell_id": "section_w",
+    "section": "W",
+    "is_section": true
+  },
+  {
+    "spell_id": "w_wingardium_leviosa",
+    "spell_name": "Wingardium Leviosa",
+    "description": "Causes an object to levitate; but remember what Hermione said: 'It’s Wing-gar-dium Levi-o-sa, make the 'gar' nice and long.'",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "win-GAR-dee-um lev-ee-OH-sah",
+    "effect": "Levitation of objects",
+    "origin": "From Latin 'wing' and 'levitare' meaning 'to lift'.",
+    "notes": "One of the first spells taught to young witches and wizards.",
+    "section": "W",
+    "is_section": false
   }
 ]
