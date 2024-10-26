@@ -361,5 +361,62 @@
     "notes": "Known as Harry Potter's signature spell.",
     "section": "E",
     "is_section": false
+  },
+  {
+    "spell_id": "section_f",
+    "section": "F",
+    "is_section": true
+  },
+  {
+    "spell_id": "f_ferula",
+    "spell_name": "Ferula",
+    "description": "A healing charm that conjures bandages and wraps to dress wounds.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "feh-ROO-lah",
+    "effect": "Produces bandages for healing",
+    "origin": "Latin 'ferula' meaning 'splint' or 'rod used in healing'.",
+    "notes": "Primarily used in first aid situations to stabilize injuries.",
+    "section": "F",
+    "is_section": false
+  },
+  {
+    "spell_id": "f_fidelius_charm",
+    "spell_name": "Fidelius Charm",
+    "description": "A complex and advanced charm that conceals a secret within the soul of a chosen 'Secret Keeper.' The secret, such as a location, becomes undetectable to everyone else.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "fi-DAY-lee-us charm",
+    "effect": "Conceals a secret within a chosen individual",
+    "origin": "Latin 'fidelius' meaning 'faithful' or 'loyal'.",
+    "notes": "One of the most powerful concealment spells in the wizarding world.",
+    "section": "F",
+    "is_section": false
+  },
+  {
+    "spell_id": "f_fiendfyre_curse",
+    "spell_name": "Fiendfyre Curse",
+    "description": "Conjures destructive and enchanted flames that are extremely difficult to control and can consume anything in their path.",
+    "type": "Curse",
+    "light_color": "Fiery red and orange",
+    "pronunciation": "FEEND-fy-er",
+    "effect": "Creates massive, sentient flames",
+    "origin": "Old English 'fiend' meaning 'demon' and 'fire'.",
+    "notes": "Highly dangerous and used only in extreme circumstances; difficult to extinguish.",
+    "section": "F",
+    "is_section": false
+  },
+  {
+    "spell_id": "f_finite_incantatem",
+    "spell_name": "Finite Incantatem",
+    "description": "A general counter-spell used to reverse or halt the effects of other spells that are already in effect.",
+    "type": "Counter-Spell",
+    "light_color": "None",
+    "pronunciation": "fi-NEE-tay in-can-TAH-tem",
+    "effect": "Ends ongoing spell effects",
+    "origin": "Latin 'finire' meaning 'to end' and 'incantatem' relating to 'incantation'.",
+    "notes": "Useful in duels or emergencies to counter ongoing magical effects.",
+    "section": "F",
+    "is_section": false
   }
 ]
