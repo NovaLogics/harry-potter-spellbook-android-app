@@ -117,6 +117,19 @@
     "is_section": false
   },
   {
+    "spell_id": "a_avada_kedavra",
+    "spell_name": "Avada Kedavra",
+    "description": "Also known as The Killing Curse, one of the three Unforgivable Curses. Causes instant death without physical harm.",
+    "type": "Curse",
+    "light_color": "Green",
+    "pronunciation": "uh-VAH-dah keh-DAV-rah",
+    "effect": "Causes instant death",
+    "origin": "Aramaic phrase 'Avada Kedavra' meaning 'let this thing be destroyed'.",
+    "notes": "Harry Potter is the only known survivor of this curse.",
+    "section": "A",
+    "is_section": false
+  },
+  {
     "spell_id": "section_b",
     "spell_name": "",
     "description": "",
