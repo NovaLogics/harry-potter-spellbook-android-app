@@ -291,7 +291,7 @@ fun HomeScreenPreview() {
 
     val uiState = SpellBookUiState(
         true,
-        HomeRepositoryOffline(context).getJsonData(),
+        HomeRepositoryOffline(context).getJsonData().subList(0,5),
         "Welcome to Home",
         null)
 
