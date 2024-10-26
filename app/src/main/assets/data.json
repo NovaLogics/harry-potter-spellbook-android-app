@@ -247,5 +247,49 @@
     "notes": "One of the most feared spells, as it causes immense suffering.",
     "section": "C",
     "is_section": false
+  },
+  {
+    "spell_id": "section_d",
+    "section": "D",
+    "is_section": true
+  },
+  {
+    "spell_id": "d_diffindo",
+    "spell_name": "Diffindo",
+    "description": "Used to precisely cut or sever an object, allowing the caster to slice or divide materials accurately.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "dih-FIN-doh",
+    "effect": "Cuts or slices an object",
+    "origin": "Latin 'diffindere' meaning 'to split'.",
+    "notes": "Commonly used in tailoring, gardening, or to free objects.",
+    "section": "D",
+    "is_section": false
+  },
+  {
+    "spell_id": "d_disillusionment_charm",
+    "spell_name": "Disillusionment Charm",
+    "description": "Causes the target to blend into their surroundings, creating a chameleon-like effect.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "DIS-il-LOO-shun-ment charm",
+    "effect": "Makes the target appear invisible or camouflaged",
+    "origin": "Derived from 'disillusion', meaning to deceive.",
+    "notes": "Useful for stealth, but requires concentration to maintain.",
+    "section": "D",
+    "is_section": false
+  },
+  {
+    "spell_id": "d_disapparate",
+    "spell_name": "Disapparate",
+    "description": "A non-verbal transportation spell that allows a witch or wizard to vanish from one location and reappear at another. Apparate is the opposite.",
+    "type": "Transportation",
+    "light_color": "None",
+    "pronunciation": "dis-AP-par-ate",
+    "effect": "Transports the caster instantly away from a place",
+    "origin": "Latin 'disapereo' meaning 'to disappear'.",
+    "notes": "Requires a license and is risky if performed improperly.",
+    "section": "D",
+    "is_section": false
   }
 ]
