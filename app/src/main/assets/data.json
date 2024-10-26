@@ -480,5 +480,75 @@
     "notes": "This charm is highly complex and used to track people within a specific area.",
     "section": "H",
     "is_section": false
+  },
+  {
+    "spell_id": "section_i",
+    "section": "I",
+    "is_section": true
+  },
+  {
+    "spell_id": "i_immobulus",
+    "spell_name": "Immobulus",
+    "description": "Immobilizes living targets, preventing them from moving.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "ih-MOH-byoo-lus",
+    "effect": "Freezes targets in place",
+    "origin": "Latin 'immobilis' meaning 'motionless'.",
+    "notes": "Useful for stopping creatures temporarily.",
+    "section": "I",
+    "is_section": false
+  },
+  {
+    "spell_id": "i_impedimenta",
+    "spell_name": "Impedimenta",
+    "description": "A jinx that temporarily slows or halts the movement of the target.",
+    "type": "Jinx",
+    "light_color": "None",
+    "pronunciation": "im-ped-ih-MEN-tah",
+    "effect": "Slows or impedes movement",
+    "origin": "Latin 'impedimentum' meaning 'obstacle'.",
+    "notes": "Commonly used in dueling to gain an advantage.",
+    "section": "I",
+    "is_section": false
+  },
+  {
+    "spell_id": "i_imperio",
+    "spell_name": "Imperio",
+    "description": "One of the three Unforgivable Curses, it places the target under the complete control of the caster, forcing them to follow commands.",
+    "type": "Curse",
+    "light_color": "None",
+    "pronunciation": "im-PEER-ee-oh",
+    "effect": "Gives the caster control over the target",
+    "origin": "Latin 'impero' meaning 'I command'.",
+    "notes": "Illegal and punishable by life imprisonment in Azkaban.",
+    "section": "I",
+    "is_section": false
+  },
+  {
+    "spell_id": "i_impervius",
+    "spell_name": "Impervius",
+    "description": "Makes an object waterproof or resistant to outside substances.",
+    "type": "Charm",
+    "light_color": "None",
+    "pronunciation": "im-PUR-vee-us",
+    "effect": "Waterproofs or protects an object",
+    "origin": "Latin 'impervius' meaning 'impassable'.",
+    "notes": "Commonly used on glasses and clothing in wet environments.",
+    "section": "I",
+    "is_section": false
+  },
+  {
+    "spell_id": "i_incendio",
+    "spell_name": "Incendio",
+    "description": "Conjures flames, igniting objects or setting a target on fire.",
+    "type": "Charm",
+    "light_color": "Orange and red",
+    "pronunciation": "in-SEN-dee-oh",
+    "effect": "Produces fire",
+    "origin": "Latin 'incendo' meaning 'to set on fire'.",
+    "notes": "Useful for both practical and defensive purposes.",
+    "section": "I",
+    "is_section": false
   }
 ]
