@@ -42,13 +42,13 @@ fun HomeScreen(
 
     onLoadingChange(uiState.isLoading)
 
-    ScreenFlow(
+    ScreenUiContent(
         uiState = uiState
     )
 }
 
 @Composable
-fun ScreenFlow(
+fun ScreenUiContent(
     uiState : HomeUiState
 ){
     Box(
@@ -126,15 +126,12 @@ fun ScreenFlow(
     uiMode = UI_MODE_NIGHT_YES
 )
 @Composable
-fun HomeScreenPreview() {
+private fun HomeScreenPreview() {
 
-    val uiState = HomeUiState(
-        true,
-        "Welcome to Home",
-        null)
+    val uiState = HomeUiState(data = "Welcome to Home",)
 
     SpellBookTheme {
-        ScreenFlow(
+        ScreenUiContent(
             uiState = uiState
         )
     }
