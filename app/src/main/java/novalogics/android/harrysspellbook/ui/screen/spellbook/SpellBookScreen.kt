@@ -44,7 +44,6 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.data.model.Spell
@@ -245,21 +244,24 @@ fun SectionEntity(
 
 @Composable
 fun IconWithText(
-    @DrawableRes icon: Int,
-    text: String
+    @DrawableRes
+    iconResId: Int,
+    textValue: String
 ) {
     Row(
-        modifier = Modifier,
-        horizontalArrangement = Arrangement.spacedBy(
-            space = dimensionResource(id = R.dimen.space_regular_8dp)
-        )
+        horizontalArrangement = Arrangement.spacedBy( space = dimensionResource(id = R.dimen.space_regular_8dp) )
     ) {
         Icon(
-            imageVector = ImageVector.vectorResource(id = icon),
-            contentDescription = text,
+            imageVector = ImageVector.vectorResource(id = iconResId),
+            contentDescription = textValue,
             modifier = Modifier.size(size = dimensionResource(id = R.dimen.icon_size_xsmall_16dp))
         )
-        Text(text = text, style = typography.displayMedium.copy(fontSize = 12.sp))
+        Text(
+            text = textValue,
+            style = typography.displayMedium.copy(
+                fontSize = textSizeResource(id = R.dimen.text_size_small_12sp)
+            )
+        )
     }
 }
 
