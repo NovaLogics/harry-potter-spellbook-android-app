@@ -110,10 +110,8 @@ fun ScreenUiContent(
                 }
             }
         )
-
     }
 }
-
 
 @Composable
 fun SectionHeader(
@@ -123,6 +121,7 @@ fun SectionHeader(
         modifier = Modifier.fillMaxWidth(),
         contentAlignment = Alignment.CenterStart
     ) {
+
         Image(
             painter = painterResource(id = R.drawable.element_bookmark_purple),
             contentDescription = title,
@@ -130,8 +129,9 @@ fun SectionHeader(
             alignment = Alignment.CenterStart,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(dimensionResource(id = R.dimen.size_large_48dp))
+                .height(height =  dimensionResource(id = R.dimen.size_large_48dp))
         )
+
         StyledText(
             stringValue = title,
             letterSpacing = R.dimen.latter_space_small_2dp,
@@ -223,7 +223,6 @@ fun SectionEntity(
                         stringResource(id = R.string.type_value, spell.type)
                     )
                 }
-
             }
 
             Icon(
@@ -235,7 +234,6 @@ fun SectionEntity(
             Spacer(
                 modifier = Modifier.size(dimensionResource(id = R.dimen.size_xsmall_4dp))
             )
-
         }
     }
 }
