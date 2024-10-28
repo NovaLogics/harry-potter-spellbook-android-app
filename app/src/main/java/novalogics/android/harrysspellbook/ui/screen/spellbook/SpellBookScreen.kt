@@ -56,6 +56,7 @@ import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
 import novalogics.android.harrysspellbook.util.Constants
 
 
+@JvmOverloads
 @Composable
 fun SpellBookScreen(
     viewModel: SpellBookViewModel = hiltViewModel(),
@@ -63,13 +64,13 @@ fun SpellBookScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    ScreenFlow(
+    ScreenUiContent(
         uiState = uiState
     )
 }
 
 @Composable
-fun ScreenFlow(
+fun ScreenUiContent(
     uiState : SpellBookUiState
 ){
     Box(
@@ -77,49 +78,38 @@ fun ScreenFlow(
             .fillMaxSize()
             .background(colorScheme.surface)
     ) {
-
-        Image(
-            painter = painterResource(id = R.drawable.bg_home_effect),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .fillMaxSize()
-                .alpha(0.1F)
-        )
-
-
         Column {
             ElevatedCard(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .heightIn(16.dp)
+                    .heightIn(dimensionResource(id = R.dimen.size_xsmall_16dp))
                     .border(
-                        BorderStroke(width = 1.dp, color = colorScheme.background),
+                        BorderStroke(
+                            width = dimensionResource(id = R.dimen.border_stroke_medium_1dp),
+                            color = colorScheme.background
+                        ),
                         shape = MaterialTheme.shapes.medium
                     ),
                 elevation = CardDefaults.cardElevation(
-                    defaultElevation = 16.dp
+                    defaultElevation = dimensionResource(id = R.dimen.elevation_xlarge_10dp)
                 ),
                 shape = MaterialTheme.shapes.medium,
                 colors = CardDefaults.cardColors(colorScheme.background)
-            ) {
+            ) {}
 
-
-            }
             LazyVerticalGrid(
                 columns = GridCells.Fixed(1),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(12.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                    .padding(all = dimensionResource(id = R.dimen.padding_regular_12dp)),
+                verticalArrangement = Arrangement.spacedBy(space = dimensionResource(id = R.dimen.space_regular_8dp)),
                 content = {
                     items(uiState.spellList) { spell ->
                         if(spell.isSection){
                             SectionHeader(stringResource(id = R.string.section_title, spell.section))
-                        }
-                        else{
+                        } else{
                             SectionEntity(spell = spell)
-                            Spacer(modifier = Modifier.padding(16.dp))
+                            Spacer(modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_medium_16dp)))
                         }
                     }
                 }
@@ -297,7 +287,7 @@ fun HomeScreenPreview() {
 
     SpellBookTheme {
        // SectionElement()
-        ScreenFlow(
+        ScreenUiContent(
             uiState = uiState
         )
     }
