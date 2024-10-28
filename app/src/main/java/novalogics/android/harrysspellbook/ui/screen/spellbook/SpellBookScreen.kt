@@ -43,7 +43,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.data.model.Spell
@@ -54,11 +53,10 @@ import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
 import novalogics.android.harrysspellbook.util.Constants
 
 
-@JvmOverloads
 @Composable
 fun SpellBookScreen(
     viewModel: SpellBookViewModel = hiltViewModel(),
-    contentPadding: PaddingValues = PaddingValues(0.dp)
+    contentPadding: PaddingValues = PaddingValues(dimensionResource(id = R.dimen.padding_small_4dp))
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -265,7 +263,6 @@ fun IconWithText(
     }
 }
 
-
 @Preview(
     name = Constants.MODE_LIGHT,
     showBackground = true,
@@ -279,18 +276,13 @@ fun IconWithText(
 @Composable
 fun HomeScreenPreview() {
 
-    val context = LocalContext.current
-
-    val uiState = SpellBookUiState(
-        true,
-        HomeRepositoryOffline(context).getJsonData().subList(0,5),
-        "Welcome to Home",
-        null)
+    val uiStateTestData = SpellBookUiState(
+        spellList = HomeRepositoryOffline(LocalContext.current).getJsonData().subList(0,5),
+      )
 
     SpellBookTheme {
-       // SectionElement()
         ScreenUiContent(
-            uiState = uiState
+            uiState = uiStateTestData
         )
     }
 }
