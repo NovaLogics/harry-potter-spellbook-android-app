@@ -85,6 +85,7 @@ dependencies {
     implementation(libs.gson)
     //Coil
     implementation(libs.coil)
+    implementation(libs.coil.gif)
     //Coroutines
     implementation(libs.coroutine.core)
     implementation(libs.coroutine.android)

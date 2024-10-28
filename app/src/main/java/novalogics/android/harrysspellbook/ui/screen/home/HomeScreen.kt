@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
@@ -23,11 +24,17 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.rememberAsyncImagePainter
+import coil.decode.GifDecoder
+import coil.request.ImageRequest
+import coil.size.Size
 import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
 import novalogics.android.harrysspellbook.util.Constants
@@ -51,20 +58,11 @@ fun HomeScreen(
 fun ScreenUiContent(
     uiState : HomeUiState
 ){
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(colorScheme.surface)
     ) {
-
-        Image(
-            painter = painterResource(id = R.drawable.bg_home_effect),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .fillMaxSize()
-                .alpha(0.5F)
-        )
 
         ElevatedCard(
             modifier = Modifier
@@ -78,10 +76,9 @@ fun ScreenUiContent(
                 defaultElevation = 8.dp
             ),
             shape = MaterialTheme.shapes.medium
-        ) {
+        ) {}
 
-
-        }
+        GifCard()
 
         Image(
             painter = painterResource(id = R.drawable.img_crossed_wands),
@@ -111,6 +108,29 @@ fun ScreenUiContent(
 
         }
 
+    }
+}
+
+@Composable
+fun GifCard() {
+    ElevatedCard(
+        modifier = Modifier
+            .fillMaxWidth()
+            .size(200.dp),
+        colors = CardDefaults.cardColors(Color.Black)
+    ) {
+        val painter = rememberAsyncImagePainter(
+            ImageRequest.Builder(LocalContext.current)
+                .data(R.drawable.harry_potter_home)
+                .decoderFactory(GifDecoder.Factory())
+                .build()
+        )
+        Image(
+            painter = painter,
+            contentDescription = "Animated GIF",
+            modifier = Modifier.fillMaxWidth().alpha(0.3F),
+            contentScale = ContentScale.FillWidth
+        )
     }
 }
 
