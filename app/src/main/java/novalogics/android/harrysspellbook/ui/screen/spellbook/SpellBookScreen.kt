@@ -56,9 +56,11 @@ import novalogics.android.harrysspellbook.util.Constants
 @Composable
 fun SpellBookScreen(
     viewModel: SpellBookViewModel = hiltViewModel(),
-    contentPadding: PaddingValues = PaddingValues(dimensionResource(id = R.dimen.padding_small_4dp))
+    onLoadingChange: (Boolean) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
+
+    onLoadingChange(uiState.isLoading)
 
     ScreenUiContent(
         uiState = uiState
