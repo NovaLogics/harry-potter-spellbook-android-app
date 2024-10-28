@@ -1,11 +1,16 @@
 package novalogics.android.harrysspellbook.ui.screen.mainscreen
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
@@ -13,6 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import novalogics.android.harrysspellbook.R
+import novalogics.android.harrysspellbook.ui.common.component.LoadingScreen
 import novalogics.android.harrysspellbook.ui.navigation.AppScreens
 import novalogics.android.harrysspellbook.ui.screen.home.HomeScreen
 import novalogics.android.harrysspellbook.ui.screen.mainscreen.component.BottomNavigationBar
@@ -25,6 +31,7 @@ fun SpellBookMainScreen(
 ){
     val context = LocalContext.current
     val tabItems = context.resources.getStringArray(R.array.tab_items).toList()
+    var isLoading by remember { mutableStateOf(false) }
 
     Scaffold(
         bottomBar = {
@@ -39,24 +46,32 @@ fun SpellBookMainScreen(
             .statusBarsPadding()
     ) { innerPadding ->
 
-        NavHost(
-            navController = navController,
-            startDestination = AppScreens.Home.name,
-            modifier = Modifier.padding(innerPadding)
+        Box(
+            modifier = Modifier.fillMaxSize()
         ) {
 
-            composable(route = AppScreens.Home.name) {
-                HomeScreen(
-                    contentPadding = innerPadding
-                )
+            NavHost(
+                navController = navController,
+                startDestination = AppScreens.Home.name,
+                modifier = Modifier.padding(innerPadding)
+            ) {
+
+                composable(route = AppScreens.Home.name) {
+                    HomeScreen(
+                        onLoadingChange = { loading -> isLoading = loading }
+                    )
+                }
+
+                composable(route = AppScreens.SpellBook.name) {
+                    SpellBookScreen(
+                        onLoadingChange = { loading -> isLoading = loading }
+                    )
+                }
             }
 
-            composable(route = AppScreens.SpellBook.name) {
-                SpellBookScreen(
-                    contentPadding = innerPadding
-                )
+            if (isLoading) {
+                LoadingScreen()
             }
-
         }
     }
 }
