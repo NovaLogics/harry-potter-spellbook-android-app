@@ -10,7 +10,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -46,7 +45,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.data.model.Spell
-import novalogics.android.harrysspellbook.data.repository.HomeRepositoryOffline
+import novalogics.android.harrysspellbook.data.repository.LocalDataSource
 import novalogics.android.harrysspellbook.ui.common.component.StyledText
 import novalogics.android.harrysspellbook.ui.common.textSizeResource
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
@@ -277,7 +276,7 @@ fun IconWithText(
 fun HomeScreenPreview() {
 
     val uiStateTestData = SpellBookUiState(
-        spellList = HomeRepositoryOffline(LocalContext.current).getJsonData().subList(0,5),
+        spellList = LocalDataSource(LocalContext.current).getListOfSpells().subList(0,5),
       )
 
     SpellBookTheme {

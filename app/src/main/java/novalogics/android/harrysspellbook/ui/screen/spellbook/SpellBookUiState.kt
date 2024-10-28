@@ -5,6 +5,5 @@ import novalogics.android.harrysspellbook.data.model.Spell
 data class SpellBookUiState(
     val isLoading: Boolean = false,
     val spellList: List<Spell> = emptyList(),
-    val data: String = "",
     val error: String? = null
 )
