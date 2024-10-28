@@ -61,8 +61,8 @@ fun BottomNavigationBar(
 
 fun getIcon(index: Int) : Int {
     return when (index) {
-        0 -> R.drawable.ic_nav_home
-        1 -> R.drawable.ic_nav_fire
-        else -> R.drawable.ic_nav_home
+        0 -> R.drawable.ic_nav_spell_circle
+        1 -> R.drawable.ic_nav_spell_book
+        else -> R.drawable.ic_nav_spell_circle
     }
 }
