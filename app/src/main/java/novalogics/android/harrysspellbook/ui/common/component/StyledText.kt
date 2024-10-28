@@ -1,4 +1,4 @@
-package novalogics.android.harrysspellbook.ui.common
+package novalogics.android.harrysspellbook.ui.common.component
 
 import androidx.annotation.DimenRes
 import androidx.annotation.StringRes
@@ -12,6 +12,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import novalogics.android.harrysspellbook.R
+import novalogics.android.harrysspellbook.ui.common.textSizeResource
 
 import java.util.Locale
 

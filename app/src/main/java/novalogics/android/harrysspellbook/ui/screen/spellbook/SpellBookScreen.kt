@@ -47,7 +47,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.data.model.Spell
 import novalogics.android.harrysspellbook.data.repository.HomeRepositoryOffline
-import novalogics.android.harrysspellbook.ui.common.StyledText
+import novalogics.android.harrysspellbook.ui.common.component.StyledText
 import novalogics.android.harrysspellbook.ui.common.textSizeResource
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
 import novalogics.android.harrysspellbook.util.Constants
