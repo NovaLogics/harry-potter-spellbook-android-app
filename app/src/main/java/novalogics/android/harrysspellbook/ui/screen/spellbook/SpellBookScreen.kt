@@ -273,7 +273,7 @@ fun IconWithText(
     uiMode = UI_MODE_NIGHT_YES
 )
 @Composable
-fun HomeScreenPreview() {
+private fun HomeScreenPreview() {
 
     val uiStateTestData = SpellBookUiState(
         spellList = LocalDataSource(LocalContext.current).getListOfSpells().subList(0,5),

@@ -24,7 +24,7 @@ class HomeViewModel @Inject constructor(
     private fun loadDataOffline() {
         _uiState.update { ui ->
             ui.copy(
-                isLoading = true,
+                isLoading = false,
                 data = repositoryOffline.getTestData(),
             )
         }
