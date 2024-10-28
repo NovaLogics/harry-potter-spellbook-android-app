@@ -78,15 +78,19 @@ fun ScreenUiContent(
         ElevatedCard(
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(24.dp)
+                .heightIn(dimensionResource(id = R.dimen.size_xsmall_16dp))
                 .border(
-                    BorderStroke(width = 1.dp, color = colorScheme.background),
+                    BorderStroke(
+                        width = dimensionResource(id = R.dimen.border_stroke_medium_1dp),
+                        color = colorScheme.background
+                    ),
                     shape = MaterialTheme.shapes.medium
                 ),
             elevation = CardDefaults.cardElevation(
-                defaultElevation = 8.dp
+                defaultElevation = dimensionResource(id = R.dimen.elevation_xlarge_10dp)
             ),
-            shape = MaterialTheme.shapes.medium
+            shape = MaterialTheme.shapes.medium,
+            colors = CardDefaults.cardColors(colorScheme.background)
         ) {}
 
         StyledText(
@@ -155,12 +159,13 @@ fun GifCard() {
                 .build()
         )
         Image(
-            painter = painter,
+            painter = painterResource(id = R.drawable.img_banner_1),
             contentDescription = "Animated GIF",
             modifier = Modifier
                 .fillMaxWidth()
-                .alpha(0.3F),
-            contentScale = ContentScale.FillWidth
+              //  .alpha(0.3F)
+            ,
+            contentScale = ContentScale.Crop
         )
     }
 }
