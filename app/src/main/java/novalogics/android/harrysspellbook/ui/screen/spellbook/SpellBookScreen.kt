@@ -71,50 +71,49 @@ fun SpellBookScreen(
 
 @Composable
 fun ScreenUiContent(
-    uiState : SpellBookUiState
-){
-    Box(
+    uiState: SpellBookUiState
+) {
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(colorScheme.surface)
     ) {
-        Column {
-            ElevatedCard(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(dimensionResource(id = R.dimen.size_xsmall_16dp))
-                    .border(
-                        BorderStroke(
-                            width = dimensionResource(id = R.dimen.border_stroke_medium_1dp),
-                            color = colorScheme.background
-                        ),
-                        shape = MaterialTheme.shapes.medium
+        ElevatedCard(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(dimensionResource(id = R.dimen.size_xsmall_16dp))
+                .border(
+                    BorderStroke(
+                        width = dimensionResource(id = R.dimen.border_stroke_medium_1dp),
+                        color = colorScheme.background
                     ),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = dimensionResource(id = R.dimen.elevation_xlarge_10dp)
+                    shape = MaterialTheme.shapes.medium
                 ),
-                shape = MaterialTheme.shapes.medium,
-                colors = CardDefaults.cardColors(colorScheme.background)
-            ) {}
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = dimensionResource(id = R.dimen.elevation_xlarge_10dp)
+            ),
+            shape = MaterialTheme.shapes.medium,
+            colors = CardDefaults.cardColors(colorScheme.background)
+        ) {}
 
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(1),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(all = dimensionResource(id = R.dimen.padding_regular_12dp)),
-                verticalArrangement = Arrangement.spacedBy(space = dimensionResource(id = R.dimen.space_regular_8dp)),
-                content = {
-                    items(uiState.spellList) { spell ->
-                        if(spell.isSection){
-                            SectionHeader(stringResource(id = R.string.section_title, spell.section))
-                        } else{
-                            SectionEntity(spell = spell)
-                            Spacer(modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_medium_16dp)))
-                        }
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(1),
+            verticalArrangement = Arrangement.spacedBy(
+                space = dimensionResource(id = R.dimen.space_regular_8dp)
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(all = dimensionResource(id = R.dimen.padding_regular_12dp)),
+            content = {
+                items(uiState.spellList) { spell ->
+                    if (spell.isSection) {
+                        SectionHeader(stringResource(id = R.string.section_title, spell.section))
+                    } else {
+                        SectionEntity(spell = spell)
                     }
                 }
-            )
-        }
+            }
+        )
 
     }
 }
