@@ -9,25 +9,11 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
-import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.ime
-import androidx.compose.foundation.layout.imePadding
-import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.layout.windowInsetsBottomHeight
-import androidx.compose.foundation.layout.windowInsetsTopHeight
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.text.KeyboardActions
@@ -48,11 +34,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
@@ -78,26 +62,24 @@ fun SpellCircleScreen(
     onLoadingChange(uiState.isLoading)
 
     ScreenUiContent(
-        uiState = uiState
+        uiState = uiState,
+        onTextFieldValueChange = viewModel::updateTextFieldValue,
+        onListDataValueChange = viewModel::updateListData
     )
 }
 
 @Composable
 fun ScreenUiContent(
-    uiState : SpellCircleUiState
+    uiState : SpellCircleUiState,
+    onTextFieldValueChange: (String) -> Unit,
+    onListDataValueChange: () -> Unit
 ){
     val scrollState = rememberScrollState()
     val textFieldValue = remember { mutableStateOf("") }
 
-    val focusManager = LocalFocusManager.current
-
-
     Box(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = Modifier.fillMaxSize()
     ) {
-
-
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
@@ -105,11 +87,7 @@ fun ScreenUiContent(
                 .verticalScroll(scrollState)
                 .background(colorScheme.surface)
                 .padding(bottom = 80.dp)
-                .consumeWindowInsets(
-                    WindowInsets.systemBars.only(WindowInsetsSides.Vertical)
-                )
         ) {
-
             ElevatedCard(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -142,6 +120,18 @@ fun ScreenUiContent(
 
             GifCard()
 
+            StyledText(
+                stringValue = uiState.listData,
+                letterSpacing = R.dimen.latter_space_small_2dp,
+                style = typography.displayMedium,
+                fontSize = R.dimen.text_size_large_18sp,
+                color = colorScheme.secondary,
+                modifier = Modifier
+                    .padding(
+                        all = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    )
+            )
+
         }
 
         Row(
@@ -152,31 +142,26 @@ fun ScreenUiContent(
             verticalAlignment = Alignment.CenterVertically
         ) {
             TextField(
-                value = textFieldValue.value,
-                onValueChange = { textFieldValue.value = it },
+                value = uiState.textFieldValue,
+                onValueChange = onTextFieldValueChange,
                 maxLines = 3,
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done
                 ),
                 keyboardActions = KeyboardActions(
                     onDone = {
-                        focusManager.clearFocus() // Clear focus when Done is pressed
+
                     }
                 ),
                 modifier = Modifier
                     .weight(1f)
                     .padding(end = 8.dp)
             )
-
-            Button(onClick = {
-                // Handle submit action
-            }) {
+            Button(onClick = onListDataValueChange) {
                 Text("Submit")
             }
-
         }
     }
-
 }
 
 @Composable
@@ -227,7 +212,9 @@ private fun SpellCircleScreenPreview() {
 
     SpellBookTheme {
         ScreenUiContent(
-            uiState = uiState
+            uiState = uiState,
+            {},
+            {}
         )
     }
 }

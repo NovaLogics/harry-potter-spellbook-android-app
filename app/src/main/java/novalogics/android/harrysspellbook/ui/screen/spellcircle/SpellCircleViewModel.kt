@@ -20,7 +20,6 @@ class SpellCircleViewModel @Inject constructor(
         loadDataOffline()
     }
 
-
     private fun loadDataOffline() {
         _uiState.update { ui ->
             ui.copy(
@@ -28,5 +27,14 @@ class SpellCircleViewModel @Inject constructor(
                 data = repositoryOffline.getTestData(),
             )
         }
+    }
+
+    fun updateTextFieldValue(newValue: String) {
+        _uiState.value = _uiState.value.copy(textFieldValue = newValue)
+    }
+
+    fun updateListData() {
+        val data = _uiState.value.textFieldValue
+        _uiState.value = _uiState.value.copy(listData = data,textFieldValue = "")
     }
 }

@@ -1,7 +1,9 @@
 package novalogics.android.harrysspellbook.ui.screen.mainscreen
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -14,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -33,13 +36,16 @@ fun SpellBookMainScreen(
     val context = LocalContext.current
     val tabItems = context.resources.getStringArray(R.array.tab_items).toList()
     var isLoading by remember { mutableStateOf(false) }
-
+    val imeHeight = WindowInsets.ime.getBottom(LocalDensity.current)
+    val keyboardVisible = imeHeight > 0
     Scaffold(
         bottomBar = {
-            BottomNavigationBar(
-                navController = navController,
-                items = tabItems
-            )
+            if (!keyboardVisible) { // Show bottom bar only if keyboard is not visible
+                BottomNavigationBar(
+                    navController = navController,
+                    items = tabItems
+                )
+            }
         },
         modifier = Modifier
             .fillMaxSize()
