@@ -6,35 +6,56 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsBottomHeight
+import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -66,76 +87,94 @@ fun ScreenUiContent(
     uiState : SpellCircleUiState
 ){
     val scrollState = rememberScrollState()
+    val textFieldValue = remember { mutableStateOf("") }
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
+    val focusManager = LocalFocusManager.current
+
+
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(scrollState)
-            .background(colorScheme.surface)
     ) {
 
-        ElevatedCard(
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(dimensionResource(id = R.dimen.size_xsmall_16dp))
-                .border(
-                    BorderStroke(
-                        width = dimensionResource(id = R.dimen.border_stroke_medium_1dp),
-                        color = colorScheme.background
-                    ),
-                    shape = MaterialTheme.shapes.medium
-                ),
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = dimensionResource(id = R.dimen.elevation_xlarge_10dp)
-            ),
-            shape = MaterialTheme.shapes.medium,
-            colors = CardDefaults.cardColors(colorScheme.background)
-        ) {}
-
-        StyledText(
-            stringResId = R.string.app_name,
-            letterSpacing = R.dimen.latter_space_small_2dp,
-            style = typography.displayLarge,
-            fontSize = R.dimen.text_size_xlarge_24sp,
-            color = colorScheme.secondary,
-            modifier = Modifier
-                .padding(
-                    all = dimensionResource(id = R.dimen.padding_medium_16dp),
-                )
-
-        )
-
-        GifCard()
-
-        Image(
-            painter = painterResource(id = R.drawable.img_crossed_wands),
-            contentDescription = null,
-            contentScale = ContentScale.Fit,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(72.dp)
-                .padding(4.dp)
-        )
 
         Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(
-                    top = 96.dp,
-                    start = 16.dp,
-                    end = 16.dp,
-                    bottom = 16.dp
+                .verticalScroll(scrollState)
+                .background(colorScheme.surface)
+                .padding(bottom = 80.dp)
+                .consumeWindowInsets(
+                    WindowInsets.systemBars.only(WindowInsetsSides.Vertical)
                 )
         ) {
 
-            Text(
-                text = uiState.data,
-                color = colorScheme.onBackground
+            ElevatedCard(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(dimensionResource(id = R.dimen.size_xsmall_16dp))
+                    .border(
+                        BorderStroke(
+                            width = dimensionResource(id = R.dimen.border_stroke_medium_1dp),
+                            color = colorScheme.background
+                        ),
+                        shape = MaterialTheme.shapes.medium
+                    ),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = dimensionResource(id = R.dimen.elevation_xlarge_10dp)
+                ),
+                shape = MaterialTheme.shapes.medium,
+                colors = CardDefaults.cardColors(colorScheme.background)
+            ) {}
+
+            StyledText(
+                stringResId = R.string.app_name,
+                letterSpacing = R.dimen.latter_space_small_2dp,
+                style = typography.displayLarge,
+                fontSize = R.dimen.text_size_xlarge_24sp,
+                color = colorScheme.secondary,
+                modifier = Modifier
+                    .padding(
+                        all = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    )
             )
+
+            GifCard()
 
         }
 
+        Row(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            TextField(
+                value = textFieldValue.value,
+                onValueChange = { textFieldValue.value = it },
+                maxLines = 3,
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    imeAction = ImeAction.Done
+                ),
+                keyboardActions = KeyboardActions(
+                    onDone = {
+                        focusManager.clearFocus() // Clear focus when Done is pressed
+                    }
+                ),
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(end = 8.dp)
+            )
+
+            Button(onClick = {
+                // Handle submit action
+            }) {
+                Text("Submit")
+            }
+
+        }
     }
 
 }
@@ -184,7 +223,7 @@ fun GifCard() {
 @Composable
 private fun SpellCircleScreenPreview() {
 
-    val uiState = SpellCircleUiState(data = "Welcome to Home",)
+    val uiState = SpellCircleUiState(data = "Welcome to Home")
 
     SpellBookTheme {
         ScreenUiContent(

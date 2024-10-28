@@ -33,7 +33,7 @@
         <item name="android:windowLightStatusBar">true</item>
 
         <item name="android:windowTranslucentNavigation">false</item>
-        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:fitsSystemWindows">false</item>
 
 
     </style>

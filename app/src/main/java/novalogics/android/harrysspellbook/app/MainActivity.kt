@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.WindowCompat
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
             runBlocking { delay( DELAY_1_SECOND ) }
             false
         }
-        enableEdgeToEdge()
+       // enableEdgeToEdge()
         setContent {
             SpellBookTheme {
                 SpellBookMainScreen()
