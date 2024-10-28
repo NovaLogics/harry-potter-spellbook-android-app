@@ -1,4 +1,4 @@
-package novalogics.android.harrysspellbook.ui.screen.home
+package novalogics.android.harrysspellbook.ui.screen.spellcircle
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
@@ -6,7 +6,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -32,14 +31,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import coil.decode.GifDecoder
 import coil.request.ImageRequest
-import coil.size.Size
 import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.ui.common.component.StyledText
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
@@ -47,8 +44,8 @@ import novalogics.android.harrysspellbook.util.Constants
 
 
 @Composable
-fun HomeScreen(
-    viewModel: HomeViewModel = hiltViewModel(),
+fun SpellCircleScreen(
+    viewModel: SpellCircleViewModel = hiltViewModel(),
     onLoadingChange: (Boolean) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -62,7 +59,7 @@ fun HomeScreen(
 
 @Composable
 fun ScreenUiContent(
-    uiState : HomeUiState
+    uiState : SpellCircleUiState
 ){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -172,9 +169,9 @@ fun GifCard() {
     uiMode = UI_MODE_NIGHT_YES
 )
 @Composable
-private fun HomeScreenPreview() {
+private fun SpellCircleScreenPreview() {
 
-    val uiState = HomeUiState(data = "Welcome to Home",)
+    val uiState = SpellCircleUiState(data = "Welcome to Home",)
 
     SpellBookTheme {
         ScreenUiContent(

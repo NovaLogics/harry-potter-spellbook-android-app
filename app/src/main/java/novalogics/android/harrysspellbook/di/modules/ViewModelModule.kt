@@ -7,7 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoMap
 import novalogics.android.harrysspellbook.di.components.ViewModelKey
-import novalogics.android.harrysspellbook.ui.screen.home.HomeViewModel
+import novalogics.android.harrysspellbook.ui.screen.spellcircle.SpellCircleViewModel
 import novalogics.android.harrysspellbook.ui.screen.spellbook.SpellBookViewModel
 
 @Module
@@ -16,8 +16,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(HomeViewModel::class)
-    abstract fun bindHomeViewModel(viewModel: HomeViewModel): ViewModel
+    @ViewModelKey(SpellCircleViewModel::class)
+    abstract fun bindSpellCircleViewModel(viewModel: SpellCircleViewModel): ViewModel
 
     @Binds
     @IntoMap

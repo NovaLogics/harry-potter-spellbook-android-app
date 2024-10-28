@@ -20,7 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.ui.common.component.LoadingScreen
 import novalogics.android.harrysspellbook.ui.navigation.AppScreens
-import novalogics.android.harrysspellbook.ui.screen.home.HomeScreen
+import novalogics.android.harrysspellbook.ui.screen.spellcircle.SpellCircleScreen
 import novalogics.android.harrysspellbook.ui.screen.mainscreen.component.BottomNavigationBar
 import novalogics.android.harrysspellbook.ui.screen.spellbook.SpellBookScreen
 
@@ -52,12 +52,12 @@ fun SpellBookMainScreen(
 
             NavHost(
                 navController = navController,
-                startDestination = AppScreens.Home.name,
+                startDestination = AppScreens.SpellCircle.name,
                 modifier = Modifier.padding(innerPadding)
             ) {
 
-                composable(route = AppScreens.Home.name) {
-                    HomeScreen(
+                composable(route = AppScreens.SpellCircle.name) {
+                    SpellCircleScreen(
                         onLoadingChange = { loading -> isLoading = loading }
                     )
                 }

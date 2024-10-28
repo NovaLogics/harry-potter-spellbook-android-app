@@ -1,4 +1,4 @@
-package novalogics.android.harrysspellbook.ui.screen.home
+package novalogics.android.harrysspellbook.ui.screen.spellcircle
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -9,12 +9,12 @@ import novalogics.android.harrysspellbook.data.repository.LocalDataSource
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class SpellCircleViewModel @Inject constructor(
     private val repositoryOffline: LocalDataSource
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(HomeUiState())
-    val uiState: StateFlow<HomeUiState> = _uiState
+    private val _uiState = MutableStateFlow(SpellCircleUiState())
+    val uiState: StateFlow<SpellCircleUiState> = _uiState
 
     init {
         loadDataOffline()
