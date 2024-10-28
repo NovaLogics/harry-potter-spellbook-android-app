@@ -32,7 +32,7 @@ fun LoadingScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.2f))
+            .background(Color.Transparent)
             .wrapContentSize(Alignment.Center)
     ) {
         ElevatedCard(
@@ -40,21 +40,23 @@ fun LoadingScreen() {
             elevation = CardDefaults.cardElevation(
                 defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
             ),
-            shape = RoundedCornerShape(dimensionResource(id = R.dimen.corner_radius_medium_8dp))
+            shape = RoundedCornerShape(dimensionResource(id = R.dimen.corner_radius_large_16dp))
         ) {
             Column(
-                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_xlarge_32dp)),
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.size_xlarge_64dp)),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
                 CircularProgressIndicator()
                 Spacer(
-                    modifier = Modifier.size(dimensionResource(id = R.dimen.size_xsmall_16dp))
+                    modifier = Modifier.size(dimensionResource(id = R.dimen.size_medium_32dp))
                 )
                 Text(
                     text = stringResource(id = R.string.please_wait),
-                    fontSize = textSizeResource(id = R.dimen.text_size_large_18sp),
-                    color = MaterialTheme.colorScheme.onPrimaryContainer)
+                    fontSize = textSizeResource(id = R.dimen.text_size_xlarge_24sp),
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    style = MaterialTheme.typography.displayMedium
+                )
             }
         }
     }
