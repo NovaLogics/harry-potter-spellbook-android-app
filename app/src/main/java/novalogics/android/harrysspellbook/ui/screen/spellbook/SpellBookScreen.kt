@@ -175,6 +175,7 @@ fun SectionEntity(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
+
             Column(modifier = Modifier.weight(1f)) {
 
                 StyledText(
@@ -197,13 +198,14 @@ fun SectionEntity(
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
                         .padding(
-                        start = 8.dp,
-                        top = 12.dp,
-                        end = 16.dp
+                            top = dimensionResource(id = R.dimen.padding_regular_12dp),
+                            start = dimensionResource(id = R.dimen.padding_regular_8dp),
+                            end = dimensionResource(id = R.dimen.padding_medium_16dp)
                         )
                 )
 
                 Row(
+                    horizontalArrangement = Arrangement.Start,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
@@ -211,22 +213,20 @@ fun SectionEntity(
                             start = dimensionResource(id = R.dimen.padding_regular_8dp),
                             bottom = dimensionResource(id = R.dimen.padding_small_4dp)
                         ),
-                    horizontalArrangement = Arrangement.Start
                 ) {
                     IconWithText(
                         R.drawable.ic_wand_sparkles,
                         stringResource(id = R.string.light_value, spell.lightColor)
                     )
                     Spacer(
-                        modifier = Modifier.padding(
-                            all = dimensionResource(id = R.dimen.padding_regular_8dp)
-                        )
+                        modifier = Modifier.size(dimensionResource(id = R.dimen.size_xsmall_16dp))
                     )
                     IconWithText(
                         R.drawable.ic_doubled,
                         stringResource(id = R.string.type_value, spell.type)
                     )
                 }
+
             }
 
             Icon(
@@ -235,7 +235,9 @@ fun SectionEntity(
                 modifier = Modifier
                     .size(size = dimensionResource(id = R.dimen.size_medium_32dp))
             )
-            Spacer(modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_small_4dp)))
+            Spacer(
+                modifier = Modifier.size(dimensionResource(id = R.dimen.size_xsmall_4dp))
+            )
 
         }
     }

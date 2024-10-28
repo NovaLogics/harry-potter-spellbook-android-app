@@ -62,6 +62,7 @@
     <dimen name="icon_size_xlarge_64dp">64dp</dimen>
 
     <!-- General Sizes for custom components -->
+    <dimen name="size_xsmall_4dp">4dp</dimen>
     <dimen name="size_xsmall_8dp">8dp</dimen>
     <dimen name="size_xsmall_16dp">16dp</dimen>
     <dimen name="size_small_24dp">24dp</dimen>
