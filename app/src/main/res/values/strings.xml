@@ -1,15 +1,17 @@
 <resources>
     <string name="app_name">Harry\'s SpellBook</string>
 
-    <string name="nav_home">Home</string>
+    <string name="nav_spell_circle">Spell Circle</string>
     <string name="nav_spell_book">SpellBook</string>
 
     <string name="section_title">Section : %s</string>
     <string name="light_value">Light : %s</string>
     <string name="type_value">Type : %s</string>
 
+    <string name="please_wait">Please Wait…</string>
+
     <string-array name="tab_items">
-        <item>Home</item>
+        <item>SpellCircle</item>
         <item>SpellBook</item>
     </string-array>
 </resources>

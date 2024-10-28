@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import novalogics.android.harrysspellbook.data.repository.HomeRepositoryOffline
+import novalogics.android.harrysspellbook.data.repository.LocalDataSource
 import javax.inject.Singleton
 
 
@@ -24,7 +24,7 @@ class AppModule {
     @Singleton
     fun provideRepository(
         @ApplicationContext context: Context
-    ): HomeRepositoryOffline {
-        return HomeRepositoryOffline(context)
+    ): LocalDataSource {
+        return LocalDataSource(context)
     }
 }

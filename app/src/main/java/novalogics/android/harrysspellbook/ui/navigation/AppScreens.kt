@@ -4,6 +4,6 @@ import androidx.annotation.StringRes
 import novalogics.android.harrysspellbook.R
 
 enum class AppScreens (@StringRes val title: Int){
-    Home(title = R.string.nav_home),
+    SpellCircle(title = R.string.nav_spell_circle),
     SpellBook(title = R.string.nav_spell_book),
 }

@@ -10,7 +10,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,7 +33,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -44,13 +42,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.data.model.Spell
-import novalogics.android.harrysspellbook.data.repository.HomeRepositoryOffline
-import novalogics.android.harrysspellbook.ui.common.StyledText
+import novalogics.android.harrysspellbook.data.repository.LocalDataSource
+import novalogics.android.harrysspellbook.ui.common.component.StyledText
 import novalogics.android.harrysspellbook.ui.common.textSizeResource
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
 import novalogics.android.harrysspellbook.util.Constants
@@ -59,96 +55,86 @@ import novalogics.android.harrysspellbook.util.Constants
 @Composable
 fun SpellBookScreen(
     viewModel: SpellBookViewModel = hiltViewModel(),
-    contentPadding: PaddingValues = PaddingValues(0.dp)
+    onLoadingChange: (Boolean) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    ScreenFlow(
+    onLoadingChange(uiState.isLoading)
+
+    ScreenUiContent(
         uiState = uiState
     )
 }
 
 @Composable
-fun ScreenFlow(
-    uiState : SpellBookUiState
-){
-    Box(
+fun ScreenUiContent(
+    uiState: SpellBookUiState
+) {
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(colorScheme.surface)
     ) {
-
-        Image(
-            painter = painterResource(id = R.drawable.bg_home_effect),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
+        ElevatedCard(
             modifier = Modifier
-                .fillMaxSize()
-                .alpha(0.1F)
-        )
-
-
-        Column {
-            ElevatedCard(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(16.dp)
-                    .border(
-                        BorderStroke(width = 1.dp, color = colorScheme.background),
-                        shape = MaterialTheme.shapes.medium
+                .fillMaxWidth()
+                .heightIn(dimensionResource(id = R.dimen.size_xsmall_16dp))
+                .border(
+                    BorderStroke(
+                        width = dimensionResource(id = R.dimen.border_stroke_medium_1dp),
+                        color = colorScheme.background
                     ),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = 16.dp
+                    shape = MaterialTheme.shapes.medium
                 ),
-                shape = MaterialTheme.shapes.medium,
-                colors = CardDefaults.cardColors(colorScheme.background)
-            ) {
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = dimensionResource(id = R.dimen.elevation_xlarge_10dp)
+            ),
+            shape = MaterialTheme.shapes.medium,
+            colors = CardDefaults.cardColors(colorScheme.background)
+        ) {}
 
-
-            }
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(1),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(12.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-                content = {
-                    items(uiState.spellList) { spell ->
-                        if(spell.isSection){
-                            SectionHeader(stringResource(id = R.string.section_title, spell.section))
-                        }
-                        else{
-                            SectionEntity(spell = spell)
-                            Spacer(modifier = Modifier.padding(16.dp))
-                        }
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(1),
+            verticalArrangement = Arrangement.spacedBy(
+                space = dimensionResource(id = R.dimen.space_regular_8dp)
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(all = dimensionResource(id = R.dimen.padding_regular_12dp)),
+            content = {
+                items(uiState.spellList) { spell ->
+                    if (spell.isSection) {
+                        SectionHeader(stringResource(id = R.string.section_title, spell.section))
+                    } else {
+                        SectionEntity(spell = spell)
                     }
                 }
-            )
-        }
-
+            }
+        )
     }
 }
 
-
 @Composable
 fun SectionHeader(
-    stringValue: String
+    title: String
 ) {
     Box(
         modifier = Modifier.fillMaxWidth(),
         contentAlignment = Alignment.CenterStart
     ) {
+
         Image(
             painter = painterResource(id = R.drawable.element_bookmark_purple),
-            contentDescription = stringValue,
+            contentDescription = title,
             contentScale = ContentScale.FillBounds,
             alignment = Alignment.CenterStart,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(dimensionResource(id = R.dimen.size_large_48dp))
+                .height(height =  dimensionResource(id = R.dimen.size_large_48dp))
         )
+
         StyledText(
-            stringValue = stringValue,
+            stringValue = title,
             letterSpacing = R.dimen.latter_space_small_2dp,
             style = typography.displayMedium,
             fontSize = R.dimen.text_size_xlarge_24sp,
@@ -187,6 +173,7 @@ fun SectionEntity(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
+
             Column(modifier = Modifier.weight(1f)) {
 
                 StyledText(
@@ -209,13 +196,14 @@ fun SectionEntity(
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
                         .padding(
-                        start = 8.dp,
-                        top = 12.dp,
-                        end = 16.dp
+                            top = dimensionResource(id = R.dimen.padding_regular_12dp),
+                            start = dimensionResource(id = R.dimen.padding_regular_8dp),
+                            end = dimensionResource(id = R.dimen.padding_medium_16dp)
                         )
                 )
 
                 Row(
+                    horizontalArrangement = Arrangement.Start,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
@@ -223,16 +211,13 @@ fun SectionEntity(
                             start = dimensionResource(id = R.dimen.padding_regular_8dp),
                             bottom = dimensionResource(id = R.dimen.padding_small_4dp)
                         ),
-                    horizontalArrangement = Arrangement.Start
                 ) {
                     IconWithText(
                         R.drawable.ic_wand_sparkles,
                         stringResource(id = R.string.light_value, spell.lightColor)
                     )
                     Spacer(
-                        modifier = Modifier.padding(
-                            all = dimensionResource(id = R.dimen.padding_regular_8dp)
-                        )
+                        modifier = Modifier.size(dimensionResource(id = R.dimen.size_xsmall_16dp))
                     )
                     IconWithText(
                         R.drawable.ic_doubled,
@@ -247,32 +232,35 @@ fun SectionEntity(
                 modifier = Modifier
                     .size(size = dimensionResource(id = R.dimen.size_medium_32dp))
             )
-            Spacer(modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_small_4dp)))
-
+            Spacer(
+                modifier = Modifier.size(dimensionResource(id = R.dimen.size_xsmall_4dp))
+            )
         }
     }
 }
 
 @Composable
 fun IconWithText(
-    @DrawableRes icon: Int,
-    text: String
+    @DrawableRes
+    iconResId: Int,
+    textValue: String
 ) {
     Row(
-        modifier = Modifier,
-        horizontalArrangement = Arrangement.spacedBy(
-            space = dimensionResource(id = R.dimen.space_regular_8dp)
-        )
+        horizontalArrangement = Arrangement.spacedBy( space = dimensionResource(id = R.dimen.space_regular_8dp) )
     ) {
         Icon(
-            imageVector = ImageVector.vectorResource(id = icon),
-            contentDescription = text,
+            imageVector = ImageVector.vectorResource(id = iconResId),
+            contentDescription = textValue,
             modifier = Modifier.size(size = dimensionResource(id = R.dimen.icon_size_xsmall_16dp))
         )
-        Text(text = text, style = typography.displayMedium.copy(fontSize = 12.sp))
+        Text(
+            text = textValue,
+            style = typography.displayMedium.copy(
+                fontSize = textSizeResource(id = R.dimen.text_size_small_12sp)
+            )
+        )
     }
 }
-
 
 @Preview(
     name = Constants.MODE_LIGHT,
@@ -285,20 +273,15 @@ fun IconWithText(
     uiMode = UI_MODE_NIGHT_YES
 )
 @Composable
-fun HomeScreenPreview() {
+private fun HomeScreenPreview() {
 
-    val context = LocalContext.current
-
-    val uiState = SpellBookUiState(
-        true,
-        HomeRepositoryOffline(context).getJsonData().subList(0,5),
-        "Welcome to Home",
-        null)
+    val uiStateTestData = SpellBookUiState(
+        spellList = LocalDataSource(LocalContext.current).getListOfSpells().subList(0,5),
+      )
 
     SpellBookTheme {
-       // SectionElement()
-        ScreenFlow(
-            uiState = uiState
+        ScreenUiContent(
+            uiState = uiStateTestData
         )
     }
 }
