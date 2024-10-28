@@ -2,7 +2,7 @@ package novalogics.android.harrysspellbook.data.repository
 
 import novalogics.android.harrysspellbook.data.model.Spell
 
-interface HomeRepositoryImpl {
+interface LocalDataSourceImpl {
     fun getTestData(): String
-    fun getJsonData(): List<Spell>
+    fun getListOfSpells(): List<Spell>
 }

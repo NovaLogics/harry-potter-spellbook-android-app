@@ -8,15 +8,16 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.InputStreamReader
 import javax.inject.Inject
 
-class HomeRepositoryOffline @Inject constructor(
+//Offline Repository
+class LocalDataSource @Inject constructor(
     @ApplicationContext private val context: Context
-) : HomeRepositoryImpl {
+) : LocalDataSourceImpl {
 
     override fun getTestData(): String {
         return "Welcome to the Home screen"
     }
 
-    override fun getJsonData(): List<Spell> {
+    override fun getListOfSpells(): List<Spell> {
         return try {
             val inputStream = context.assets.open("data.json")
             val reader = InputStreamReader(inputStream)
