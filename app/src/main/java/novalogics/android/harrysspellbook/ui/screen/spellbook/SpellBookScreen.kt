@@ -34,7 +34,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -121,7 +120,7 @@ fun ScreenUiContent(
 
 @Composable
 fun SectionHeader(
-    stringValue: String
+    title: String
 ) {
     Box(
         modifier = Modifier.fillMaxWidth(),
@@ -129,7 +128,7 @@ fun SectionHeader(
     ) {
         Image(
             painter = painterResource(id = R.drawable.element_bookmark_purple),
-            contentDescription = stringValue,
+            contentDescription = title,
             contentScale = ContentScale.FillBounds,
             alignment = Alignment.CenterStart,
             modifier = Modifier
@@ -137,7 +136,7 @@ fun SectionHeader(
                 .height(dimensionResource(id = R.dimen.size_large_48dp))
         )
         StyledText(
-            stringValue = stringValue,
+            stringValue = title,
             letterSpacing = R.dimen.latter_space_small_2dp,
             style = typography.displayMedium,
             fontSize = R.dimen.text_size_xlarge_24sp,
