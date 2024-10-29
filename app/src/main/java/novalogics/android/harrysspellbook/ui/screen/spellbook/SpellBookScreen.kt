@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -46,6 +45,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.harrysspellbook.R
 import novalogics.android.harrysspellbook.data.model.Spell
 import novalogics.android.harrysspellbook.data.repository.LocalDataSource
+import novalogics.android.harrysspellbook.ui.common.component.CustomHeaderComponent
 import novalogics.android.harrysspellbook.ui.common.component.StyledText
 import novalogics.android.harrysspellbook.ui.common.textSizeResource
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
@@ -73,30 +73,14 @@ fun ScreenUiContent(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorScheme.surface)
+            .background(colorScheme.background)
     ) {
-        ElevatedCard(
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(dimensionResource(id = R.dimen.size_xsmall_16dp))
-                .border(
-                    BorderStroke(
-                        width = dimensionResource(id = R.dimen.border_stroke_medium_1dp),
-                        color = colorScheme.background
-                    ),
-                    shape = MaterialTheme.shapes.medium
-                ),
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = dimensionResource(id = R.dimen.elevation_xlarge_10dp)
-            ),
-            shape = MaterialTheme.shapes.medium,
-            colors = CardDefaults.cardColors(colorScheme.background)
-        ) {}
+        CustomHeaderComponent()
 
         LazyVerticalGrid(
             columns = GridCells.Fixed(1),
             verticalArrangement = Arrangement.spacedBy(
-                space = dimensionResource(id = R.dimen.space_regular_8dp)
+                space = dimensionResource(id = R.dimen.space_regular_12dp)
             ),
             modifier = Modifier
                 .fillMaxWidth()
@@ -156,14 +140,15 @@ fun SectionEntity(
             .fillMaxWidth()
             .border(
                 BorderStroke(
-                    width = dimensionResource(id = R.dimen.border_stroke_small_0_5dp),
-                    color = colorScheme.onPrimaryContainer
-                )
+                    width = dimensionResource(id = R.dimen.border_stroke_small_0_1dp),
+                    color = colorScheme.onSecondaryContainer
+                ),
+                shape = MaterialTheme.shapes.large
             ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
         ),
-        shape = MaterialTheme.shapes.small,
+        shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(colorScheme.surface)
     ) {
         Row(
@@ -229,8 +214,10 @@ fun SectionEntity(
             Icon(
                 imageVector = ImageVector.vectorResource(id = R.drawable.ic_star_normal),
                 contentDescription = null,
+                tint = colorScheme.onSecondaryContainer,
                 modifier = Modifier
-                    .size(size = dimensionResource(id = R.dimen.size_medium_32dp))
+                    .size(size = dimensionResource(id = R.dimen.size_medium_32dp)),
+
             )
             Spacer(
                 modifier = Modifier.size(dimensionResource(id = R.dimen.size_xsmall_4dp))

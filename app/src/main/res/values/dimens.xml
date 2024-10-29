@@ -14,6 +14,7 @@
     <dimen name="space_xsmall_2dp">2dp</dimen>
     <dimen name="space_small_4dp">4dp</dimen>
     <dimen name="space_regular_8dp">8dp</dimen>
+    <dimen name="space_regular_12dp">12dp</dimen>
     <dimen name="space_medium_16dp">16dp</dimen>
     <dimen name="space_large_24dp">24dp</dimen>
     <dimen name="space_xlarge_32dp">32dp</dimen>
@@ -41,6 +42,7 @@
     <dimen name="elevation_xlarge_16dp">16dp</dimen>
 
     <!-- Border Stroke -->
+    <dimen name="border_stroke_small_0_1dp">0.1dp</dimen>
     <dimen name="border_stroke_small_0_5dp">0.5dp</dimen>
     <dimen name="border_stroke_medium_1dp">1dp</dimen>
     <dimen name="border_stroke_medium_2dp">2dp</dimen>

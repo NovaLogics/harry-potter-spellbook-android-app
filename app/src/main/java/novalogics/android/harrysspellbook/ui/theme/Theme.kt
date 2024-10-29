@@ -102,7 +102,7 @@ fun SpellBookTheme(
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
-            setUpEdgeToEdge(view, darkTheme)
+            setUpEdgeToEdge(view, colorScheme.background.toArgb(), darkTheme)
         }
     }
 
@@ -118,10 +118,10 @@ fun SpellBookTheme(
  * Sets up edge-to-edge for the window of this [view]. The system icon colors are set to either
  * light or dark depending on whether the [darkTheme] is enabled or not.
  */
-private fun setUpEdgeToEdge(view: View, darkTheme: Boolean) {
+private fun setUpEdgeToEdge(view: View, background: Int, darkTheme: Boolean) {
     val window = (view.context as Activity).window
     WindowCompat.setDecorFitsSystemWindows(window, false)
-    window.statusBarColor = Color.Transparent.toArgb()
+    window.statusBarColor = background
     val navigationBarColor = when {
         Build.VERSION.SDK_INT >= 29 -> Color.Transparent.toArgb()
         Build.VERSION.SDK_INT >= 26 -> Color(0xFF, 0xFF, 0xFF, 0x63).toArgb()
