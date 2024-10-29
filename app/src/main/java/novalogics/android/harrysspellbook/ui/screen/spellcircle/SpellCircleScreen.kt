@@ -2,16 +2,13 @@ package novalogics.android.harrysspellbook.ui.screen.spellcircle
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -47,6 +44,7 @@ import coil.compose.rememberAsyncImagePainter
 import coil.decode.GifDecoder
 import coil.request.ImageRequest
 import novalogics.android.harrysspellbook.R
+import novalogics.android.harrysspellbook.ui.common.component.CustomHeaderComponent
 import novalogics.android.harrysspellbook.ui.common.component.StyledText
 import novalogics.android.harrysspellbook.ui.theme.SpellBookTheme
 import novalogics.android.harrysspellbook.util.Constants
@@ -85,26 +83,11 @@ fun ScreenUiContent(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(scrollState)
-                .background(colorScheme.surface)
+                .background(colorScheme.background)
                 .padding(bottom = 80.dp)
         ) {
-            ElevatedCard(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(dimensionResource(id = R.dimen.size_xsmall_16dp))
-                    .border(
-                        BorderStroke(
-                            width = dimensionResource(id = R.dimen.border_stroke_medium_1dp),
-                            color = colorScheme.background
-                        ),
-                        shape = MaterialTheme.shapes.medium
-                    ),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = dimensionResource(id = R.dimen.elevation_xlarge_10dp)
-                ),
-                shape = MaterialTheme.shapes.medium,
-                colors = CardDefaults.cardColors(colorScheme.background)
-            ) {}
+
+            CustomHeaderComponent()
 
             StyledText(
                 stringResId = R.string.app_name,
