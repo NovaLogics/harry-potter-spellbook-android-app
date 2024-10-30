@@ -1,4 +1,4 @@
-package novalogics.android.hexa.ui.screen.spellcircle
+package novalogics.android.hexa.ui.screen.central
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -9,12 +9,12 @@ import novalogics.android.hexa.data.repository.LocalDataSource
 import javax.inject.Inject
 
 @HiltViewModel
-class SpellCircleViewModel @Inject constructor(
+class CentralViewModel @Inject constructor(
     private val repositoryOffline: LocalDataSource
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(SpellCircleUiState())
-    val uiState: StateFlow<SpellCircleUiState> = _uiState
+    private val _uiState = MutableStateFlow(CentralUiState())
+    val uiState: StateFlow<CentralUiState> = _uiState
 
     init {
         loadDataOffline()

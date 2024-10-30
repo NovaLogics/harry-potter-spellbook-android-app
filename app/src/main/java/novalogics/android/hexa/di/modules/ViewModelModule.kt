@@ -7,7 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoMap
 import novalogics.android.hexa.di.components.ViewModelKey
-import novalogics.android.hexa.ui.screen.spellcircle.SpellCircleViewModel
+import novalogics.android.hexa.ui.screen.central.CentralViewModel
 import novalogics.android.hexa.ui.screen.charms.CharmsViewModel
 
 @Module
@@ -16,8 +16,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(SpellCircleViewModel::class)
-    abstract fun bindSpellCircleViewModel(viewModel: SpellCircleViewModel): ViewModel
+    @ViewModelKey(CentralViewModel::class)
+    abstract fun bindSpellCircleViewModel(viewModel: CentralViewModel): ViewModel
 
     @Binds
     @IntoMap

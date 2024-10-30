@@ -1,4 +1,4 @@
-package novalogics.android.hexa.ui.screen.spellcircle
+package novalogics.android.hexa.ui.screen.central
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
@@ -52,7 +52,7 @@ import novalogics.android.hexa.util.Constants
 
 @Composable
 fun SpellCircleScreen(
-    viewModel: SpellCircleViewModel = hiltViewModel(),
+    viewModel: CentralViewModel = hiltViewModel(),
     onLoadingChange: (Boolean) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -68,7 +68,7 @@ fun SpellCircleScreen(
 
 @Composable
 fun ScreenUiContent(
-    uiState : SpellCircleUiState,
+    uiState : CentralUiState,
     onTextFieldValueChange: (String) -> Unit,
     onListDataValueChange: () -> Unit
 ){
@@ -191,7 +191,7 @@ fun GifCard() {
 @Composable
 private fun SpellCircleScreenPreview() {
 
-    val uiState = SpellCircleUiState(data = "Welcome to Home")
+    val uiState = CentralUiState(data = "Welcome to Home")
 
     SpellBookTheme {
         ScreenUiContent(

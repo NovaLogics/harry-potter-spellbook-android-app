@@ -27,7 +27,7 @@ import androidx.navigation.compose.rememberNavController
 import novalogics.android.hexa.R
 import novalogics.android.hexa.ui.common.component.LoadingScreen
 import novalogics.android.hexa.ui.navigation.AppScreens
-import novalogics.android.hexa.ui.screen.spellcircle.SpellCircleScreen
+import novalogics.android.hexa.ui.screen.central.SpellCircleScreen
 import novalogics.android.hexa.ui.screen.mainscreen.component.BottomNavigationBar
 import novalogics.android.hexa.ui.screen.charms.CharmsScreen
 import novalogics.android.hexa.ui.theme.SpellBookTheme
