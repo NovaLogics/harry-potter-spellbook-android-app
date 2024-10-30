@@ -1,11 +1,12 @@
 package novalogics.android.hexa.ui.screen.charms
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -13,12 +14,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import novalogics.android.hexa.data.database.dao.CharmsDao
 import novalogics.android.hexa.data.database.entity.CharmsEntity
+import novalogics.android.hexa.data.pref.DataStoreManager
 import novalogics.android.hexa.data.repository.LocalDataSource
-import novalogics.android.hexa.util.Constants.DELAY_2_SECONDS
 import javax.inject.Inject
 
 @HiltViewModel
 class CharmsViewModel @Inject constructor(
+    private val dataStoreManager: DataStoreManager,
     private val charmsDao: CharmsDao,
     private val localRepository: LocalDataSource
 ) : ViewModel() {
@@ -26,30 +28,44 @@ class CharmsViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(CharmsUiState())
     val uiState: StateFlow<CharmsUiState> = _uiState
 
-    val allData = mutableStateOf<List<CharmsEntity>>(emptyList())
+    private var charmsList by mutableStateOf<List<CharmsEntity>>(emptyList())
 
     init {
-        loadDataOffline()
+        observeDataStore()
     }
 
-    private fun loadDataOffline() {
-        _uiState.update { ui ->
-            ui.copy(isLoading = true)
-        }
-
+    private fun observeDataStore() {
         viewModelScope.launch {
-            // Load data on a background thread
-            val data = withContext(Dispatchers.IO) {
-                localRepository.getListOfSpells()
+            _uiState.update { it.copy(isLoading = true) }
+
+            dataStoreManager.getJsonToRoomUpgradeState.collect {
+                isRoomDataAvailable ->
+                if (isRoomDataAvailable) {
+                    loadCharmsFromDatabase()
+                } else {
+                    loadSpellsFromLocalRepository()
+                }
+            }
+        }
+    }
+
+    private suspend fun loadSpellsFromLocalRepository() {
+        withContext(Dispatchers.IO) {
+            localRepository.loadListOfSpells()
+            dataStoreManager.saveJsonToRoomUpgradeState(true)
+        }
+    }
+
+    private fun loadCharmsFromDatabase() {
+        viewModelScope.launch {
+            charmsList = withContext(Dispatchers.IO) {
+                charmsDao.getAllData()
             }
 
-            delay(DELAY_2_SECONDS)
-
-            // Update UI state with data and set isLoading to false
-            _uiState.update { ui ->
-                ui.copy(
+            _uiState.update { currentUiState ->
+                currentUiState.copy(
                     isLoading = false,
-                    spellList = data
+                    spellList = charmsList
                 )
             }
         }

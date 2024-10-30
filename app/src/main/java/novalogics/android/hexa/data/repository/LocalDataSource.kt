@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.qualifiers.ApplicationContext
 import novalogics.android.hexa.data.database.dao.CharmsDao
+import novalogics.android.hexa.data.database.entity.CharmsEntity
 import java.io.InputStreamReader
 import javax.inject.Inject
 
@@ -26,6 +27,23 @@ class LocalDataSource @Inject constructor(
             val gson = Gson()
             val listType = object : TypeToken<List<Spell>>() {}.type
             gson.fromJson(reader, listType)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emptyList<Spell>()
+        }
+    }
+
+    override suspend fun loadListOfSpells(){
+        try {
+            val inputStream = context.assets.open("data.json")
+            val reader = InputStreamReader(inputStream)
+            val gson = Gson()
+            val listType = object : TypeToken<List<CharmsEntity>>() {}.type
+
+            val data: List<CharmsEntity> =  gson.fromJson(reader, listType)
+
+            charmsDao.insertAll(data)
+
         } catch (e: Exception) {
             e.printStackTrace()
             emptyList<Spell>()

@@ -43,6 +43,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.hexa.R
+import novalogics.android.hexa.data.database.dao.CharmsDao
+import novalogics.android.hexa.data.database.entity.CharmsEntity
 import novalogics.android.hexa.data.model.Spell
 import novalogics.android.hexa.data.repository.LocalDataSource
 import novalogics.android.hexa.ui.common.component.CustomHeaderComponent
@@ -50,6 +52,7 @@ import novalogics.android.hexa.ui.common.component.StyledText
 import novalogics.android.hexa.ui.common.textSizeResource
 import novalogics.android.hexa.ui.theme.SpellBookTheme
 import novalogics.android.hexa.util.Constants
+import java.util.Objects
 
 
 @Composable
@@ -114,7 +117,7 @@ fun SectionHeader(
             alignment = Alignment.CenterStart,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(height =  dimensionResource(id = R.dimen.size_large_48dp))
+                .height(height = dimensionResource(id = R.dimen.size_large_48dp))
         )
 
         StyledText(
@@ -133,7 +136,7 @@ fun SectionHeader(
 
 @Composable
 fun SectionEntity(
-    spell: Spell
+    spell: CharmsEntity
 ) {
     ElevatedCard(
         modifier = Modifier
@@ -261,10 +264,12 @@ fun IconWithText(
 )
 @Composable
 private fun HomeScreenPreview() {
-
+   // val data:CharmsDao = CharmsDao
     val uiStateTestData = CharmsUiState(
-        spellList = LocalDataSource(LocalContext.current).getListOfSpells().subList(0,5),
+
+
       )
+  //  spellList = LocalDataSource(LocalContext.current,  data).getListOfSpells().subList(0,5),
 
     SpellBookTheme {
         ScreenUiContent(

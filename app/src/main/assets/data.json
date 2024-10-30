@@ -1,6 +1,14 @@
 [
   {
     "spell_id": "section_a",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "A",
     "is_section": true
   },
@@ -136,6 +144,14 @@
   },
   {
     "spell_id": "section_b",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "B",
     "is_section": true
   },
@@ -180,6 +196,14 @@
   },
   {
     "spell_id": "section_c",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "C",
     "is_section": true
   },
@@ -250,6 +274,14 @@
   },
   {
     "spell_id": "section_d",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "D",
     "is_section": true
   },
@@ -294,6 +326,14 @@
   },
   {
     "spell_id": "section_e",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "E",
     "is_section": true
   },
@@ -364,6 +404,14 @@
   },
   {
     "spell_id": "section_f",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "F",
     "is_section": true
   },
@@ -421,6 +469,14 @@
   },
   {
     "spell_id": "section_g",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "G",
     "is_section": true
   },
@@ -452,6 +508,14 @@
   },
   {
     "spell_id": "section_h",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "H",
     "is_section": true
   },
@@ -483,6 +547,14 @@
   },
   {
     "spell_id": "section_i",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "I",
     "is_section": true
   },
@@ -553,6 +625,14 @@
   },
   {
     "spell_id": "section_l",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "L",
     "is_section": true
   },
@@ -623,6 +703,14 @@
   },
   {
     "spell_id": "section_m",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "M",
     "is_section": true
   },
@@ -667,6 +755,14 @@
   },
   {
     "spell_id": "section_n",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "N",
     "is_section": true
   },
@@ -685,6 +781,14 @@
   },
   {
     "spell_id": "section_o",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "O",
     "is_section": true
   },
@@ -742,6 +846,14 @@
   },
   {
     "spell_id": "section_p",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "P",
     "is_section": true
   },
@@ -812,6 +924,14 @@
   },
   {
     "spell_id": "section_r",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "R",
     "is_section": true
   },
@@ -882,6 +1002,14 @@
   },
   {
     "spell_id": "section_s",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "S",
     "is_section": true
   },
@@ -978,6 +1106,14 @@
   },
   {
     "spell_id": "section_t",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "T",
     "is_section": true
   },
@@ -996,6 +1132,14 @@
   },
   {
     "spell_id": "section_u",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "U",
     "is_section": true
   },
@@ -1014,6 +1158,14 @@
   },
   {
     "spell_id": "section_w",
+    "spell_name": "",
+    "description": "",
+    "type": "",
+    "light_color": "",
+    "pronunciation": "",
+    "effect": "",
+    "origin": "",
+    "notes": "",
     "section": "W",
     "is_section": true
   },

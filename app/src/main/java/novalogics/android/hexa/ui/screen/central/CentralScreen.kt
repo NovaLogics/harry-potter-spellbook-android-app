@@ -2,6 +2,7 @@ package novalogics.android.hexa.ui.screen.central
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -19,6 +20,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.MaterialTheme.typography
@@ -26,10 +28,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -48,6 +49,7 @@ import coil.request.ImageRequest
 import novalogics.android.hexa.R
 import novalogics.android.hexa.ui.common.component.CustomHeaderComponent
 import novalogics.android.hexa.ui.common.component.StyledText
+import novalogics.android.hexa.ui.common.component.TypewriteText
 import novalogics.android.hexa.ui.theme.SpellBookTheme
 import novalogics.android.hexa.util.Constants
 
@@ -61,50 +63,47 @@ fun SpellCircleScreen(
 
     onLoadingChange(uiState.isLoading)
 
+    LaunchedEffect(Unit) {
+        viewModel.handleIntent(CentralIntent.LoadData)
+    }
+
     ScreenUiContent(
         uiState = uiState,
-        onTextFieldValueChange = viewModel::updateTextFieldValue,
-        onListDataValueChange = viewModel::updateListData
+        onTextFieldValueChange = {
+            viewModel.handleIntent(CentralIntent.UpdateTextField(it))
+        },
+        onListDataValueChange = {
+            viewModel.updateListData()
+        }
     )
 }
+
+
 
 @Composable
 fun ScreenUiContent(
     uiState : CentralUiState,
     onTextFieldValueChange: (String) -> Unit,
     onListDataValueChange: () -> Unit
-){
+) {
     val scrollState = rememberScrollState()
 
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .background(colorScheme.background)
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(scrollState)
-                .background(colorScheme.background)
-                .padding(bottom = 80.dp)
         ) {
-
             CustomHeaderComponent()
-
-            StyledText(
-                stringResId = R.string.app_name_display,
-                letterSpacing = R.dimen.latter_space_small_2dp,
-                style = typography.displayLarge,
-                fontSize = R.dimen.text_size_large_20sp,
-                color = colorScheme.secondary,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .padding(
-                        all = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    )
+            HeaderTitleText()
+            MediaBanner(
+                drawableResId = R.drawable.img_banner_1
             )
-
-            GifCard()
-
             StyledText(
                 stringValue = uiState.listData,
                 letterSpacing = R.dimen.latter_space_small_2dp,
@@ -116,9 +115,10 @@ fun ScreenUiContent(
                         all = dimensionResource(id = R.dimen.padding_medium_16dp),
                     )
             )
+            TypewriteText(text = "Welcome to app, how is your day")
+
 
         }
-
         Row(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -128,7 +128,7 @@ fun ScreenUiContent(
         ) {
             TextField(
                 value = uiState.textFieldValue,
-                onValueChange = onTextFieldValueChange,
+                onValueChange = {value-> onTextFieldValueChange(value)},
                 maxLines = 3,
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done
@@ -154,8 +154,28 @@ fun ScreenUiContent(
     }
 }
 
+
 @Composable
-fun GifCard() {
+fun HeaderTitleText() {
+    StyledText(
+        stringResId = R.string.app_name_display,
+        letterSpacing = R.dimen.latter_space_small_2dp,
+        style = typography.displayLarge,
+        fontSize = R.dimen.text_size_large_20sp,
+        color = colorScheme.secondary,
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .padding(
+                all = dimensionResource(id = R.dimen.padding_medium_16dp),
+            )
+    )
+}
+
+@Composable
+fun MediaBanner(
+    @DrawableRes
+    drawableResId: Int
+) {
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
@@ -173,7 +193,7 @@ fun GifCard() {
                 .build()
         )
         Image(
-            painter = painterResource(id = R.drawable.img_banner_1),
+            painter = painterResource(id = drawableResId),
             contentDescription = "Animated GIF",
             modifier = Modifier
                 .fillMaxWidth()
@@ -201,10 +221,11 @@ private fun SpellCircleScreenPreview() {
     val uiState = CentralUiState(data = "Welcome to Home")
 
     SpellBookTheme {
+
         ScreenUiContent(
             uiState = uiState,
-            {},
-            {}
+            onTextFieldValueChange = {},
+            onListDataValueChange = {}
         )
     }
 }

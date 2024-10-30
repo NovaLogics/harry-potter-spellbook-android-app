@@ -5,4 +5,5 @@ import novalogics.android.hexa.data.model.Spell
 interface LocalDataSourceImpl {
     fun getTestData(): String
     fun getListOfSpells(): List<Spell>
+    suspend fun loadListOfSpells()
 }
