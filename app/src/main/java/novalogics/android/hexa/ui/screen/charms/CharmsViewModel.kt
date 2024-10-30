@@ -1,4 +1,4 @@
-package novalogics.android.hexa.ui.screen.spellbook
+package novalogics.android.hexa.ui.screen.charms
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,12 +15,12 @@ import novalogics.android.hexa.util.Constants.DELAY_2_SECONDS
 import javax.inject.Inject
 
 @HiltViewModel
-class SpellBookViewModel @Inject constructor(
+class CharmsViewModel @Inject constructor(
     private val localRepository: LocalDataSource
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(SpellBookUiState())
-    val uiState: StateFlow<SpellBookUiState> = _uiState
+    private val _uiState = MutableStateFlow(CharmsUiState())
+    val uiState: StateFlow<CharmsUiState> = _uiState
 
     init {
         loadDataOffline()

@@ -8,7 +8,7 @@ import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoMap
 import novalogics.android.hexa.di.components.ViewModelKey
 import novalogics.android.hexa.ui.screen.spellcircle.SpellCircleViewModel
-import novalogics.android.hexa.ui.screen.spellbook.SpellBookViewModel
+import novalogics.android.hexa.ui.screen.charms.CharmsViewModel
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -21,8 +21,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(SpellBookViewModel::class)
-    abstract fun bindSpellBookViewModel(viewModel: SpellBookViewModel): ViewModel
+    @ViewModelKey(CharmsViewModel::class)
+    abstract fun bindSpellBookViewModel(viewModel: CharmsViewModel): ViewModel
 
 
 }

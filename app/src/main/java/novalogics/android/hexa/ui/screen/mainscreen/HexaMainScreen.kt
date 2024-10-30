@@ -29,7 +29,7 @@ import novalogics.android.hexa.ui.common.component.LoadingScreen
 import novalogics.android.hexa.ui.navigation.AppScreens
 import novalogics.android.hexa.ui.screen.spellcircle.SpellCircleScreen
 import novalogics.android.hexa.ui.screen.mainscreen.component.BottomNavigationBar
-import novalogics.android.hexa.ui.screen.spellbook.SpellBookScreen
+import novalogics.android.hexa.ui.screen.charms.CharmsScreen
 import novalogics.android.hexa.ui.theme.SpellBookTheme
 import novalogics.android.hexa.util.Constants
 
@@ -76,7 +76,7 @@ fun HexaMainScreen(
                 }
 
                 composable(route = AppScreens.Charms.name) {
-                    SpellBookScreen(
+                    CharmsScreen(
                         onLoadingChange = { loading -> isLoading = loading }
                     )
                 }

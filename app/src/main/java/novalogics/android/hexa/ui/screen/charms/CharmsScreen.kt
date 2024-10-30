@@ -1,4 +1,4 @@
-package novalogics.android.hexa.ui.screen.spellbook
+package novalogics.android.hexa.ui.screen.charms
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
@@ -53,8 +53,8 @@ import novalogics.android.hexa.util.Constants
 
 
 @Composable
-fun SpellBookScreen(
-    viewModel: SpellBookViewModel = hiltViewModel(),
+fun CharmsScreen(
+    viewModel: CharmsViewModel = hiltViewModel(),
     onLoadingChange: (Boolean) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -68,7 +68,7 @@ fun SpellBookScreen(
 
 @Composable
 fun ScreenUiContent(
-    uiState: SpellBookUiState
+    uiState: CharmsUiState
 ) {
     Column(
         modifier = Modifier
@@ -262,7 +262,7 @@ fun IconWithText(
 @Composable
 private fun HomeScreenPreview() {
 
-    val uiStateTestData = SpellBookUiState(
+    val uiStateTestData = CharmsUiState(
         spellList = LocalDataSource(LocalContext.current).getListOfSpells().subList(0,5),
       )
 
