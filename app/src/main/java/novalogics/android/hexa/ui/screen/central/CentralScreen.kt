@@ -94,7 +94,7 @@ fun ScreenUiContent(
                 stringResId = R.string.app_name_display,
                 letterSpacing = R.dimen.latter_space_small_2dp,
                 style = typography.displayLarge,
-                fontSize = R.dimen.text_size_xlarge_24sp,
+                fontSize = R.dimen.text_size_large_20sp,
                 color = colorScheme.secondary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
