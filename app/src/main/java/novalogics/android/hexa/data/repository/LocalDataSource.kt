@@ -5,12 +5,14 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.qualifiers.ApplicationContext
+import novalogics.android.hexa.data.database.dao.CharmsDao
 import java.io.InputStreamReader
 import javax.inject.Inject
 
 //Offline Repository
 class LocalDataSource @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val charmsDao: CharmsDao
 ) : LocalDataSourceImpl {
 
     override fun getTestData(): String {

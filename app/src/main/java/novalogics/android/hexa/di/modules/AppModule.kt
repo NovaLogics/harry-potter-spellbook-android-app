@@ -6,6 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import novalogics.android.hexa.data.database.dao.CharmsDao
 import novalogics.android.hexa.data.repository.LocalDataSource
 import javax.inject.Singleton
 
@@ -23,8 +24,12 @@ class AppModule {
     @Provides
     @Singleton
     fun provideRepository(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
+        charmsDao: CharmsDao
     ): LocalDataSource {
-        return LocalDataSource(context)
+        return LocalDataSource(
+            context = context,
+            charmsDao = charmsDao
+        )
     }
 }
