@@ -24,6 +24,7 @@ import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -37,6 +38,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -73,7 +75,6 @@ fun ScreenUiContent(
     onListDataValueChange: () -> Unit
 ){
     val scrollState = rememberScrollState()
-    val textFieldValue = remember { mutableStateOf("") }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -90,11 +91,12 @@ fun ScreenUiContent(
             CustomHeaderComponent()
 
             StyledText(
-                stringResId = R.string.app_name,
+                stringResId = R.string.app_name_display,
                 letterSpacing = R.dimen.latter_space_small_2dp,
                 style = typography.displayLarge,
                 fontSize = R.dimen.text_size_xlarge_24sp,
                 color = colorScheme.secondary,
+                textAlign = TextAlign.Center,
                 modifier = Modifier
                     .padding(
                         all = dimensionResource(id = R.dimen.padding_medium_16dp),
@@ -135,6 +137,11 @@ fun ScreenUiContent(
                     onDone = {
 
                     }
+                ),
+                shape = MaterialTheme.shapes.small,
+                colors = TextFieldDefaults.colors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
                 ),
                 modifier = Modifier
                     .weight(1f)

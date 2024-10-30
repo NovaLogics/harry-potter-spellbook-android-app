@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Hexa</string>
     <string name="app_name_full">Hexa: Spells of Harry Potter</string>
+    <string name="app_name_display">- Hexa -\nSpells of Harry Potter</string>
 
     <string name="nav_central">Central</string>
     <string name="nav_charms">Charms</string>

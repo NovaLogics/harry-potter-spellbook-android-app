@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import novalogics.android.hexa.R
 import novalogics.android.hexa.ui.common.textSizeResource
 
@@ -28,6 +29,7 @@ fun StyledText(
     style: TextStyle = typography.displaySmall,
     color: Color = colorScheme.onPrimaryContainer,
     fontWeight: FontWeight = FontWeight.Bold,
+    textAlign: TextAlign = TextAlign.Start,
     isUppercase: Boolean = false,
     makeSyllable: Boolean = false,
 ) {
@@ -43,6 +45,7 @@ fun StyledText(
         letterSpacing =  letterSpacing,
         fontSize =  fontSize,
         fontWeight = fontWeight,
+        textAlign = textAlign,
         color = color,
         modifier = modifier
     )
@@ -62,6 +65,7 @@ fun StyledText(
     style: TextStyle = typography.displaySmall,
     color: Color = colorScheme.onPrimaryContainer,
     fontWeight: FontWeight = FontWeight.Bold,
+    textAlign: TextAlign = TextAlign.Start,
     isUppercase: Boolean = false,
     makeSyllable: Boolean = false,
 ) {
@@ -78,6 +82,7 @@ fun StyledText(
         fontSize = textSizeResource(id = fontSize),
         fontWeight = fontWeight,
         color = color,
+        textAlign = textAlign,
         modifier = modifier
     )
 }
