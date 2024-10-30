@@ -39,7 +39,7 @@ class CentralViewModel @Inject constructor(
         viewModelScope.launch {
             _uiState.update { ui -> ui.copy(isLoading = true) }
 
-            delay(1000)
+            //delay(1000)
 
             _uiState.update { ui ->
                 ui.copy(

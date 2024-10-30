@@ -20,6 +20,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.MaterialTheme.typography
@@ -48,6 +49,7 @@ import coil.request.ImageRequest
 import novalogics.android.hexa.R
 import novalogics.android.hexa.ui.common.component.CustomHeaderComponent
 import novalogics.android.hexa.ui.common.component.StyledText
+import novalogics.android.hexa.ui.common.component.TypewriteText
 import novalogics.android.hexa.ui.theme.SpellBookTheme
 import novalogics.android.hexa.util.Constants
 
@@ -113,6 +115,7 @@ fun ScreenUiContent(
                         all = dimensionResource(id = R.dimen.padding_medium_16dp),
                     )
             )
+            TypewriteText(text = "Welcome to app, how is your day")
 
 
         }
@@ -150,6 +153,7 @@ fun ScreenUiContent(
         }
     }
 }
+
 
 @Composable
 fun HeaderTitleText() {
