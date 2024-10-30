@@ -122,7 +122,7 @@ fun SectionHeader(
 
         StyledText(
             stringValue = title,
-            letterSpacing = R.dimen.latter_space_small_2dp,
+            letterSpacing = R.dimen.letter_space_small_2dp,
             style = typography.displayMedium,
             fontSize = R.dimen.text_size_xlarge_24sp,
             color = colorScheme.secondary,
@@ -167,7 +167,7 @@ fun SectionEntity(
                 StyledText(
                     stringValue = spell.spellName,
                     fontSize = R.dimen.text_size_large_20sp,
-                    letterSpacing = R.dimen.latter_space_medium_4dp,
+                    letterSpacing = R.dimen.letter_space_medium_4dp,
                     style = typography.displayLarge,
                     isUppercase = true,
                     modifier = Modifier.padding(

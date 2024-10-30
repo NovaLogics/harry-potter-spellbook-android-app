@@ -38,8 +38,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -47,9 +51,11 @@ import coil.compose.rememberAsyncImagePainter
 import coil.decode.GifDecoder
 import coil.request.ImageRequest
 import novalogics.android.hexa.R
+import novalogics.android.hexa.data.database.entity.CharmsEntity
 import novalogics.android.hexa.ui.common.component.CustomHeaderComponent
 import novalogics.android.hexa.ui.common.component.StyledText
 import novalogics.android.hexa.ui.common.component.TypewriteText
+import novalogics.android.hexa.ui.common.textSizeResource
 import novalogics.android.hexa.ui.theme.SpellBookTheme
 import novalogics.android.hexa.util.Constants
 
@@ -112,7 +118,7 @@ fun ScreenUiContent(
 
             StyledText(
                 stringValue = uiState.listData,
-                letterSpacing = R.dimen.latter_space_small_2dp,
+                letterSpacing = R.dimen.letter_space_small_2dp,
                 style = typography.displaySmall,
                 fontSize = R.dimen.text_size_large_18sp,
                 color = colorScheme.secondary,
@@ -122,6 +128,7 @@ fun ScreenUiContent(
                     )
             )
 
+            CharmData()
 
         }
         Row(
@@ -164,7 +171,7 @@ fun ScreenUiContent(
 fun HeaderTitleText() {
     StyledText(
         stringResId = R.string.app_name_display,
-        letterSpacing = R.dimen.latter_space_small_2dp,
+        letterSpacing = R.dimen.letter_space_small_2dp,
         style = typography.displayLarge,
         fontSize = R.dimen.text_size_large_20sp,
         color = colorScheme.secondary,
@@ -175,6 +182,37 @@ fun HeaderTitleText() {
             )
     )
 }
+
+@Composable
+fun CharmData(
+ //   charm: CharmsEntity = CharmsEntity()
+) {
+    Column (
+        horizontalAlignment = Alignment.Start,
+        modifier = Modifier.fillMaxWidth()
+    ){
+
+        Text(
+            text = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
+                    append("Spell Name : ")
+                }
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("Accio")
+                }
+            },
+            style = typography.displaySmall,
+            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
+            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
+            modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_small_4dp))
+        )
+
+
+    }
+
+}
+
+
 
 @Composable
 fun MediaBanner(
