@@ -19,7 +19,7 @@ class CentralViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(CentralUiState())
     val uiState: StateFlow<CentralUiState> = _uiState
 
-    fun reduce(currentState: CentralUiState, intent: CentralIntent): CentralUiState {
+    private fun reduce(currentState: CentralUiState, intent: CentralIntent): CentralUiState {
         return when (intent) {
             is CentralIntent.LoadData -> currentState.copy(isLoading = true)
             is CentralIntent.UpdateTextField -> currentState.copy(textFieldValue = intent.newValue)
@@ -36,27 +36,20 @@ class CentralViewModel @Inject constructor(
     }
 
     private fun loadData() {
-        // Simulate loading data
         viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isLoading = true)
-            delay(1000) // Simulate network delay
-            _uiState.value = _uiState.value.copy(isLoading = false)
+            _uiState.update { ui -> ui.copy(isLoading = true) }
+
+            delay(1000)
+
+            _uiState.update { ui ->
+                ui.copy(
+                    isLoading = false,
+                    data = repositoryOffline.getTestData(),
+                )
+            }
         }
     }
 
-
-    init {
-        loadDataOffline()
-    }
-
-    private fun loadDataOffline() {
-        _uiState.update { ui ->
-            ui.copy(
-                isLoading = false,
-                data = repositoryOffline.getTestData(),
-            )
-        }
-    }
 
     fun updateTextFieldValue(newValue: String) {
         _uiState.value = _uiState.value.copy(textFieldValue = newValue)

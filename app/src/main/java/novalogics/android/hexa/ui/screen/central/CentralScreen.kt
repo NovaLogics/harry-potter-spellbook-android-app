@@ -29,8 +29,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -59,6 +57,7 @@ fun SpellCircleScreen(
     onLoadingChange: (Boolean) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val scrollState = rememberScrollState()
 
     LaunchedEffect(Unit) {
         viewModel.handleIntent(CentralIntent.LoadData)
@@ -66,35 +65,18 @@ fun SpellCircleScreen(
 
     onLoadingChange(uiState.isLoading)
 
-    ScreenUiContent(
-        uiState = uiState,
-        onTextFieldValueChange = viewModel::updateTextFieldValue,
-        onListDataValueChange = viewModel::updateListData
-    )
-}
-
-@Composable
-fun ScreenUiContent(
-    uiState : CentralUiState,
-    onTextFieldValueChange: (String) -> Unit,
-    onListDataValueChange: () -> Unit
-){
-    val scrollState = rememberScrollState()
-
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .background(colorScheme.background)
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(scrollState)
-                .background(colorScheme.background)
-                .padding(bottom = 80.dp)
         ) {
-
             CustomHeaderComponent()
-
             StyledText(
                 stringResId = R.string.app_name_display,
                 letterSpacing = R.dimen.latter_space_small_2dp,
@@ -107,9 +89,7 @@ fun ScreenUiContent(
                         all = dimensionResource(id = R.dimen.padding_medium_16dp),
                     )
             )
-
             GifCard()
-
             StyledText(
                 stringValue = uiState.listData,
                 letterSpacing = R.dimen.latter_space_small_2dp,
@@ -122,8 +102,8 @@ fun ScreenUiContent(
                     )
             )
 
-        }
 
+        }
         Row(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -133,7 +113,7 @@ fun ScreenUiContent(
         ) {
             TextField(
                 value = uiState.textFieldValue,
-                onValueChange = onTextFieldValueChange,
+                onValueChange = {value-> viewModel.updateTextFieldValue(value)},
                 maxLines = 3,
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done
@@ -152,12 +132,15 @@ fun ScreenUiContent(
                     .weight(1f)
                     .padding(end = 8.dp)
             )
-            Button(onClick = onListDataValueChange) {
+            Button(onClick = {viewModel.updateListData()}) {
                 Text("Submit")
             }
         }
     }
+
 }
+
+
 
 @Composable
 fun GifCard() {
@@ -206,10 +189,68 @@ private fun SpellCircleScreenPreview() {
     val uiState = CentralUiState(data = "Welcome to Home")
 
     SpellBookTheme {
-        ScreenUiContent(
-            uiState = uiState,
-            {},
-            {}
-        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(colorScheme.background)
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+            ) {
+                CustomHeaderComponent()
+
+                StyledText(
+                    stringResId = R.string.app_name_display,
+                    letterSpacing = R.dimen.latter_space_small_2dp,
+                    style = typography.displayLarge,
+                    fontSize = R.dimen.text_size_large_20sp,
+                    color = colorScheme.secondary,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .padding(
+                            all = dimensionResource(id = R.dimen.padding_medium_16dp),
+                        )
+                )
+                GifCard()
+
+            }
+            Row(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                TextField(
+                    value = uiState.textFieldValue,
+                    onValueChange = {},
+                    maxLines = 3,
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        imeAction = ImeAction.Done
+                    ),
+                    keyboardActions = KeyboardActions(
+                        onDone = {
+
+                        }
+                    ),
+                    shape = MaterialTheme.shapes.small,
+                    colors = TextFieldDefaults.colors(
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent
+                    ),
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(end = 8.dp)
+                )
+                Button(onClick = {}) {
+                    Text("Submit")
+                }
+            }
+
+        }
     }
 }
