@@ -12,28 +12,28 @@ class DataStoreManager @Inject constructor(
 ) {
 
     // Generic method to save a string value using a key
-    suspend fun saveString(key: DataStoreKey, value: String) {
+    suspend fun saveString(key: DataStoreStringKey, value: String) {
         dataStore.edit { preferences ->
-            preferences[key.key] = value
+            preferences[key.key as Preferences.Key<String>]  = value
         }
     }
 
     // Generic method to retrieve a string value using a key
-    fun getStringFlow(key: DataStoreKey): Flow<String?> {
+    fun getStringFlow(key: DataStoreStringKey): Flow<String?> {
         return dataStore.data.map { preferences ->
-            preferences[key.key]
+            preferences[key.key] as String
         }
     }
 
-    fun getJsonToRoomUpgradeState(): Flow<Boolean> {
-        return dataStore.data.map { preferences ->
-            preferences[DataStoreKey.UpgradeToRoom.key].toBoolean() ?: false
-        }
-    }
 
-    suspend fun saveJsonToRoomUpgradeState(value: String) {
+    val getJsonToRoomUpgradeState: Flow<Boolean> = dataStore.data
+        .map { pref ->
+            pref[DataStoreBooleanKey.UpgradeToRoom.key] ?: false
+        }
+
+    suspend fun saveJsonToRoomUpgradeState(value: Boolean) {
         dataStore.edit { preferences ->
-            preferences[DataStoreKey.UpgradeToRoom.key] = value
+            preferences[DataStoreBooleanKey.UpgradeToRoom.key] = value
         }
     }
 }
