@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Hexa</string>
+    <string name="app_name_full">Hexa: Spells of Harry Potter</string>
 
-    <string name="nav_spell_circle">Spell Circle</string>
-    <string name="nav_spell_book">SpellBook</string>
+    <string name="nav_central">Central</string>
+    <string name="nav_charms">Charms</string>
 
     <string name="section_title">Section : %s</string>
     <string name="light_value">Light : %s</string>
@@ -11,7 +12,7 @@
     <string name="please_wait">Please Wait…</string>
 
     <string-array name="tab_items">
-        <item>SpellCircle</item>
-        <item>SpellBook</item>
+        <item>Central</item>
+        <item>Charms</item>
     </string-array>
 </resources>

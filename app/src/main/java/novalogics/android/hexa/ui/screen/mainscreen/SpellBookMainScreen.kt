@@ -60,17 +60,17 @@ fun SpellBookMainScreen(
 
             NavHost(
                 navController = navController,
-                startDestination = AppScreens.SpellCircle.name,
+                startDestination = AppScreens.Central.name,
                 modifier = Modifier.padding(innerPadding)
             ) {
 
-                composable(route = AppScreens.SpellCircle.name) {
+                composable(route = AppScreens.Central.name) {
                     SpellCircleScreen(
                         onLoadingChange = { loading -> isLoading = loading }
                     )
                 }
 
-                composable(route = AppScreens.SpellBook.name) {
+                composable(route = AppScreens.Charms.name) {
                     SpellBookScreen(
                         onLoadingChange = { loading -> isLoading = loading }
                     )
