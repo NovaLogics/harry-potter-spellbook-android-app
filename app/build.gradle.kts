@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "novalogics.android.harrysspellbook"
+    namespace = "novalogics.android.hexa"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "novalogics.android.harrysspellbook"
+        applicationId = "novalogics.android.hexa"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
