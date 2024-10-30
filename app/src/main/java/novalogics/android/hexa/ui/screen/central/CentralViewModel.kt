@@ -16,6 +16,17 @@ class CentralViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(CentralUiState())
     val uiState: StateFlow<CentralUiState> = _uiState
 
+    fun reduce(currentState: CentralUiState, intent: CentralIntent): CentralUiState {
+        return when (intent) {
+            is CentralIntent.LoadData -> currentState.copy(isLoading = true)
+            is CentralIntent.UpdateTextField -> currentState.copy(textFieldValue = intent.newValue)
+            is CentralIntent.ClearError -> currentState.copy(error = null)
+        }
+    }
+
+
+
+
     init {
         loadDataOffline()
     }
