@@ -1,5 +1,6 @@
 package novalogics.android.hexa.ui.screen.charms
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -29,38 +30,45 @@ class CharmsViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(CharmsUiState())
     val uiState: StateFlow<CharmsUiState> = _uiState
 
-    val allData = mutableStateOf<List<CharmsEntity>>(emptyList())
-    val upgradeToRoomState = dataStoreManager.getJsonToRoomUpgradeState().asLiveData()
+    private val allData = mutableStateOf<List<CharmsEntity>>(emptyList())
+
 
     init {
-        loadDataOffline()
-    }
-
-    private fun loadDataOffline() {
-        _uiState.update { ui ->
-            ui.copy(isLoading = true)
-        }
-
-
-
         viewModelScope.launch {
-            // Load data on a background thread
-            val data = withContext(Dispatchers.IO) {
-                localRepository.getListOfSpells()
+            _uiState.update { ui ->
+                ui.copy(isLoading = true)
             }
 
-            if(upgradeToRoomState.value == false){
+            dataStoreManager.getJsonToRoomUpgradeState.collect { roomDataAvailable ->
+
+                Log.d("CharmsViewModel", "Current UpgradeToRoom state: ${roomDataAvailable}")
+
+                if (roomDataAvailable) {
+                    loadCharmsFromDb()
+                } else {
+                    withContext(Dispatchers.IO) {
+                        localRepository.loadListOfSpells()
+                    }
+                    dataStoreManager.saveJsonToRoomUpgradeState(true)
+                }
+            }
+        }
+    }
+
+
+    private fun loadCharmsFromDb() {
+        viewModelScope.launch {
+            allData.value = withContext(Dispatchers.IO) {
                 charmsDao.getAllData()
             }
 
-
-            // Update UI state with data and set isLoading to false
             _uiState.update { ui ->
                 ui.copy(
                     isLoading = false,
-                    spellList = data
+                    spellList = allData.value
                 )
             }
         }
     }
+
 }
