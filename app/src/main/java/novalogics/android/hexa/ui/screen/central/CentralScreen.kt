@@ -104,10 +104,16 @@ fun ScreenUiContent(
             MediaBanner(
                 drawableResId = R.drawable.img_banner_1
             )
+
+            TypewriteText(
+                text = "Welcome to app, how is your day",
+                style = MaterialTheme.typography.displayMedium
+            )
+
             StyledText(
                 stringValue = uiState.listData,
                 letterSpacing = R.dimen.latter_space_small_2dp,
-                style = typography.displayMedium,
+                style = typography.displaySmall,
                 fontSize = R.dimen.text_size_large_18sp,
                 color = colorScheme.secondary,
                 modifier = Modifier
@@ -115,7 +121,6 @@ fun ScreenUiContent(
                         all = dimensionResource(id = R.dimen.padding_medium_16dp),
                     )
             )
-            TypewriteText(text = "Welcome to app, how is your day")
 
 
         }
