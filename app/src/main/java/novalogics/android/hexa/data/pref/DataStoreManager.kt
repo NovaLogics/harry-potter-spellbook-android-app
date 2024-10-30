@@ -12,18 +12,17 @@ class DataStoreManager @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) {
 
-    companion object {
-        val DATA_STORE_KEY = stringPreferencesKey("hexa_pref")
-    }
-
-    suspend fun saveExample(value: String) {
+    // Generic method to save a string value using a key
+    suspend fun saveString(key: DataStoreKey, value: String) {
         dataStore.edit { preferences ->
-            preferences[DATA_STORE_KEY] = value
+            preferences[key.key] = value
         }
     }
 
-    val stringDataFlow: Flow<String?> = dataStore.data
-        .map { preferences ->
-            preferences[DATA_STORE_KEY]
+    // Generic method to retrieve a string value using a key
+    fun getStringFlow(key: DataStoreKey): Flow<String?> {
+        return dataStore.data.map { preferences ->
+            preferences[key.key]
         }
+    }
 }
