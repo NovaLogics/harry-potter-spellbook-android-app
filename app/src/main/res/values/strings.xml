@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Harry\'s SpellBook</string>
+    <string name="app_name">Hexa</string>
 
     <string name="nav_spell_circle">Spell Circle</string>
     <string name="nav_spell_book">SpellBook</string>
