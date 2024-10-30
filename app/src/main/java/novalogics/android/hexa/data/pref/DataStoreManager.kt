@@ -25,4 +25,10 @@ class DataStoreManager @Inject constructor(
             preferences[key.key]
         }
     }
+
+    fun getJsonToRoomUpgradeState(): Flow<Boolean> {
+        return dataStore.data.map { preferences ->
+            preferences[DataStoreKey.UpgradeToRoom.key].toBoolean() ?: false
+        }
+    }
 }
