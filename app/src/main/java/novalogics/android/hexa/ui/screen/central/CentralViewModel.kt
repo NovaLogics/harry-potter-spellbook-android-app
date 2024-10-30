@@ -1,10 +1,13 @@
 package novalogics.android.hexa.ui.screen.central
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import novalogics.android.hexa.data.repository.LocalDataSource
 import javax.inject.Inject
 
@@ -32,6 +35,14 @@ class CentralViewModel @Inject constructor(
         }
     }
 
+    private fun loadData() {
+        // Simulate loading data
+        viewModelScope.launch {
+            _uiState.value = _uiState.value.copy(isLoading = true)
+            delay(1000) // Simulate network delay
+            _uiState.value = _uiState.value.copy(isLoading = false)
+        }
+    }
 
 
     init {
