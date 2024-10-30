@@ -24,6 +24,13 @@ class CentralViewModel @Inject constructor(
         }
     }
 
+    fun handleIntent(intent: CentralIntent) {
+        _uiState.value = reduce(_uiState.value, intent)
+
+        if (intent is CentralIntent.LoadData) {
+            loadData()
+        }
+    }
 
 
 
