@@ -2,6 +2,7 @@ package novalogics.android.hexa.ui.screen.central
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -57,13 +58,33 @@ fun SpellCircleScreen(
     onLoadingChange: (Boolean) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    val scrollState = rememberScrollState()
+
+    onLoadingChange(uiState.isLoading)
 
     LaunchedEffect(Unit) {
         viewModel.handleIntent(CentralIntent.LoadData)
     }
 
-    onLoadingChange(uiState.isLoading)
+    ScreenUiContent(
+        uiState = uiState,
+        onTextFieldValueChange = {
+            viewModel.handleIntent(CentralIntent.UpdateTextField(it))
+        },
+        onListDataValueChange = {
+            viewModel.updateListData()
+        }
+    )
+}
+
+
+
+@Composable
+fun ScreenUiContent(
+    uiState : CentralUiState,
+    onTextFieldValueChange: (String) -> Unit,
+    onListDataValueChange: () -> Unit
+) {
+    val scrollState = rememberScrollState()
 
     Box(
         modifier = Modifier
@@ -77,19 +98,10 @@ fun SpellCircleScreen(
                 .verticalScroll(scrollState)
         ) {
             CustomHeaderComponent()
-            StyledText(
-                stringResId = R.string.app_name_display,
-                letterSpacing = R.dimen.latter_space_small_2dp,
-                style = typography.displayLarge,
-                fontSize = R.dimen.text_size_large_20sp,
-                color = colorScheme.secondary,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .padding(
-                        all = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    )
+            HeaderTitleText()
+            MediaBanner(
+                drawableResId = R.drawable.img_banner_1
             )
-            GifCard()
             StyledText(
                 stringValue = uiState.listData,
                 letterSpacing = R.dimen.latter_space_small_2dp,
@@ -113,7 +125,7 @@ fun SpellCircleScreen(
         ) {
             TextField(
                 value = uiState.textFieldValue,
-                onValueChange = {value-> viewModel.updateTextFieldValue(value)},
+                onValueChange = {value-> onTextFieldValueChange(value)},
                 maxLines = 3,
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done
@@ -132,18 +144,34 @@ fun SpellCircleScreen(
                     .weight(1f)
                     .padding(end = 8.dp)
             )
-            Button(onClick = {viewModel.updateListData()}) {
+            Button(onClick = onListDataValueChange) {
                 Text("Submit")
             }
         }
     }
-
 }
 
-
+@Composable
+fun HeaderTitleText() {
+    StyledText(
+        stringResId = R.string.app_name_display,
+        letterSpacing = R.dimen.latter_space_small_2dp,
+        style = typography.displayLarge,
+        fontSize = R.dimen.text_size_large_20sp,
+        color = colorScheme.secondary,
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .padding(
+                all = dimensionResource(id = R.dimen.padding_medium_16dp),
+            )
+    )
+}
 
 @Composable
-fun GifCard() {
+fun MediaBanner(
+    @DrawableRes
+    drawableResId: Int
+) {
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
@@ -161,7 +189,7 @@ fun GifCard() {
                 .build()
         )
         Image(
-            painter = painterResource(id = R.drawable.img_banner_1),
+            painter = painterResource(id = drawableResId),
             contentDescription = "Animated GIF",
             modifier = Modifier
                 .fillMaxWidth()
@@ -190,67 +218,10 @@ private fun SpellCircleScreenPreview() {
 
     SpellBookTheme {
 
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(colorScheme.background)
-        ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
-            ) {
-                CustomHeaderComponent()
-
-                StyledText(
-                    stringResId = R.string.app_name_display,
-                    letterSpacing = R.dimen.latter_space_small_2dp,
-                    style = typography.displayLarge,
-                    fontSize = R.dimen.text_size_large_20sp,
-                    color = colorScheme.secondary,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .padding(
-                            all = dimensionResource(id = R.dimen.padding_medium_16dp),
-                        )
-                )
-                GifCard()
-
-            }
-            Row(
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                TextField(
-                    value = uiState.textFieldValue,
-                    onValueChange = {},
-                    maxLines = 3,
-                    keyboardOptions = KeyboardOptions.Default.copy(
-                        imeAction = ImeAction.Done
-                    ),
-                    keyboardActions = KeyboardActions(
-                        onDone = {
-
-                        }
-                    ),
-                    shape = MaterialTheme.shapes.small,
-                    colors = TextFieldDefaults.colors(
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent
-                    ),
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(end = 8.dp)
-                )
-                Button(onClick = {}) {
-                    Text("Submit")
-                }
-            }
-
-        }
+        ScreenUiContent(
+            uiState = uiState,
+            onTextFieldValueChange = {},
+            onListDataValueChange = {}
+        )
     }
 }
