@@ -10,12 +10,12 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import novalogics.android.hexa.data.pref.DataStoreManager
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object DataStoreModule {
-
 
     @Provides
     @Singleton
@@ -23,6 +23,12 @@ object DataStoreModule {
         return PreferenceDataStoreFactory.create(
             produceFile = { context.preferencesDataStoreFile("app_preferences") }
         )
+    }
+
+    @Provides
+    @Singleton
+    fun provideDataStoreManager(dataStore: DataStore<Preferences>): DataStoreManager {
+        return DataStoreManager(dataStore)
     }
 }
 

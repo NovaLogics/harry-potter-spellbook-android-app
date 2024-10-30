@@ -3,7 +3,6 @@ package novalogics.android.hexa.data.pref
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -29,6 +28,12 @@ class DataStoreManager @Inject constructor(
     fun getJsonToRoomUpgradeState(): Flow<Boolean> {
         return dataStore.data.map { preferences ->
             preferences[DataStoreKey.UpgradeToRoom.key].toBoolean() ?: false
+        }
+    }
+
+    suspend fun saveJsonToRoomUpgradeState(value: String) {
+        dataStore.edit { preferences ->
+            preferences[DataStoreKey.UpgradeToRoom.key] = value
         }
     }
 }
