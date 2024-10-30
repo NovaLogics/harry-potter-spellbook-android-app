@@ -13,17 +13,17 @@ class DataStoreManager @Inject constructor(
 ) {
 
     companion object {
-        val EXAMPLE_KEY = stringPreferencesKey("example_key")
+        val DATA_STORE_KEY = stringPreferencesKey("hexa_pref")
     }
 
     suspend fun saveExample(value: String) {
         dataStore.edit { preferences ->
-            preferences[EXAMPLE_KEY] = value
+            preferences[DATA_STORE_KEY] = value
         }
     }
 
-    val exampleFlow: Flow<String?> = dataStore.data
+    val stringDataFlow: Flow<String?> = dataStore.data
         .map { preferences ->
-            preferences[EXAMPLE_KEY]
+            preferences[DATA_STORE_KEY]
         }
 }
