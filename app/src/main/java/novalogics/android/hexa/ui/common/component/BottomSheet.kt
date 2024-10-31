@@ -2,11 +2,15 @@ package novalogics.android.hexa.ui.common.component
 
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.SpanStyle
@@ -27,7 +31,17 @@ import novalogics.android.hexa.ui.theme.SpellBookTheme
 fun SpellBottomSheetContent(
     charm: CharmsEntity
 ) {
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(
+                top = dimensionResource(id = R.dimen.padding_regular_8dp),
+                bottom = dimensionResource(id = R.dimen.padding_large_24dp),
+                start = dimensionResource(id = R.dimen.padding_medium_16dp),
+                end = dimensionResource(id = R.dimen.padding_medium_16dp)
+            )
+    ) {
         Text(
             text = buildAnnotatedString {
                 withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
@@ -42,8 +56,6 @@ fun SpellBottomSheetContent(
             letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
             modifier = Modifier
                 .padding(
-                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
                     bottom = dimensionResource(id = R.dimen.padding_small_4dp)
                 )
         )
@@ -64,8 +76,6 @@ fun SpellBottomSheetContent(
             textAlign = TextAlign.Justify,
             modifier = Modifier
                 .padding(
-                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
                     bottom = dimensionResource(id = R.dimen.padding_small_4dp)
                 )
         )
