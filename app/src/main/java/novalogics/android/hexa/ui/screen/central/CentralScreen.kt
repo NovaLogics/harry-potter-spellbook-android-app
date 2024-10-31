@@ -1,7 +1,10 @@
 package novalogics.android.hexa.ui.screen.central
 
+import android.content.Context
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.hardware.camera2.CameraAccessException
+import android.hardware.camera2.CameraManager
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -30,6 +33,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -125,6 +131,10 @@ fun ScreenUiContent(
                 style = typography.displayMedium
             )
 
+            if(uiState.actionGo == "flash"){
+                FlashlightControl(LocalContext.current)
+            }
+
 
 
         }
@@ -217,6 +227,33 @@ fun MediaBanner(
             ,
             contentScale = ContentScale.Crop
         )
+    }
+}
+
+@Composable
+fun FlashlightControl(context: Context) {
+    var isFlashOn by remember { mutableStateOf(false) }
+
+    val cameraManager = remember { context.getSystemService(Context.CAMERA_SERVICE) as CameraManager }
+    val cameraId = remember { cameraManager.cameraIdList[0] }
+
+    try {
+        isFlashOn = !isFlashOn
+        cameraManager.setTorchMode(cameraId, isFlashOn)
+    } catch (e: CameraAccessException) {
+        e.printStackTrace()
+    }
+
+    Button(onClick = {
+        try {
+            isFlashOn = !isFlashOn
+            cameraManager.setTorchMode(cameraId, isFlashOn)
+        } catch (e: CameraAccessException) {
+            e.printStackTrace()
+        }
+    },
+        modifier = Modifier.padding(18.dp)) {
+        Text(if (isFlashOn) "Turn Off Flashlight" else "Turn On Flashlight")
     }
 }
 
