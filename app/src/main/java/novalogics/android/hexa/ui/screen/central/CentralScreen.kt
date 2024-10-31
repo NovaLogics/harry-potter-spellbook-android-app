@@ -38,6 +38,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -107,11 +108,6 @@ fun ScreenUiContent(
                 drawableResId = R.drawable.img_banner_1
             )
 
-            TypewriteText(
-                text = "Welcome to app, how is your day",
-                style = MaterialTheme.typography.displayMedium
-            )
-
             StyledText(
                 stringValue = uiState.listData,
                 letterSpacing = R.dimen.letter_space_small_2dp,
@@ -122,6 +118,11 @@ fun ScreenUiContent(
                     .padding(
                         all = dimensionResource(id = R.dimen.padding_medium_16dp),
                     )
+            )
+
+            TypewriteText(
+                text = uiState.dataAiValue,
+                style = typography.displayMedium
             )
 
 
@@ -142,7 +143,8 @@ fun ScreenUiContent(
                 onValueChange = {value-> onTextFieldValueChange(value)},
                 maxLines = 3,
                 keyboardOptions = KeyboardOptions.Default.copy(
-                    imeAction = ImeAction.Done
+                    imeAction = ImeAction.Done,
+                    capitalization = KeyboardCapitalization.Sentences
                 ),
                 keyboardActions = KeyboardActions(
                     onDone = {
@@ -232,7 +234,7 @@ fun MediaBanner(
 @Composable
 private fun SpellCircleScreenPreview() {
 
-    val uiState = CentralUiState(data = "Welcome to Home")
+    val uiState = CentralUiState(dataAiValue = "Welcome to Home")
 
     SpellBookTheme {
 
