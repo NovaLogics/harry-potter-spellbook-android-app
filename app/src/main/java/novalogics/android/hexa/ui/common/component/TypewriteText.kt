@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 
 @Composable
 fun TypewriteText(
@@ -67,6 +68,7 @@ fun TypewriteText(
             Text(
                 text = text,
                 style = style,
+                textAlign = TextAlign.Center,
                 modifier = Modifier.alpha(0f)
             )
         }
@@ -74,7 +76,8 @@ fun TypewriteText(
         // Display animated text based on the current index value
         Text(
             text = textToAnimate.substring(0, index.value),
-            style = style
+            style = style,
+            textAlign = TextAlign.Center,
         )
     }
 }
