@@ -99,13 +99,16 @@ fun ScreenUiContent(
             .fillMaxSize()
             .background(colorScheme.background)
     ) {
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(scrollState)
+                .padding(
+                    top = 8.dp, bottom = 80.dp)
         ) {
-            CustomHeaderComponent()
+
             HeaderTitleText()
             MediaBanner(
                 drawableResId = R.drawable.img_banner_1
@@ -131,11 +134,14 @@ fun ScreenUiContent(
             CharmData()
 
         }
+        CustomHeaderComponent()
+
         Row(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(16.dp)
+                .background(colorScheme.background),
             verticalAlignment = Alignment.CenterVertically
         ) {
             TextField(
@@ -204,12 +210,164 @@ fun CharmData(
             style = typography.displaySmall,
             fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
             letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
-            modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_small_4dp))
+            modifier = Modifier
+                .padding(
+                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
+                )
+        )
+
+        Text(
+            text = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("Description : ")
+                }
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
+                    append("The Summoning Charm (Accio) allows the caster to summon objects toward themselves, either in direct line of sight or out of view, by calling the object's name aloud after the incantation (unless cast nonverbally). Successful casting requires the caster to have a clear mental image of the object. The charm's opposite is the Banishing Charm.")
+                }
+            },
+            style = typography.displaySmall,
+            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
+            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
+            lineHeight = textSizeResource(id = R.dimen.text_size_xlarge_24sp),
+            textAlign = TextAlign.Justify,
+            modifier = Modifier
+                .padding(
+                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
+                )
+
+        )
+
+
+        Text(
+            text = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
+                    append("Type : ")
+                }
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("Charm")
+                }
+            },
+            style = typography.displaySmall,
+            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
+            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
+            modifier = Modifier
+                .padding(
+                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
+                )
+        )
+
+        Text(
+            text = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
+                    append("Light Color : ")
+                }
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("None")
+                }
+            },
+            style = typography.displaySmall,
+            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
+            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
+            modifier = Modifier
+                .padding(
+                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
+                )
+        )
+
+        Text(
+            text = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
+                    append("Pronunciation : ")
+                }
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("Various, including: AK-ee-oh, AK-see-oh, AS-see-oh (US), and AT-chee-oh (Anglo-Catholic pronunciation)")
+                }
+            },
+            style = typography.displaySmall,
+            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
+            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
+            modifier = Modifier
+                .padding(
+                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
+                )
+        )
+
+
+        Text(
+            text = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
+                    append("Effect : ")
+                }
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("Summons an object from a distance")
+                }
+            },
+            style = typography.displaySmall,
+            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
+            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
+            modifier = Modifier
+                .padding(
+                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
+                )
+        )
+
+        Text(
+            text = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
+                    append("Origin : ")
+                }
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("The Latin word accio means \"I call\" or \"I summon\".")
+                }
+            },
+            style = typography.displaySmall,
+            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
+            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
+            modifier = Modifier
+                .padding(
+                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
+                )
+        )
+
+
+        Text(
+            text = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
+                    append("Notes : ")
+                }
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("The Summoning Charm could not be used on buildings. In addition, it did not work on most living things, and those few on which it did were generally not considered worth Summoning, such as flobberworms.")
+                }
+            },
+            style = typography.displaySmall,
+            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
+            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
+            lineHeight = textSizeResource(id = R.dimen.text_size_xlarge_24sp),
+            textAlign = TextAlign.Justify,
+            modifier = Modifier
+                .padding(
+                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
+                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
+                )
         )
 
 
     }
-
 }
 
 
