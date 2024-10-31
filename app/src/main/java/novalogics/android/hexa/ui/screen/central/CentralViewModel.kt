@@ -3,7 +3,6 @@ package novalogics.android.hexa.ui.screen.central
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -46,7 +45,7 @@ class CentralViewModel @Inject constructor(
             _uiState.update { ui ->
                 ui.copy(
                     isLoading = false,
-                    data = repositoryOffline.getTestData(),
+                   // dataAiValue = repositoryOffline.getTestData(),
                 )
             }
         }
@@ -55,6 +54,7 @@ class CentralViewModel @Inject constructor(
 
     fun updateListData() {
         val data = _uiState.value.textFieldValue
-        _uiState.value = _uiState.value.copy(listData = data,textFieldValue = "")
+        val response = hexaAi.getResponse(data)
+        _uiState.value = _uiState.value.copy(listData = data, dataAiValue = response, textFieldValue = "")
     }
 }
