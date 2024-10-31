@@ -19,9 +19,9 @@
     <dimen name="space_large_24dp">24dp</dimen>
     <dimen name="space_xlarge_32dp">32dp</dimen>
 
-    <dimen name="latter_space_small_1dp">1sp</dimen>
-    <dimen name="latter_space_small_2dp">2sp</dimen>
-    <dimen name="latter_space_medium_4dp">4sp</dimen>
+    <dimen name="letter_space_small_1dp">1sp</dimen>
+    <dimen name="letter_space_small_2dp">2sp</dimen>
+    <dimen name="letter_space_medium_4dp">4sp</dimen>
 
     <!-- Text Sizes -->
     <dimen name="text_size_xsmall_10sp">10sp</dimen>
@@ -31,9 +31,11 @@
     <dimen name="text_size_large_18sp">18sp</dimen>
     <dimen name="text_size_large_20sp">20sp</dimen>
     <dimen name="text_size_xlarge_24sp">24sp</dimen>
+    <dimen name="text_size_xlarge_28sp">28sp</dimen>
     <dimen name="text_size_title_32sp">32sp</dimen>
 
     <!-- Elevation -->
+    <dimen name="elevation_small_1dp">1dp</dimen>
     <dimen name="elevation_small_2dp">2dp</dimen>
     <dimen name="elevation_medium_4dp">4dp</dimen>
     <dimen name="elevation_large_8dp">8dp</dimen>

@@ -17,7 +17,23 @@ class LocalDataSource @Inject constructor(
 ) : LocalDataSourceImpl {
 
     override fun getTestData(): String {
-        return "Welcome to the Home screen"
+        return "Welcome to app, how is your day"
+    }
+
+    override fun getTestCharmsEntity(): CharmsEntity {
+        return CharmsEntity(
+            "a_aparecium",
+            "Aparecium",
+            "Reveals hidden or invisible messages, particularly those written in invisible ink.",
+            "Revealing Charm",
+            "None",
+            "ah-puh-REE-see-um",
+            "Makes invisible ink visible",
+            "Latin 'appareo' meaning 'to appear'.",
+            "Often used to read hidden or enchanted texts.",
+            "A",
+            false
+        )
     }
 
     override fun getListOfSpells(): List<Spell> {

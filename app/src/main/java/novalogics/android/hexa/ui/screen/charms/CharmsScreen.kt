@@ -34,7 +34,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -43,35 +42,34 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.hexa.R
-import novalogics.android.hexa.data.database.dao.CharmsDao
 import novalogics.android.hexa.data.database.entity.CharmsEntity
-import novalogics.android.hexa.data.model.Spell
-import novalogics.android.hexa.data.repository.LocalDataSource
 import novalogics.android.hexa.ui.common.component.CustomHeaderComponent
 import novalogics.android.hexa.ui.common.component.StyledText
 import novalogics.android.hexa.ui.common.textSizeResource
 import novalogics.android.hexa.ui.theme.SpellBookTheme
 import novalogics.android.hexa.util.Constants
-import java.util.Objects
 
 
 @Composable
 fun CharmsScreen(
     viewModel: CharmsViewModel = hiltViewModel(),
-    onLoadingChange: (Boolean) -> Unit
+    onLoadingChange: (Boolean) -> Unit,
+    onDisplayInSheet: (CharmsEntity) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
     onLoadingChange(uiState.isLoading)
 
     ScreenUiContent(
-        uiState = uiState
+        uiState = uiState,
+        onBottomSheetDataDisplay = onDisplayInSheet
     )
 }
 
 @Composable
 fun ScreenUiContent(
-    uiState: CharmsUiState
+    uiState: CharmsUiState,
+    onBottomSheetDataDisplay: (CharmsEntity) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -93,7 +91,10 @@ fun ScreenUiContent(
                     if (spell.isSection) {
                         SectionHeader(stringResource(id = R.string.section_title, spell.section))
                     } else {
-                        SectionEntity(spell = spell)
+                        SectionEntity(
+                            spell = spell,
+                            onBottomSheetDataDisplay = onBottomSheetDataDisplay
+                        )
                     }
                 }
             }
@@ -122,7 +123,7 @@ fun SectionHeader(
 
         StyledText(
             stringValue = title,
-            letterSpacing = R.dimen.latter_space_small_2dp,
+            letterSpacing = R.dimen.letter_space_small_2dp,
             style = typography.displayMedium,
             fontSize = R.dimen.text_size_xlarge_24sp,
             color = colorScheme.secondary,
@@ -136,7 +137,8 @@ fun SectionHeader(
 
 @Composable
 fun SectionEntity(
-    spell: CharmsEntity
+    spell: CharmsEntity,
+    onBottomSheetDataDisplay: (CharmsEntity) -> Unit
 ) {
     ElevatedCard(
         modifier = Modifier
@@ -152,7 +154,8 @@ fun SectionEntity(
             defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
         ),
         shape = MaterialTheme.shapes.large,
-        colors = CardDefaults.cardColors(colorScheme.surface)
+        colors = CardDefaults.cardColors(colorScheme.surface),
+        onClick = {onBottomSheetDataDisplay(spell)}
     ) {
         Row(
             modifier = Modifier
@@ -167,7 +170,7 @@ fun SectionEntity(
                 StyledText(
                     stringValue = spell.spellName,
                     fontSize = R.dimen.text_size_large_20sp,
-                    letterSpacing = R.dimen.latter_space_medium_4dp,
+                    letterSpacing = R.dimen.letter_space_medium_4dp,
                     style = typography.displayLarge,
                     isUppercase = true,
                     modifier = Modifier.padding(
@@ -273,7 +276,8 @@ private fun HomeScreenPreview() {
 
     SpellBookTheme {
         ScreenUiContent(
-            uiState = uiStateTestData
+            uiState = uiStateTestData,
+            {}
         )
     }
 }

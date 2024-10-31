@@ -3,17 +3,18 @@ package novalogics.android.hexa.ui.screen.central
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import novalogics.android.hexa.data.repository.LocalDataSource
+import novalogics.android.hexa.ui.util.aiEngine.HexaAIEngine
 import javax.inject.Inject
 
 @HiltViewModel
 class CentralViewModel @Inject constructor(
-    private val repositoryOffline: LocalDataSource
+    private val repositoryOffline: LocalDataSource,
+    private val hexaAi : HexaAIEngine
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CentralUiState())
@@ -44,19 +45,22 @@ class CentralViewModel @Inject constructor(
             _uiState.update { ui ->
                 ui.copy(
                     isLoading = false,
-                    data = repositoryOffline.getTestData(),
+                   // dataAiValue = repositoryOffline.getTestData(),
                 )
             }
         }
     }
 
 
-    fun updateTextFieldValue(newValue: String) {
-        _uiState.value = _uiState.value.copy(textFieldValue = newValue)
-    }
-
     fun updateListData() {
-        val data = _uiState.value.textFieldValue
-        _uiState.value = _uiState.value.copy(listData = data,textFieldValue = "")
+        val data = "> "+_uiState.value.textFieldValue
+        val response = hexaAi.getResponse(data)
+        val action = hexaAi.getAction()
+        _uiState.value = _uiState.value.copy(
+            listData = data,
+            actionGo = action,
+            dataAiValue = response,
+            textFieldValue = ""
+        )
     }
 }
