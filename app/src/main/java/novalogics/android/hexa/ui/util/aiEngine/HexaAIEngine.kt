@@ -12,10 +12,10 @@ class HexaAIEngine @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
 
-    var actionGo = ""
+    var actionGo : HexaActions = HexaActions.NONE
 
     fun getResponse(userInput: String): String {
-        actionGo = ""
+        actionGo = HexaActions.NONE
 
          when {
             userInput.contains("hi", ignoreCase = true) ||
@@ -29,12 +29,12 @@ class HexaAIEngine @Inject constructor(
             userInput.contains("help", ignoreCase = true) -> return "I can help you with simple tasks. Try asking me something!"
             userInput.contains("time", ignoreCase = true) -> return getCurrentTime()
             userInput.contains("lumos", ignoreCase = true) -> {
-                actionGo = "flash"
-                return "Flashlight : On - turn off -> Nox"}
+                actionGo = HexaActions.FLASHLIGHT_ON
+                return "✨ The light of Lumos illuminates your path! The flashlight is now on. Type 'Nox' to extinguish the light."}
              userInput.contains("nox", ignoreCase = true) -> {
-                 actionGo = "flash"
-                 return "Flashlight : Off"}
-            userInput.contains("bye", ignoreCase = true) -> return "Goodbye! Have a great day!"
+                 actionGo = HexaActions.FLASHLIGHT_OFF
+                 return "🌑 The darkness of Nox has returned. The flashlight is now off."}
+            userInput.contains("bye", ignoreCase = true) -> return "👋 Until next time! May your day be filled with magic and wonder!"
             else -> return "I'm here to chat. Feel free to ask me anything!"
         }
     }
