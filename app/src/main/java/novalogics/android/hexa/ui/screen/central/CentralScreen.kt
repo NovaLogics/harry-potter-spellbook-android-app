@@ -123,15 +123,15 @@ fun ScreenUiContent(
 
             StyledText(
                 stringValue = uiState.listData,
-                letterSpacing = R.dimen.letter_space_small_1dp,
+                letterSpacing = R.dimen.letter_space_small_2dp,
                 style = typography.displayLarge.copy(
                     shadow = Shadow(
-                        color = colorScheme.onSurfaceVariant,
+                        color = colorScheme.onSurface,
                         offset = Offset(1.0f, 1.0f),
-                        blurRadius = 4f
+                        blurRadius = 2f
                     )
                 ),
-                fontWeight = FontWeight.Normal,
+                fontWeight = FontWeight.Bold,
                 fontSize = R.dimen.text_size_large_20sp,
                 color = colorScheme.secondary,
                 modifier = Modifier
@@ -187,7 +187,10 @@ fun ScreenUiContent(
                     .weight(1f)
                     .padding(end = 8.dp)
             )
-            Button(onClick = onListDataValueChange) {
+            Button(onClick = {
+                onListDataValueChange.invoke()
+                keyboardController?.hide()
+            }) {
                 Text("Send")
             }
         }
@@ -262,37 +265,32 @@ fun FlashlightControl(
     var isFlashOn by remember { mutableStateOf(false) }
 
     val cameraManager = remember { context.getSystemService(Context.CAMERA_SERVICE) as CameraManager }
-    val cameraId = remember { cameraManager.cameraIdList[0] }
+    val cameraId = remember { cameraManager.cameraIdList.first() }
 
-    if(actionGo == HexaActions.FLASHLIGHT_ON){
+    LaunchedEffect(actionGo) {
+        isFlashOn = (actionGo == HexaActions.FLASHLIGHT_ON)
         try {
-            isFlashOn = true
-            cameraManager.setTorchMode(cameraId, isFlashOn)
-        } catch (e: CameraAccessException) {
-            e.printStackTrace()
-        }
-    }
-    else{
-        try {
-            isFlashOn = false
             cameraManager.setTorchMode(cameraId, isFlashOn)
         } catch (e: CameraAccessException) {
             e.printStackTrace()
         }
     }
 
-    Button(onClick = {
-        try {
+    Button(
+        onClick = {
             isFlashOn = !isFlashOn
-            cameraManager.setTorchMode(cameraId, isFlashOn)
-        } catch (e: CameraAccessException) {
-            e.printStackTrace()
-        }
-    },
-        modifier = Modifier.padding(top = 32.dp)) {
+            try {
+                cameraManager.setTorchMode(cameraId, isFlashOn)
+            } catch (e: CameraAccessException) {
+                e.printStackTrace()
+            }
+        },
+        modifier = Modifier.padding(top = 32.dp)
+    ) {
         Text(if (isFlashOn) "Turn Off Flashlight" else "Turn On Flashlight")
     }
 }
+
 
 
 @Preview(
@@ -308,7 +306,9 @@ fun FlashlightControl(
 @Composable
 private fun SpellCircleScreenPreview() {
 
-    val uiState = CentralUiState(dataAiValue = "Welcome to Home")
+    val uiState = CentralUiState(
+        listData = "> Lumos",
+        dataAiValue = "Welcome to Home")
 
     SpellBookTheme {
 
