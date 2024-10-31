@@ -17,7 +17,7 @@ class LocalDataSource @Inject constructor(
 ) : LocalDataSourceImpl {
 
     override fun getTestData(): String {
-        return "Welcome to the Home screen"
+        return "Welcome to app, how is your day"
     }
 
     override fun getTestCharmsEntity(): CharmsEntity {

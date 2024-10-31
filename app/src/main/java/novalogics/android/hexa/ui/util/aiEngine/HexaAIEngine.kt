@@ -18,6 +18,10 @@ class HexaAIEngine @Inject constructor(
             userInput.contains("hey", ignoreCase = true) ||
              userInput.contains("hello", ignoreCase = true) -> "Hello! How can I assist you today?"
 
+            userInput.contains("im good", ignoreCase = true) ||
+                    userInput.contains("nice", ignoreCase = true) ||
+                    userInput.contains("good", ignoreCase = true) -> "It\'s good to hear that! "
+
             userInput.contains("help", ignoreCase = true) -> "I can help you with simple tasks. Try asking me something!"
             userInput.contains("time", ignoreCase = true) -> getCurrentTime()
             userInput.contains("bye", ignoreCase = true) -> "Goodbye! Have a great day!"
