@@ -41,6 +41,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
@@ -57,6 +58,7 @@ import novalogics.android.hexa.ui.common.component.CustomHeaderComponent
 import novalogics.android.hexa.ui.common.component.StyledText
 import novalogics.android.hexa.ui.common.component.TypewriteText
 import novalogics.android.hexa.ui.theme.SpellBookTheme
+import novalogics.android.hexa.ui.util.aiEngine.HexaActions
 import novalogics.android.hexa.util.Constants
 
 
@@ -93,6 +95,7 @@ fun ScreenUiContent(
     onListDataValueChange: () -> Unit
 ) {
     val scrollState = rememberScrollState()
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     Box(
         modifier = Modifier
@@ -111,7 +114,7 @@ fun ScreenUiContent(
 
             HeaderTitleText()
             MediaBanner(
-                drawableResId = R.drawable.img_banner_1
+                drawableResId = R.drawable.img_harry_friends
             )
 
             StyledText(
@@ -131,8 +134,9 @@ fun ScreenUiContent(
                 style = typography.displayMedium
             )
 
-            if(uiState.actionGo == "flash"){
-                FlashlightControl(LocalContext.current)
+            if(uiState.actionGo == HexaActions.FLASHLIGHT_ON ||
+                uiState.actionGo == HexaActions.FLASHLIGHT_OFF){
+                FlashlightControl(LocalContext.current, uiState.actionGo)
             }
 
 
@@ -158,7 +162,8 @@ fun ScreenUiContent(
                 ),
                 keyboardActions = KeyboardActions(
                     onDone = {
-
+                        onListDataValueChange.invoke()
+                        keyboardController?.hide()
                     }
                 ),
                 shape = MaterialTheme.shapes.small,
@@ -206,7 +211,7 @@ fun MediaBanner(
         modifier = Modifier
             .fillMaxWidth()
             .padding(dimensionResource(id = R.dimen.padding_regular_8dp))
-            .size(200.dp),
+            .size(182.dp),
         colors = CardDefaults.cardColors(Color.Black),
         shape = MaterialTheme.shapes.small.copy(all = CornerSize(
             dimensionResource(id = R.dimen.corner_radius_medium_8dp))
@@ -231,17 +236,30 @@ fun MediaBanner(
 }
 
 @Composable
-fun FlashlightControl(context: Context) {
+fun FlashlightControl(
+    context: Context,
+    actionGo: HexaActions
+) {
     var isFlashOn by remember { mutableStateOf(false) }
 
     val cameraManager = remember { context.getSystemService(Context.CAMERA_SERVICE) as CameraManager }
     val cameraId = remember { cameraManager.cameraIdList[0] }
 
-    try {
-        isFlashOn = !isFlashOn
-        cameraManager.setTorchMode(cameraId, isFlashOn)
-    } catch (e: CameraAccessException) {
-        e.printStackTrace()
+    if(actionGo == HexaActions.FLASHLIGHT_ON){
+        try {
+            isFlashOn = true
+            cameraManager.setTorchMode(cameraId, isFlashOn)
+        } catch (e: CameraAccessException) {
+            e.printStackTrace()
+        }
+    }
+    else{
+        try {
+            isFlashOn = false
+            cameraManager.setTorchMode(cameraId, isFlashOn)
+        } catch (e: CameraAccessException) {
+            e.printStackTrace()
+        }
     }
 
     Button(onClick = {
@@ -252,7 +270,7 @@ fun FlashlightControl(context: Context) {
             e.printStackTrace()
         }
     },
-        modifier = Modifier.padding(18.dp)) {
+        modifier = Modifier.padding(top = 32.dp)) {
         Text(if (isFlashOn) "Turn Off Flashlight" else "Turn On Flashlight")
     }
 }
