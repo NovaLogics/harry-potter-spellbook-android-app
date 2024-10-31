@@ -2,9 +2,9 @@ package novalogics.android.hexa.data.repository.fake
 
 import novalogics.android.hexa.data.database.entity.CharmsEntity
 
-object TestDataRepository {
+object PreviewDataRepository {
 
-    fun getTestCharmsEntity(): CharmsEntity {
+    fun getCharmsEntity(): CharmsEntity {
         return CharmsEntity(
             "a_aparecium",
             "Aparecium",
@@ -16,6 +16,22 @@ object TestDataRepository {
             "Latin 'appareo' meaning 'to appear'.",
             "Often used to read hidden or enchanted texts.",
             "A",
+            false
+        )
+    }
+
+    fun getEmptyCharmsEntity(): CharmsEntity {
+        return CharmsEntity(
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             false
         )
     }
