@@ -1,8 +1,9 @@
 package novalogics.android.hexa.ui.common.component
 
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,27 +20,24 @@ import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import novalogics.android.hexa.R
 import novalogics.android.hexa.data.database.entity.CharmsEntity
 import novalogics.android.hexa.data.repository.fake.TestDataRepository
 import novalogics.android.hexa.ui.common.textSizeResource
 import novalogics.android.hexa.ui.theme.SpellBookTheme
+import novalogics.android.hexa.util.Constants
 
 
 @Composable
 fun SpellBottomSheetContent(
     charm: CharmsEntity
 ) {
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -50,15 +48,63 @@ fun SpellBottomSheetContent(
                 start = dimensionResource(id = R.dimen.padding_medium_16dp),
                 end = dimensionResource(id = R.dimen.padding_medium_16dp)
             )
+            .background(colorScheme.surface)
     ) {
 
-        DisplayTextItem("Spell Name : ", charm.spellName)
+        DisplayTextItem(
+            "Spell Name : ",
+            charm.spellName
+        )
 
         Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.size_small_24dp)))
 
-        DisplayLongTextItem("Description : ", charm.description)
+        DisplayTextItem(
+            "Pronunciation: ",
+            charm.pronunciation
+        )
 
         Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.size_small_24dp)))
+
+        DisplayTextItem(
+            "Effect : ",
+            charm.effect
+        )
+
+        Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.size_small_24dp)))
+
+        DisplayTextItem(
+            "Spell Type : ",
+            charm.type
+        )
+
+        Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.size_small_24dp)))
+
+        DisplayTextItem(
+            "Light Color : ",
+            charm.lightColor
+        )
+
+        Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.size_small_24dp)))
+
+        DisplayLongTextItem(
+            "Description : ",
+            charm.description
+        )
+
+
+        Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.size_small_24dp)))
+
+        DisplayTextItem(
+            "Origin : ",
+            charm.origin ?: "N/A"
+        )
+
+        Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.size_small_24dp)))
+
+        DisplayTextItem(
+            "Notes : ",
+            charm.notes ?: "N/A"
+        )
 
     }
 }
@@ -72,8 +118,8 @@ fun DisplayTextItem(
     StyledText(
         stringValue = titleText,
         letterSpacing = R.dimen.letter_space_small_2dp,
-        style = typography.displayMedium,
-        fontSize = R.dimen.text_size_medium_16sp,
+        style = typography.displayLarge,
+        fontSize = R.dimen.text_size_small_14sp,
         color = colorScheme.onSecondaryContainer,
         modifier = Modifier
             .padding(bottom = dimensionResource(id = R.dimen.padding_regular_8dp))
@@ -92,7 +138,8 @@ fun DisplayTextItem(
             stringValue = stringValue,
             letterSpacing = R.dimen.letter_space_small_2dp,
             style = typography.displayMedium,
-            fontSize = R.dimen.text_size_medium_16sp,
+            fontWeight = FontWeight.Normal,
+            fontSize = R.dimen.text_size_large_18sp,
             color = colorScheme.onPrimaryContainer,
             modifier = Modifier
                 .padding(
@@ -112,8 +159,8 @@ fun DisplayLongTextItem(
     StyledText(
         stringValue = titleText,
         letterSpacing = R.dimen.letter_space_small_2dp,
-        style = typography.displayMedium,
-        fontSize = R.dimen.text_size_medium_16sp,
+        style = typography.displayLarge,
+        fontSize = R.dimen.text_size_small_14sp,
         color = colorScheme.onSecondaryContainer,
         modifier = Modifier
             .padding(bottom = dimensionResource(id = R.dimen.padding_regular_8dp))
@@ -130,8 +177,9 @@ fun DisplayLongTextItem(
     ) {
         Text(
             text = stringValue,
-            style = typography.bodyMedium,
-            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
+            style = typography.displayMedium,
+            fontWeight = FontWeight.Normal,
+            fontSize = textSizeResource(id = R.dimen.text_size_large_18sp),
             letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
             lineHeight = textSizeResource(id = R.dimen.text_size_xlarge_24sp),
             textAlign = TextAlign.Justify,
@@ -144,7 +192,16 @@ fun DisplayLongTextItem(
     }
 }
 
-@Preview(showSystemUi = true)
+@Preview(
+    name = Constants.MODE_LIGHT,
+    showBackground = true,
+    uiMode = UI_MODE_NIGHT_NO
+)
+@Preview(
+    name = Constants.MODE_NIGHT,
+    showBackground = true,
+    uiMode = UI_MODE_NIGHT_YES
+)
 @Composable
 fun BottomSheetPreview() {
     val charm = TestDataRepository.getTestCharmsEntity()
