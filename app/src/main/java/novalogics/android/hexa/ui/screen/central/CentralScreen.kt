@@ -38,12 +38,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
@@ -119,8 +123,15 @@ fun ScreenUiContent(
 
             StyledText(
                 stringValue = uiState.listData,
-                letterSpacing = R.dimen.letter_space_small_2dp,
-                style = typography.displayLarge,
+                letterSpacing = R.dimen.letter_space_small_1dp,
+                style = typography.displayLarge.copy(
+                    shadow = Shadow(
+                        color = colorScheme.onSurfaceVariant,
+                        offset = Offset(1.0f, 1.0f),
+                        blurRadius = 4f
+                    )
+                ),
+                fontWeight = FontWeight.Normal,
                 fontSize = R.dimen.text_size_large_20sp,
                 color = colorScheme.secondary,
                 modifier = Modifier
@@ -189,7 +200,13 @@ fun HeaderTitleText() {
     StyledText(
         stringResId = R.string.app_name_display,
         letterSpacing = R.dimen.letter_space_small_2dp,
-        style = typography.displayLarge,
+        style = typography.displayLarge.copy(
+            shadow = Shadow(
+                color = colorScheme.onSurface,
+                offset = Offset(1.0f, 1.0f),
+                blurRadius = 2f
+            )
+        ),
         fontSize = R.dimen.text_size_large_20sp,
         color = colorScheme.secondary,
         textAlign = TextAlign.Center,
@@ -197,6 +214,7 @@ fun HeaderTitleText() {
             .padding(
                 all = dimensionResource(id = R.dimen.padding_medium_16dp),
             )
+
     )
 }
 
