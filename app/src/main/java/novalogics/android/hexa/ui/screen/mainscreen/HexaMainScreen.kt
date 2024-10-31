@@ -10,11 +10,17 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material.ModalBottomSheetValue
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -26,6 +32,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import novalogics.android.hexa.R
 import novalogics.android.hexa.ui.common.component.LoadingScreen
+import novalogics.android.hexa.ui.common.component.SpellBottomSheetContent
 import novalogics.android.hexa.ui.navigation.AppScreens
 import novalogics.android.hexa.ui.screen.central.SpellCircleScreen
 import novalogics.android.hexa.ui.screen.mainscreen.component.BottomNavigationBar
@@ -34,6 +41,7 @@ import novalogics.android.hexa.ui.theme.SpellBookTheme
 import novalogics.android.hexa.util.Constants
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HexaMainScreen(
     navController: NavHostController = rememberNavController()
@@ -43,6 +51,15 @@ fun HexaMainScreen(
     var isLoading by remember { mutableStateOf(false) }
     val imeHeight = WindowInsets.ime.getBottom(LocalDensity.current)
     val keyboardVisible = imeHeight > 0
+
+    var openBottomSheet by rememberSaveable { mutableStateOf(false) }
+    var skipPartiallyExpanded by rememberSaveable { mutableStateOf(false) }
+    val bottomSheetState =
+        rememberModalBottomSheetState(
+            skipPartiallyExpanded = skipPartiallyExpanded
+        )
+
+
     Scaffold(
         bottomBar = {
             if (!keyboardVisible) { // Show bottom bar only if keyboard is not visible
@@ -84,6 +101,17 @@ fun HexaMainScreen(
 
             if (isLoading) {
                 LoadingScreen()
+            }
+
+            if (openBottomSheet) {
+
+                ModalBottomSheet(
+                    onDismissRequest = { openBottomSheet = false },
+                    sheetState = bottomSheetState,
+
+                    ) {
+                    SpellBottomSheetContent()
+                }
             }
         }
     }
