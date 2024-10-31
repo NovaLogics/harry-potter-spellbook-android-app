@@ -31,6 +31,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import novalogics.android.hexa.R
+import novalogics.android.hexa.data.database.entity.CharmsEntity
 import novalogics.android.hexa.ui.common.component.LoadingScreen
 import novalogics.android.hexa.ui.common.component.SpellBottomSheetContent
 import novalogics.android.hexa.ui.navigation.AppScreens
@@ -58,6 +59,7 @@ fun HexaMainScreen(
         rememberModalBottomSheetState(
             skipPartiallyExpanded = skipPartiallyExpanded
         )
+    var charmObj:CharmsEntity = CharmsEntity("","","<","","","<","","","<","",false)
 
 
     Scaffold(
@@ -94,7 +96,11 @@ fun HexaMainScreen(
 
                 composable(route = AppScreens.Charms.name) {
                     CharmsScreen(
-                        onLoadingChange = { loading -> isLoading = loading }
+                        onLoadingChange = { loading -> isLoading = loading },
+                        onBottomSheet = {entity ->
+                            charmObj = entity
+                            openBottomSheet = true
+                        }
                     )
                 }
             }
@@ -110,7 +116,7 @@ fun HexaMainScreen(
                     sheetState = bottomSheetState,
 
                     ) {
-                    SpellBottomSheetContent()
+                    SpellBottomSheetContent(charmObj)
                 }
             }
         }

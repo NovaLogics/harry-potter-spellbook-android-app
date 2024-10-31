@@ -45,6 +45,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import novalogics.android.hexa.R
+import novalogics.android.hexa.data.database.entity.CharmsEntity
 import novalogics.android.hexa.ui.common.textSizeResource
 import novalogics.android.hexa.ui.theme.SpellBookTheme
 
@@ -94,13 +95,15 @@ fun ModalBottomSheetSample() {
             sheetState = bottomSheetState,
 
         ) {
-            SpellBottomSheetContent()
+           // SpellBottomSheetContent()
         }
     }
 }
 
 @Composable
-fun SpellBottomSheetContent() {
+fun SpellBottomSheetContent(
+    charm: CharmsEntity
+) {
     Column(modifier = Modifier.padding(16.dp)) {
         Text(
             text = buildAnnotatedString {
@@ -108,7 +111,7 @@ fun SpellBottomSheetContent() {
                     append("Spell Name : ")
                 }
                 withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append("Accio")
+                    append(charm.spellName)
                 }
             },
             style = MaterialTheme.typography.titleLarge,
@@ -128,7 +131,7 @@ fun SpellBottomSheetContent() {
                     append("Description : ")
                 }
                 withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
-                    append("The Summoning Charm (Accio) allows the caster to summon objects toward themselves, either in direct line of sight or out of view, by calling the object's name aloud after the incantation (unless cast nonverbally). Successful casting requires the caster to have a clear mental image of the object. The charm's opposite is the Banishing Charm.")
+                    append(charm.description)
                 }
             },
             style = MaterialTheme.typography.bodyMedium,

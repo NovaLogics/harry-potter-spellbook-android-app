@@ -58,20 +58,23 @@ import java.util.Objects
 @Composable
 fun CharmsScreen(
     viewModel: CharmsViewModel = hiltViewModel(),
-    onLoadingChange: (Boolean) -> Unit
+    onLoadingChange: (Boolean) -> Unit,
+    onBottomSheet: (CharmsEntity) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
     onLoadingChange(uiState.isLoading)
 
     ScreenUiContent(
-        uiState = uiState
+        uiState = uiState,
+        onBottomSheet= onBottomSheet
     )
 }
 
 @Composable
 fun ScreenUiContent(
-    uiState: CharmsUiState
+    uiState: CharmsUiState,
+    onBottomSheet: (CharmsEntity) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -93,7 +96,10 @@ fun ScreenUiContent(
                     if (spell.isSection) {
                         SectionHeader(stringResource(id = R.string.section_title, spell.section))
                     } else {
-                        SectionEntity(spell = spell)
+                        SectionEntity(
+                            spell = spell,
+                            onBottomSheet = onBottomSheet
+                        )
                     }
                 }
             }
@@ -136,7 +142,8 @@ fun SectionHeader(
 
 @Composable
 fun SectionEntity(
-    spell: CharmsEntity
+    spell: CharmsEntity,
+    onBottomSheet: (CharmsEntity) -> Unit
 ) {
     ElevatedCard(
         modifier = Modifier
@@ -152,7 +159,8 @@ fun SectionEntity(
             defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
         ),
         shape = MaterialTheme.shapes.large,
-        colors = CardDefaults.cardColors(colorScheme.surface)
+        colors = CardDefaults.cardColors(colorScheme.surface),
+        onClick = {onBottomSheet(spell)}
     ) {
         Row(
             modifier = Modifier
@@ -273,7 +281,8 @@ private fun HomeScreenPreview() {
 
     SpellBookTheme {
         ScreenUiContent(
-            uiState = uiStateTestData
+            uiState = uiStateTestData,
+            {}
         )
     }
 }
