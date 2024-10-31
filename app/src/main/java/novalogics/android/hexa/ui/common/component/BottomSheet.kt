@@ -37,7 +37,6 @@ import novalogics.android.hexa.util.Constants
 fun SpellBottomSheetContent(
     charm: CharmsEntity
 ) {
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -48,7 +47,7 @@ fun SpellBottomSheetContent(
                 start = dimensionResource(id = R.dimen.padding_medium_16dp),
                 end = dimensionResource(id = R.dimen.padding_medium_16dp)
             )
-            .background(colorScheme.surface)
+
     ) {
 
         DisplayTextItem(
@@ -129,7 +128,7 @@ fun DisplayTextItem(
         modifier = Modifier
             .fillMaxWidth(),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
+            defaultElevation = dimensionResource(id = R.dimen.elevation_small_1dp)
         ),
         shape = MaterialTheme.shapes.small,
         colors = CardDefaults.cardColors(colorScheme.surface),
@@ -170,7 +169,7 @@ fun DisplayLongTextItem(
         modifier = Modifier
             .fillMaxWidth(),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
+            defaultElevation = dimensionResource(id = R.dimen.elevation_small_1dp)
         ),
         shape = MaterialTheme.shapes.small,
         colors = CardDefaults.cardColors(colorScheme.surface),

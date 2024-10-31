@@ -34,6 +34,7 @@
     <dimen name="text_size_title_32sp">32sp</dimen>
 
     <!-- Elevation -->
+    <dimen name="elevation_small_1dp">1dp</dimen>
     <dimen name="elevation_small_2dp">2dp</dimen>
     <dimen name="elevation_medium_4dp">4dp</dimen>
     <dimen name="elevation_large_8dp">8dp</dimen>

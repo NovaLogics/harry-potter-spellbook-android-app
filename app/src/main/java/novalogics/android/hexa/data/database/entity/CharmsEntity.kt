@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+
 @Entity(tableName = "charms")
 data class CharmsEntity(
     @PrimaryKey

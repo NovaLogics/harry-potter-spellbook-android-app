@@ -34,7 +34,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -43,23 +42,19 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.hexa.R
-import novalogics.android.hexa.data.database.dao.CharmsDao
 import novalogics.android.hexa.data.database.entity.CharmsEntity
-import novalogics.android.hexa.data.model.Spell
-import novalogics.android.hexa.data.repository.LocalDataSource
 import novalogics.android.hexa.ui.common.component.CustomHeaderComponent
 import novalogics.android.hexa.ui.common.component.StyledText
 import novalogics.android.hexa.ui.common.textSizeResource
 import novalogics.android.hexa.ui.theme.SpellBookTheme
 import novalogics.android.hexa.util.Constants
-import java.util.Objects
 
 
 @Composable
 fun CharmsScreen(
     viewModel: CharmsViewModel = hiltViewModel(),
     onLoadingChange: (Boolean) -> Unit,
-    onBottomSheet: (CharmsEntity) -> Unit
+    onDisplayInSheet: (CharmsEntity) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -67,14 +62,14 @@ fun CharmsScreen(
 
     ScreenUiContent(
         uiState = uiState,
-        onBottomSheet= onBottomSheet
+        onBottomSheetDataDisplay = onDisplayInSheet
     )
 }
 
 @Composable
 fun ScreenUiContent(
     uiState: CharmsUiState,
-    onBottomSheet: (CharmsEntity) -> Unit
+    onBottomSheetDataDisplay: (CharmsEntity) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -98,7 +93,7 @@ fun ScreenUiContent(
                     } else {
                         SectionEntity(
                             spell = spell,
-                            onBottomSheet = onBottomSheet
+                            onBottomSheetDataDisplay = onBottomSheetDataDisplay
                         )
                     }
                 }
@@ -143,7 +138,7 @@ fun SectionHeader(
 @Composable
 fun SectionEntity(
     spell: CharmsEntity,
-    onBottomSheet: (CharmsEntity) -> Unit
+    onBottomSheetDataDisplay: (CharmsEntity) -> Unit
 ) {
     ElevatedCard(
         modifier = Modifier
@@ -160,7 +155,7 @@ fun SectionEntity(
         ),
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(colorScheme.surface),
-        onClick = {onBottomSheet(spell)}
+        onClick = {onBottomSheetDataDisplay(spell)}
     ) {
         Row(
             modifier = Modifier
