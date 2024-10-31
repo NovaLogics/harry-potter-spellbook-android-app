@@ -8,6 +8,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import novalogics.android.hexa.data.database.dao.CharmsDao
 import novalogics.android.hexa.data.repository.LocalDataSource
+import novalogics.android.hexa.ui.util.aiEngine.HexaAIEngine
 import javax.inject.Singleton
 
 
@@ -30,6 +31,17 @@ class AppModule {
         return LocalDataSource(
             context = context,
             charmsDao = charmsDao
+        )
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideHexaAIEngine(
+        @ApplicationContext context: Context
+    ): HexaAIEngine {
+        return HexaAIEngine(
+            context = context
         )
     }
 }

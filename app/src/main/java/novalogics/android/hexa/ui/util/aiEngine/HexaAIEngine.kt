@@ -1,11 +1,16 @@
 package novalogics.android.hexa.ui.util.aiEngine
 
+import android.content.Context
 import android.os.Build
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import javax.inject.Inject
 
-class HexaAIEngine {
+class HexaAIEngine @Inject constructor(
+    @ApplicationContext private val context: Context
+) {
 
     fun getResponse(userInput: String): String {
         return when {

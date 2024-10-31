@@ -9,11 +9,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import novalogics.android.hexa.data.repository.LocalDataSource
+import novalogics.android.hexa.ui.util.aiEngine.HexaAIEngine
 import javax.inject.Inject
 
 @HiltViewModel
 class CentralViewModel @Inject constructor(
-    private val repositoryOffline: LocalDataSource
+    private val repositoryOffline: LocalDataSource,
+    private val hexaAi : HexaAIEngine
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CentralUiState())
@@ -50,10 +52,6 @@ class CentralViewModel @Inject constructor(
         }
     }
 
-
-    fun updateTextFieldValue(newValue: String) {
-        _uiState.value = _uiState.value.copy(textFieldValue = newValue)
-    }
 
     fun updateListData() {
         val data = _uiState.value.textFieldValue
