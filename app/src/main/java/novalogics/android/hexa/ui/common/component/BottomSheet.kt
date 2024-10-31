@@ -4,9 +4,11 @@ package novalogics.android.hexa.ui.common.component
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CardDefaults
@@ -52,43 +54,12 @@ fun SpellBottomSheetContent(
 
         DisplayTextItem("Spell Name : ", charm.spellName)
 
-        Text(
-            text = buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
-                    append("Spell Name : ")
-                }
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append(charm.spellName)
-                }
-            },
-            style = MaterialTheme.typography.titleLarge,
-            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
-            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
-            modifier = Modifier
-                .padding(
-                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
-                )
-        )
+        Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.size_small_24dp)))
 
-        Text(
-            text = buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append("Description : ")
-                }
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
-                    append(charm.description)
-                }
-            },
-            style = MaterialTheme.typography.bodyMedium,
-            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
-            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
-            lineHeight = textSizeResource(id = R.dimen.text_size_xlarge_24sp),
-            textAlign = TextAlign.Justify,
-            modifier = Modifier
-                .padding(
-                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
-                )
-        )
+        DisplayLongTextItem("Description : ", charm.description)
+
+        Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.size_small_24dp)))
+
     }
 }
 
@@ -122,6 +93,48 @@ fun DisplayTextItem(
             letterSpacing = R.dimen.letter_space_small_2dp,
             style = typography.displayMedium,
             fontSize = R.dimen.text_size_medium_16sp,
+            color = colorScheme.onPrimaryContainer,
+            modifier = Modifier
+                .padding(
+                    all = dimensionResource(id = R.dimen.padding_regular_8dp)
+                )
+        )
+    }
+}
+
+
+@Composable
+fun DisplayLongTextItem(
+    titleText: String,
+    stringValue: String
+){
+
+    StyledText(
+        stringValue = titleText,
+        letterSpacing = R.dimen.letter_space_small_2dp,
+        style = typography.displayMedium,
+        fontSize = R.dimen.text_size_medium_16sp,
+        color = colorScheme.onSecondaryContainer,
+        modifier = Modifier
+            .padding(bottom = dimensionResource(id = R.dimen.padding_regular_8dp))
+    )
+
+    ElevatedCard(
+        modifier = Modifier
+            .fillMaxWidth(),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
+        ),
+        shape = MaterialTheme.shapes.small,
+        colors = CardDefaults.cardColors(colorScheme.surface),
+    ) {
+        Text(
+            text = stringValue,
+            style = typography.bodyMedium,
+            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
+            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
+            lineHeight = textSizeResource(id = R.dimen.text_size_xlarge_24sp),
+            textAlign = TextAlign.Justify,
             color = colorScheme.onPrimaryContainer,
             modifier = Modifier
                 .padding(
