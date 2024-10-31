@@ -93,16 +93,16 @@ fun SpellBottomSheetContent(
 
         Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.size_small_24dp)))
 
-        DisplayTextItem(
+        DisplayLongTextItem(
             "Origin : ",
-            charm.origin ?: "N/A"
+            if(charm.origin.isNullOrEmpty()) "N/A" else charm.origin
         )
 
         Spacer(modifier = Modifier.size(dimensionResource(id = R.dimen.size_small_24dp)))
 
-        DisplayTextItem(
+        DisplayLongTextItem(
             "Notes : ",
-            charm.notes ?: "N/A"
+            if(charm.notes.isNullOrEmpty()) "N/A" else charm.notes
         )
 
     }
@@ -118,7 +118,7 @@ fun DisplayTextItem(
         stringValue = titleText,
         letterSpacing = R.dimen.letter_space_small_2dp,
         style = typography.displayLarge,
-        fontSize = R.dimen.text_size_small_14sp,
+        fontSize = R.dimen.text_size_medium_16sp,
         color = colorScheme.onSecondaryContainer,
         modifier = Modifier
             .padding(bottom = dimensionResource(id = R.dimen.padding_regular_8dp))
@@ -135,14 +135,16 @@ fun DisplayTextItem(
     ) {
         StyledText(
             stringValue = stringValue,
-            letterSpacing = R.dimen.letter_space_small_2dp,
             style = typography.displayMedium,
-            fontWeight = FontWeight.Normal,
-            fontSize = R.dimen.text_size_large_18sp,
+            fontWeight = FontWeight.Bold,
+            fontSize = R.dimen.text_size_large_20sp,
             color = colorScheme.onPrimaryContainer,
             modifier = Modifier
                 .padding(
-                    all = dimensionResource(id = R.dimen.padding_regular_8dp)
+                    top = dimensionResource(id = R.dimen.padding_regular_12dp),
+                    bottom = dimensionResource(id = R.dimen.padding_regular_12dp),
+                    start = dimensionResource(id = R.dimen.padding_regular_8dp),
+                    end = dimensionResource(id = R.dimen.padding_regular_8dp)
                 )
         )
     }
@@ -159,7 +161,7 @@ fun DisplayLongTextItem(
         stringValue = titleText,
         letterSpacing = R.dimen.letter_space_small_2dp,
         style = typography.displayLarge,
-        fontSize = R.dimen.text_size_small_14sp,
+        fontSize = R.dimen.text_size_medium_16sp,
         color = colorScheme.onSecondaryContainer,
         modifier = Modifier
             .padding(bottom = dimensionResource(id = R.dimen.padding_regular_8dp))
@@ -177,15 +179,18 @@ fun DisplayLongTextItem(
         Text(
             text = stringValue,
             style = typography.displayMedium,
-            fontWeight = FontWeight.Normal,
-            fontSize = textSizeResource(id = R.dimen.text_size_large_18sp),
+            fontWeight = FontWeight.Bold,
+            fontSize = textSizeResource(id = R.dimen.text_size_large_20sp),
             letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
-            lineHeight = textSizeResource(id = R.dimen.text_size_xlarge_24sp),
+            lineHeight = textSizeResource(id = R.dimen.text_size_xlarge_28sp),
             textAlign = TextAlign.Justify,
             color = colorScheme.onPrimaryContainer,
             modifier = Modifier
                 .padding(
-                    all = dimensionResource(id = R.dimen.padding_regular_8dp)
+                    top = dimensionResource(id = R.dimen.padding_regular_12dp),
+                    bottom = dimensionResource(id = R.dimen.padding_regular_12dp),
+                    start = dimensionResource(id = R.dimen.padding_regular_8dp),
+                    end = dimensionResource(id = R.dimen.padding_regular_8dp)
                 )
         )
     }

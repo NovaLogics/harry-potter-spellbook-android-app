@@ -31,6 +31,7 @@
     <dimen name="text_size_large_18sp">18sp</dimen>
     <dimen name="text_size_large_20sp">20sp</dimen>
     <dimen name="text_size_xlarge_24sp">24sp</dimen>
+    <dimen name="text_size_xlarge_28sp">28sp</dimen>
     <dimen name="text_size_title_32sp">32sp</dimen>
 
     <!-- Elevation -->
