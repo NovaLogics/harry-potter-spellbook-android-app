@@ -1,12 +1,19 @@
 package novalogics.android.hexa.ui.common.component
 
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.colorScheme
+import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -42,6 +49,9 @@ fun SpellBottomSheetContent(
                 end = dimensionResource(id = R.dimen.padding_medium_16dp)
             )
     ) {
+
+        DisplayTextItem("Spell Name : ", charm.spellName)
+
         Text(
             text = buildAnnotatedString {
                 withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
@@ -82,6 +92,44 @@ fun SpellBottomSheetContent(
     }
 }
 
+@Composable
+fun DisplayTextItem(
+    titleText: String,
+    stringValue: String
+){
+
+    StyledText(
+        stringValue = titleText,
+        letterSpacing = R.dimen.letter_space_small_2dp,
+        style = typography.displayMedium,
+        fontSize = R.dimen.text_size_medium_16sp,
+        color = colorScheme.onSecondaryContainer,
+        modifier = Modifier
+            .padding(bottom = dimensionResource(id = R.dimen.padding_regular_8dp))
+    )
+
+    ElevatedCard(
+        modifier = Modifier
+            .fillMaxWidth(),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
+        ),
+        shape = MaterialTheme.shapes.small,
+        colors = CardDefaults.cardColors(colorScheme.surface),
+    ) {
+        StyledText(
+            stringValue = stringValue,
+            letterSpacing = R.dimen.letter_space_small_2dp,
+            style = typography.displayMedium,
+            fontSize = R.dimen.text_size_medium_16sp,
+            color = colorScheme.onPrimaryContainer,
+            modifier = Modifier
+                .padding(
+                    all = dimensionResource(id = R.dimen.padding_regular_8dp)
+                )
+        )
+    }
+}
 
 @Preview(showSystemUi = true)
 @Composable
