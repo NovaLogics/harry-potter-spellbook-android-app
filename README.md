@@ -1,5 +1,5 @@
 <h1 align="center" >  
-Harry's SpellBook  <br> ♨ [ ᴀɴᴅʀᴏɪᴅ  ᴘʀᴏᴊᴇᴄᴛ ] ♨
+HEXA  <br> ♨ [ ᴀɴᴅʀᴏɪᴅ  ᴘʀᴏᴊᴇᴄᴛ ] ♨
 </h1>
 
 ## ɪ  ⁃  ᴘʀᴏᴊᴇᴄᴛ ɪɴꜰᴏ
@@ -26,6 +26,48 @@ An Android app that brings Harry Potter's magic to life with voice-activated spe
 <br>
 <br>
 
-<img src="./_assets/screenshots/alpha_main_light.png" width="320" height="720" />
+<img src="./_assets/screenshots/home_light.png" width="320" height="720" />
 <img src="./_assets/screenshots/alpha_main_dark.png" width="320" height="720" />
 </div>
+
+<br>
+
+##  ᴠɪꜱᴜᴀʟ ᴛᴏᴜʀ ᴏꜰ ᴛʜᴇ ᴀᴘᴘ: ꜱᴄʀᴇᴇɴꜱ
+
+<p align="center">
+<img 
+  src="./_assets/screenshots/home_light.png" 
+   width="210" height="460" 
+  />
+<img 
+  src="./_assets/screenshots/home_dark.png" 
+  width="210" height="460" 
+  />
+<img
+    src="./_assets/screenshots/spells_light.png"
+    width="210" height="460"
+  />
+<img
+    src="./_assets/screenshots/spell_details_light.png"
+    width="210" height="460"
+  />
+<img
+    src="./_assets/screenshots/alpha_main_light.png"
+    width="210" height="460"
+  />
+<img
+    src="./_assets/screenshots/alpha_main_dark.png"
+    width="210" height="460"
+  />
+</p>
+
+
+#
+<div align="center">
+
+
+![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
+![ForTheBadge ANDROID](https://forthebadge.com/images/badges/built-for-android.svg)
+![ForTheBadge GIT](https://forthebadge.com/images/badges/uses-git.svg)
+
+  <br>
