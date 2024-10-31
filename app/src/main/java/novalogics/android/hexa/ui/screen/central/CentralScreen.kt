@@ -20,7 +20,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.MaterialTheme.typography
@@ -38,12 +37,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -51,11 +46,9 @@ import coil.compose.rememberAsyncImagePainter
 import coil.decode.GifDecoder
 import coil.request.ImageRequest
 import novalogics.android.hexa.R
-import novalogics.android.hexa.data.database.entity.CharmsEntity
 import novalogics.android.hexa.ui.common.component.CustomHeaderComponent
 import novalogics.android.hexa.ui.common.component.StyledText
 import novalogics.android.hexa.ui.common.component.TypewriteText
-import novalogics.android.hexa.ui.common.textSizeResource
 import novalogics.android.hexa.ui.theme.SpellBookTheme
 import novalogics.android.hexa.util.Constants
 
@@ -131,7 +124,7 @@ fun ScreenUiContent(
                     )
             )
 
-            CharmData()
+
 
         }
         CustomHeaderComponent()
@@ -189,186 +182,6 @@ fun HeaderTitleText() {
     )
 }
 
-@Composable
-fun CharmData(
- //   charm: CharmsEntity = CharmsEntity()
-) {
-    Column (
-        horizontalAlignment = Alignment.Start,
-        modifier = Modifier.fillMaxWidth()
-    ){
-
-        Text(
-            text = buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
-                    append("Spell Name : ")
-                }
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append("Accio")
-                }
-            },
-            style = typography.displaySmall,
-            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
-            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
-            modifier = Modifier
-                .padding(
-                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
-                )
-        )
-
-        Text(
-            text = buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append("Description : ")
-                }
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
-                    append("The Summoning Charm (Accio) allows the caster to summon objects toward themselves, either in direct line of sight or out of view, by calling the object's name aloud after the incantation (unless cast nonverbally). Successful casting requires the caster to have a clear mental image of the object. The charm's opposite is the Banishing Charm.")
-                }
-            },
-            style = typography.displaySmall,
-            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
-            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
-            lineHeight = textSizeResource(id = R.dimen.text_size_xlarge_24sp),
-            textAlign = TextAlign.Justify,
-            modifier = Modifier
-                .padding(
-                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
-                )
-
-        )
-
-
-        Text(
-            text = buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
-                    append("Type : ")
-                }
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append("Charm")
-                }
-            },
-            style = typography.displaySmall,
-            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
-            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
-            modifier = Modifier
-                .padding(
-                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
-                )
-        )
-
-        Text(
-            text = buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
-                    append("Light Color : ")
-                }
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append("None")
-                }
-            },
-            style = typography.displaySmall,
-            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
-            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
-            modifier = Modifier
-                .padding(
-                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
-                )
-        )
-
-        Text(
-            text = buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
-                    append("Pronunciation : ")
-                }
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append("Various, including: AK-ee-oh, AK-see-oh, AS-see-oh (US), and AT-chee-oh (Anglo-Catholic pronunciation)")
-                }
-            },
-            style = typography.displaySmall,
-            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
-            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
-            modifier = Modifier
-                .padding(
-                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
-                )
-        )
-
-
-        Text(
-            text = buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
-                    append("Effect : ")
-                }
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append("Summons an object from a distance")
-                }
-            },
-            style = typography.displaySmall,
-            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
-            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
-            modifier = Modifier
-                .padding(
-                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
-                )
-        )
-
-        Text(
-            text = buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
-                    append("Origin : ")
-                }
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append("The Latin word accio means \"I call\" or \"I summon\".")
-                }
-            },
-            style = typography.displaySmall,
-            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
-            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
-            modifier = Modifier
-                .padding(
-                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
-                )
-        )
-
-
-        Text(
-            text = buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
-                    append("Notes : ")
-                }
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append("The Summoning Charm could not be used on buildings. In addition, it did not work on most living things, and those few on which it did were generally not considered worth Summoning, such as flobberworms.")
-                }
-            },
-            style = typography.displaySmall,
-            fontSize = textSizeResource(id = R.dimen.text_size_medium_16sp),
-            letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
-            lineHeight = textSizeResource(id = R.dimen.text_size_xlarge_24sp),
-            textAlign = TextAlign.Justify,
-            modifier = Modifier
-                .padding(
-                    start = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    end = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    bottom = dimensionResource(id = R.dimen.padding_small_4dp)
-                )
-        )
-
-
-    }
-}
 
 
 
