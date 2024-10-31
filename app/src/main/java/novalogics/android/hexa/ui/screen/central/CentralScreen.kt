@@ -120,8 +120,8 @@ fun ScreenUiContent(
             StyledText(
                 stringValue = uiState.listData,
                 letterSpacing = R.dimen.letter_space_small_2dp,
-                style = typography.displaySmall,
-                fontSize = R.dimen.text_size_large_18sp,
+                style = typography.displayLarge,
+                fontSize = R.dimen.text_size_large_20sp,
                 color = colorScheme.secondary,
                 modifier = Modifier
                     .padding(
@@ -131,7 +131,8 @@ fun ScreenUiContent(
 
             TypewriteText(
                 text = uiState.dataAiValue,
-                style = typography.displayMedium
+                style = typography.displayMedium,
+                modifier = Modifier.padding(16.dp)
             )
 
             if(uiState.actionGo == HexaActions.FLASHLIGHT_ON ||
@@ -166,7 +167,7 @@ fun ScreenUiContent(
                         keyboardController?.hide()
                     }
                 ),
-                shape = MaterialTheme.shapes.small,
+                shape = MaterialTheme.shapes.small.copy(all = CornerSize(16.dp)),
                 colors = TextFieldDefaults.colors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
@@ -176,7 +177,7 @@ fun ScreenUiContent(
                     .padding(end = 8.dp)
             )
             Button(onClick = onListDataValueChange) {
-                Text("Submit")
+                Text("Send")
             }
         }
     }
