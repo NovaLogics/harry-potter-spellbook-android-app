@@ -12,22 +12,34 @@ class HexaAIEngine @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
 
+    var actionGo = ""
+
     fun getResponse(userInput: String): String {
-        return when {
+        actionGo = ""
+
+         when {
             userInput.contains("hi", ignoreCase = true) ||
             userInput.contains("hey", ignoreCase = true) ||
-             userInput.contains("hello", ignoreCase = true) -> "Hello! How can I assist you today?"
+             userInput.contains("hello", ignoreCase = true) -> return "Hello! How can I assist you today?"
 
             userInput.contains("im good", ignoreCase = true) ||
                     userInput.contains("nice", ignoreCase = true) ||
-                    userInput.contains("good", ignoreCase = true) -> "It\'s good to hear that! "
+                    userInput.contains("good", ignoreCase = true) -> return "It\'s good to hear that! "
 
-            userInput.contains("help", ignoreCase = true) -> "I can help you with simple tasks. Try asking me something!"
-            userInput.contains("time", ignoreCase = true) -> getCurrentTime()
-            userInput.contains("bye", ignoreCase = true) -> "Goodbye! Have a great day!"
-            else -> "I'm here to chat. Feel free to ask me anything!"
+            userInput.contains("help", ignoreCase = true) -> return "I can help you with simple tasks. Try asking me something!"
+            userInput.contains("time", ignoreCase = true) -> return getCurrentTime()
+            userInput.contains("lumos", ignoreCase = true) -> {
+                actionGo = "flash"
+                return "Flashlight : On - turn off -> Nox"}
+             userInput.contains("nox", ignoreCase = true) -> {
+                 actionGo = "flash"
+                 return "Flashlight : Off"}
+            userInput.contains("bye", ignoreCase = true) -> return "Goodbye! Have a great day!"
+            else -> return "I'm here to chat. Feel free to ask me anything!"
         }
     }
+
+    fun getAction() = actionGo
 
     private fun getCurrentTime(): String {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

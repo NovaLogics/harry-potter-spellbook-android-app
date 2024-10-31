@@ -55,6 +55,12 @@ class CentralViewModel @Inject constructor(
     fun updateListData() {
         val data = _uiState.value.textFieldValue
         val response = hexaAi.getResponse(data)
-        _uiState.value = _uiState.value.copy(listData = data, dataAiValue = response, textFieldValue = "")
+        val action = hexaAi.getAction()
+        _uiState.value = _uiState.value.copy(
+            listData = data,
+            actionGo = action,
+            dataAiValue = response,
+            textFieldValue = ""
+        )
     }
 }
