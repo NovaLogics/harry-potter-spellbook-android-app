@@ -38,7 +38,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
@@ -47,6 +46,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -91,7 +91,6 @@ fun SpellCircleScreen(
 }
 
 
-
 @Composable
 fun ScreenUiContent(
     uiState : CentralUiState,
@@ -113,10 +112,13 @@ fun ScreenUiContent(
                 .fillMaxSize()
                 .verticalScroll(scrollState)
                 .padding(
-                    top = 8.dp, bottom = 80.dp)
+                    top = dimensionResource(id = R.dimen.padding_regular_8dp),
+                    bottom = dimensionResource(id = R.dimen.padding_xlarge_32dp)
+                )
         ) {
 
             HeaderTitleText()
+
             MediaBanner(
                 drawableResId = R.drawable.img_harry_friends
             )
@@ -143,14 +145,17 @@ fun ScreenUiContent(
             TypewriteText(
                 text = uiState.dataAiValue,
                 style = typography.displayMedium,
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_medium_16dp))
             )
 
-            if(uiState.actionGo == HexaActions.FLASHLIGHT_ON ||
-                uiState.actionGo == HexaActions.FLASHLIGHT_OFF){
-                FlashlightControl(LocalContext.current, uiState.actionGo)
+            if (uiState.actionGo == HexaActions.FLASHLIGHT_ON ||
+                uiState.actionGo == HexaActions.FLASHLIGHT_OFF
+            ) {
+                FlashlightControl(
+                    context = LocalContext.current,
+                    actionGo = uiState.actionGo
+                )
             }
-
 
 
         }
@@ -160,7 +165,7 @@ fun ScreenUiContent(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(all = dimensionResource(id = R.dimen.padding_medium_16dp))
                 .background(colorScheme.background),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -178,20 +183,22 @@ fun ScreenUiContent(
                         keyboardController?.hide()
                     }
                 ),
-                shape = MaterialTheme.shapes.small.copy(all = CornerSize(16.dp)),
+                shape = MaterialTheme.shapes.small.copy(
+                    all = CornerSize(dimensionResource(id = R.dimen.size_xsmall_16dp))
+                ),
                 colors = TextFieldDefaults.colors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
                 ),
                 modifier = Modifier
                     .weight(1f)
-                    .padding(end = 8.dp)
+                    .padding(end = dimensionResource(id = R.dimen.padding_regular_8dp))
             )
             Button(onClick = {
                 onListDataValueChange.invoke()
                 keyboardController?.hide()
             }) {
-                Text("Send")
+                Text(text = stringResource(id = R.string.send))
             }
         }
     }
@@ -214,15 +221,10 @@ fun HeaderTitleText() {
         color = colorScheme.secondary,
         textAlign = TextAlign.Center,
         modifier = Modifier
-            .padding(
-                all = dimensionResource(id = R.dimen.padding_medium_16dp),
-            )
+            .padding(all = dimensionResource(id = R.dimen.padding_medium_16dp))
 
     )
 }
-
-
-
 
 @Composable
 fun MediaBanner(
@@ -285,13 +287,11 @@ fun FlashlightControl(
                 e.printStackTrace()
             }
         },
-        modifier = Modifier.padding(top = 32.dp)
+        modifier = Modifier.padding(top = dimensionResource(id = R.dimen.padding_xlarge_32dp))
     ) {
         Text(if (isFlashOn) "Turn Off Flashlight" else "Turn On Flashlight")
     }
 }
-
-
 
 @Preview(
     name = Constants.MODE_LIGHT,
@@ -308,7 +308,8 @@ private fun SpellCircleScreenPreview() {
 
     val uiState = CentralUiState(
         listData = "> Lumos",
-        dataAiValue = "Welcome to Home")
+        dataAiValue = "Welcome to Home"
+    )
 
     SpellBookTheme {
 

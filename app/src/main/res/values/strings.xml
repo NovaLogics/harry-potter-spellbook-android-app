@@ -10,6 +10,8 @@
     <string name="light_value">Light : %s</string>
     <string name="type_value">Type : %s</string>
 
+    <string name="send">Send</string>
+
     <string name="please_wait">Please Wait…</string>
 
     <string-array name="tab_items">
