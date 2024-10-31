@@ -2,7 +2,6 @@ package novalogics.android.hexa.ui.screen.mainscreen
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,7 +30,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import novalogics.android.hexa.R
-import novalogics.android.hexa.data.repository.fake.TestDataRepository
+import novalogics.android.hexa.data.repository.fake.PreviewDataRepository
 import novalogics.android.hexa.ui.common.component.LoadingScreen
 import novalogics.android.hexa.ui.common.component.SpellBottomSheetContent
 import novalogics.android.hexa.ui.navigation.AppScreens
@@ -50,17 +49,16 @@ fun HexaMainScreen(
     val context = LocalContext.current
     val tabItems = context.resources.getStringArray(R.array.tab_items).toList()
     var isLoading by remember { mutableStateOf(false) }
-    val imeHeight = WindowInsets.ime.getBottom(LocalDensity.current)
-    val keyboardVisible = imeHeight > 0
+    val keyboardVisible = (WindowInsets.ime.getBottom(LocalDensity.current) ) > 0
 
     var openBottomSheet by rememberSaveable { mutableStateOf(false) }
-    var skipPartiallyExpanded by rememberSaveable { mutableStateOf(false) }
-    val bottomSheetState =
-        rememberModalBottomSheetState(
-            skipPartiallyExpanded = skipPartiallyExpanded
-        )
+    val skipPartiallyExpanded by rememberSaveable { mutableStateOf(false) }
+    val bottomSheetState = rememberModalBottomSheetState(
+        skipPartiallyExpanded = skipPartiallyExpanded
+    )
 
-    var selectedSpell  by remember { mutableStateOf(mutableStateOf(TestDataRepository.getTestCharmsEntity()) )}
+    val charmsEntity = PreviewDataRepository.getEmptyCharmsEntity()
+    var selectedSpell  by remember { mutableStateOf( charmsEntity )}
 
     Scaffold(
         bottomBar = {
@@ -98,7 +96,7 @@ fun HexaMainScreen(
                     CharmsScreen(
                         onLoadingChange = { loading -> isLoading = loading },
                         onDisplayInSheet = { entity ->
-                            selectedSpell.value = entity
+                            selectedSpell = entity
                             openBottomSheet = true
                         }
                     )
@@ -115,7 +113,7 @@ fun HexaMainScreen(
                     sheetState = bottomSheetState,
                     containerColor = MaterialTheme.colorScheme.background
                     ) {
-                    SpellBottomSheetContent(selectedSpell.value)
+                    SpellBottomSheetContent(selectedSpell)
                 }
             }
         }

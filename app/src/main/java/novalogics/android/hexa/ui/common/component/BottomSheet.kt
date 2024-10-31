@@ -3,7 +3,6 @@ package novalogics.android.hexa.ui.common.component
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,7 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import novalogics.android.hexa.R
 import novalogics.android.hexa.data.database.entity.CharmsEntity
-import novalogics.android.hexa.data.repository.fake.TestDataRepository
+import novalogics.android.hexa.data.repository.fake.PreviewDataRepository
 import novalogics.android.hexa.ui.common.textSizeResource
 import novalogics.android.hexa.ui.theme.SpellBookTheme
 import novalogics.android.hexa.util.Constants
@@ -208,7 +207,7 @@ fun DisplayLongTextItem(
 )
 @Composable
 fun BottomSheetPreview() {
-    val charm = TestDataRepository.getTestCharmsEntity()
+    val charm = PreviewDataRepository.getCharmsEntity()
 
     SpellBookTheme {
         Surface {
