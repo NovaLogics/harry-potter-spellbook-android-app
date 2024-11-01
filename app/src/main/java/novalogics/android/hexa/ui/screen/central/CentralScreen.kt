@@ -241,14 +241,15 @@ fun MediaBanner(
             dimensionResource(id = R.dimen.corner_radius_medium_8dp))
         ),
     ) {
-        val painter = rememberAsyncImagePainter(
+        val painterGif = rememberAsyncImagePainter(
             ImageRequest.Builder(LocalContext.current)
                 .data(R.drawable.harry_potter_home)
                 .decoderFactory(GifDecoder.Factory())
                 .build()
         )
+        val painterImage = painterResource(id = drawableResId)
         Image(
-            painter = painterResource(id = drawableResId),
+            painter = painterImage,
             contentDescription = "Animated GIF",
             modifier = Modifier
                 .fillMaxWidth()
