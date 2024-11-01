@@ -26,7 +26,7 @@ object DatabaseModule {
     }
 
     @Provides
-    fun provideYourDao(database: HexaDatabase): CharmsDao {
+    fun provideCharmsDao(database: HexaDatabase): CharmsDao {
         return database.charmsDao()
     }
 }
