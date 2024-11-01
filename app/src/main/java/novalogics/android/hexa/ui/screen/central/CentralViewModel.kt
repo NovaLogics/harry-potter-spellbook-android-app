@@ -9,12 +9,14 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import novalogics.android.hexa.data.repository.LocalDataSource
 import novalogics.android.hexa.ui.util.aiEngine.HexaAIEngine
+import novalogics.android.hexa.ui.util.devicemanager.DeviceManagerUtil
 import javax.inject.Inject
 
 @HiltViewModel
 class CentralViewModel @Inject constructor(
     private val repositoryOffline: LocalDataSource,
-    private val hexaAi : HexaAIEngine
+    private val hexaAi : HexaAIEngine,
+    private val deviceManager: DeviceManagerUtil
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CentralUiState())
