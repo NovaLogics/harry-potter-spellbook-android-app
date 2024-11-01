@@ -22,13 +22,13 @@ class HexaAIEngine @Inject constructor(
             userInput.contains("hi", ignoreCase = true) ||
                     userInput.contains("hey", ignoreCase = true) ||
                     userInput.contains("hello", ignoreCase = true) -> {
-                return "Hello! How can I assist you today?"
+                return "Hey! Let's make some magic together. \nHow can Hexa assist?"
             }
 
             userInput.contains("im good", ignoreCase = true) ||
                     userInput.contains("nice", ignoreCase = true) ||
                     userInput.contains("good", ignoreCase = true) -> {
-                return "It\'s good to hear that! "
+                return "Glad to hear you're feeling great! What would you like to do next?"
             }
 
             userInput.contains("help", ignoreCase = true) -> {
@@ -37,6 +37,10 @@ class HexaAIEngine @Inject constructor(
 
             userInput.contains("time", ignoreCase = true) -> {
                 return getCurrentTime()
+            }
+
+            userInput.contains("guide", ignoreCase = true) -> {
+                return "Sure! Hexa is here to guide you! \n🔮 Here, you can explore \nHogwarts Magic. \nTry typing or saying 'Lumos' to practice it will cast light ✨\n(and turn on your device's flashlight). \nWhen you’re ready to end the spell, just say 'Nox' to turn it off."
             }
 
             userInput.contains("lumos", ignoreCase = true) -> {
