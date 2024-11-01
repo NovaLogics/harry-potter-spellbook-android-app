@@ -112,7 +112,7 @@ fun SectionHeader(
     ) {
 
         Image(
-            painter = painterResource(id = R.drawable.element_bookmark_purple),
+            painter = painterResource(id = R.drawable.img_element_bookmark_purple),
             contentDescription = title,
             contentScale = ContentScale.FillBounds,
             alignment = Alignment.CenterStart,
