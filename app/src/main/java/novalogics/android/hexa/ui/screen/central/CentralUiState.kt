@@ -5,8 +5,8 @@ import novalogics.android.hexa.ui.util.aiEngine.HexaActions
 data class CentralUiState(
     val isLoading: Boolean = false,
     val dataAiValue: String = "✨ Welcome to Hexa! Your magical companion awaits. ✨",
-    val actionGo: HexaActions = HexaActions.NONE,
-    val listData: String = "",
+    val deviceHexaActions: HexaActions = HexaActions.NONE,
+    val userMessage: String = "",
     val textFieldValue: String = "",
     val error: String? = null
 )

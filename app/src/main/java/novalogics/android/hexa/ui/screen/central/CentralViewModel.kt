@@ -26,6 +26,7 @@ class CentralViewModel @Inject constructor(
         return when (intent) {
             is CentralIntent.LoadData -> currentState.copy(isLoading = true)
             is CentralIntent.UpdateTextField -> currentState.copy(textFieldValue = intent.newValue)
+            is CentralIntent.DeviceManagerActions -> currentState.copy(deviceHexaActions = intent.action)
             is CentralIntent.ClearError -> currentState.copy(error = null)
         }
     }
@@ -59,8 +60,8 @@ class CentralViewModel @Inject constructor(
         val response = hexaAi.getResponse(data)
         val action = hexaAi.getAction()
         _uiState.value = _uiState.value.copy(
-            listData = data,
-            actionGo = action,
+            userMessage = data,
+            deviceHexaActions = action,
             dataAiValue = response,
             textFieldValue = ""
         )

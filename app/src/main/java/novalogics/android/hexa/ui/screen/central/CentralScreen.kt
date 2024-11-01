@@ -124,7 +124,7 @@ fun ScreenUiContent(
             )
 
             StyledText(
-                stringValue = uiState.listData,
+                stringValue = uiState.userMessage,
                 letterSpacing = R.dimen.letter_space_small_2dp,
                 style = typography.displayLarge.copy(
                     shadow = Shadow(
@@ -148,12 +148,12 @@ fun ScreenUiContent(
                 modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_medium_16dp))
             )
 
-            if (uiState.actionGo == HexaActions.FLASHLIGHT_ON ||
-                uiState.actionGo == HexaActions.FLASHLIGHT_OFF
+            if (uiState.deviceHexaActions == HexaActions.FLASHLIGHT_ON ||
+                uiState.deviceHexaActions == HexaActions.FLASHLIGHT_OFF
             ) {
                 FlashlightControl(
                     context = LocalContext.current,
-                    actionGo = uiState.actionGo
+                    actionGo = uiState.deviceHexaActions
                 )
             }
 
@@ -308,7 +308,7 @@ fun FlashlightControl(
 private fun SpellCircleScreenPreview() {
 
     val uiState = CentralUiState(
-        listData = "> Lumos",
+        userMessage = "> Lumos",
         dataAiValue = "Welcome to Home"
     )
 
