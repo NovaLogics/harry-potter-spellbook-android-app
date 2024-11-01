@@ -3,6 +3,7 @@ package novalogics.android.hexa.ui.screen.central
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -22,6 +23,8 @@ class CentralViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow(CentralUiState())
     val uiState: StateFlow<CentralUiState> = _uiState
+
+    private var flashlightStatusJob: Job? = null
 
     private fun reduce(currentState: CentralUiState, intent: CentralIntent): CentralUiState {
         return when (intent) {
@@ -71,16 +74,42 @@ class CentralViewModel @Inject constructor(
 
     private fun deviceManagerActions(action : HexaActions) {
         when (action) {
-            HexaActions.NONE -> {}
-            HexaActions.FLASHLIGHT_ON -> handleFlashlightActions(action)
-            HexaActions.FLASHLIGHT_OFF -> handleFlashlightActions(action)
-            else -> {}
+            HexaActions.FLASHLIGHT_ON ,
+            HexaActions.FLASHLIGHT_OFF -> {
+                handleFlashlightActions(action)
+                handleFlashlightStatus()
+            }
+            else -> {
+                flashlightStatusJob?.cancel()
+                _uiState.update { currentUiState ->
+                    currentUiState.copy(
+                        deviceStatus = ""
+                    )
+                }
+            }
         }
     }
 
     private fun handleFlashlightActions(action : HexaActions) {
         val isFlashOn = (action == HexaActions.FLASHLIGHT_ON)
         deviceManager.deviceFlashlight(isFlashOn)
+    }
+
+    private  fun handleFlashlightStatus() {
+        flashlightStatusJob =  viewModelScope.launch {
+            deviceManager.getFlashlightStatus().collect {
+                isFlashlightOn ->
+
+                val status = if(isFlashlightOn) "ON" else "OFF"
+
+                _uiState.update { currentUiState ->
+                    currentUiState.copy(
+                        deviceStatus = status
+                    )
+                }
+            }
+        }
+
     }
 
 }
