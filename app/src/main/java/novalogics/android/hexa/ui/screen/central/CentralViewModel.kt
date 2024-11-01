@@ -56,10 +56,16 @@ class CentralViewModel @Inject constructor(
         }
     }
 
-    private fun formattedUserMessage(): String = "> ${_uiState.value.textFieldValue}"
+    private fun formattedUserMessage(): String {
+        val value = _uiState.value.textFieldValue
+        return if(value.isEmpty()) ""
+        else "> ${_uiState.value.textFieldValue}"
+    }
 
     private fun handleUserInputActions() {
         val userInput = _uiState.value.textFieldValue
+        if(userInput.isEmpty()) return
+
         val response = hexaAi.getResponse(userInput)
 
         handleIntent(CentralIntent.DeviceManagerActions(hexaAi.getAction()))
