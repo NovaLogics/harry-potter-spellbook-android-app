@@ -8,28 +8,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import novalogics.android.hexa.R
 
-val Klarissa = FontFamily(
-    Font(R.font.klarissa)
-)
-
-val Botanist = FontFamily(
-    Font(R.font.botanist)
-)
 
 val Religath = FontFamily(
     Font(R.font.religath)
 )
 
-val AbrilFatFace = FontFamily(
-    Font(R.font.abril_fatface_regular)
-)
-
 val Quicksand = FontFamily(
     Font(R.font.quicksand_medium)
-)
-
-val Dalmais = FontFamily(
-    Font(R.font.dalmais)
 )
 
 val Montserrat = FontFamily(

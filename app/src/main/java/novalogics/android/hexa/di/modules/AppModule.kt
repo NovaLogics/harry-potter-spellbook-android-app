@@ -8,7 +8,10 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import novalogics.android.hexa.data.database.dao.CharmsDao
 import novalogics.android.hexa.data.repository.LocalDataSource
+import novalogics.android.hexa.data.repository.LocalDataSourceImpl
 import novalogics.android.hexa.ui.util.aiEngine.HexaAIEngine
+import novalogics.android.hexa.ui.util.devicemanager.DeviceManagerUtil
+import novalogics.android.hexa.ui.util.devicemanager.DeviceManagerUtilImpl
 import javax.inject.Singleton
 
 
@@ -27,7 +30,7 @@ class AppModule {
     fun provideRepository(
         @ApplicationContext context: Context,
         charmsDao: CharmsDao
-    ): LocalDataSource {
+    ): LocalDataSourceImpl {
         return LocalDataSource(
             context = context,
             charmsDao = charmsDao
@@ -41,6 +44,16 @@ class AppModule {
         @ApplicationContext context: Context
     ): HexaAIEngine {
         return HexaAIEngine(
+            context = context
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideDeviceManagerUtil(
+        @ApplicationContext context: Context
+    ): DeviceManagerUtilImpl {
+        return DeviceManagerUtil(
             context = context
         )
     }
