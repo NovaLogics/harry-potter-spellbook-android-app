@@ -70,4 +70,4 @@ An Android app that brings Harry Potter's magic to life with voice-activated spe
 ![ForTheBadge ANDROID](https://forthebadge.com/images/badges/built-for-android.svg)
 ![ForTheBadge GIT](https://forthebadge.com/images/badges/uses-git.svg)
 
-  <br>
+<br>
