@@ -24,47 +24,33 @@ fun TypewriteText(
     text: String,
     modifier: Modifier = Modifier,
     isVisible: Boolean = true,
-    spec: AnimationSpec<Int> = tween(durationMillis = text.length * 50, easing = LinearEasing),
+    spec: AnimationSpec<Int> = tween(durationMillis = text.length * 20, easing = LinearEasing),
     style: TextStyle = LocalTextStyle.current,
     preoccupySpace: Boolean = true
 ) {
-    // State that keeps the text that is currently animated
+
     var textToAnimate by remember { mutableStateOf("") }
+    val index = remember { Animatable(initialValue = 0, typeConverter = Int.VectorConverter) }
 
-    // Animatable index to control the progress of the animation
-    val index = remember {
-        Animatable(initialValue = 0, typeConverter = Int.VectorConverter)
-    }
-
-    // Effect to handle animation when visibility changes
     LaunchedEffect(isVisible) {
         if (isVisible) {
-            // Start animation if visible
             textToAnimate = text
             index.animateTo(text.length, spec)
         } else {
-            // Snap to the beginning if not visible
             index.snapTo(0)
         }
     }
 
-    // Effect to handle animation when text content changes
     LaunchedEffect(text) {
         if (isVisible) {
-            // Reset animation and update text if visible
             index.snapTo(0)
             textToAnimate = text
             index.animateTo(text.length, spec)
         }
     }
 
-    // Box composable to contain the animated and static text
     Box(modifier = modifier) {
         if (preoccupySpace && index.isRunning) {
-            // Display invisible text when preoccupation is turned on
-            // and the animation is in progress.
-            // Plays the role of a placeholder to occupy the space
-            // that will be filled with text.
             Text(
                 text = text,
                 style = style,
@@ -73,7 +59,6 @@ fun TypewriteText(
             )
         }
 
-        // Display animated text based on the current index value
         Text(
             text = textToAnimate.substring(0, index.value),
             style = style,
