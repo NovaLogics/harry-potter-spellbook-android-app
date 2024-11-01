@@ -61,6 +61,10 @@ An Android app that brings Harry Potter's magic to life with voice-activated spe
 - Internet
 - Flashlight
 
+<br>
+<hr>
+<br>
+
 ## ɪɪɪ ⁃ ᴠɪꜱᴜᴀʟ ᴛᴏᴜʀ ᴏꜰ ᴛʜᴇ ᴀᴘᴘ: ꜱᴄʀᴇᴇɴꜱ
 
 <p align="center">
@@ -101,7 +105,7 @@ An Android app that brings Harry Potter's magic to life with voice-activated spe
 
   <br>
 
-<kbd>[&nbsp; ⮝ &nbsp;  BACK TO TOP  &nbsp;&nbsp;&nbsp;](#ɪ--ᴘʀᴏᴊᴇᴄᴛ-ɪɴꜰᴏ) </kbd>
+<kbd>[&nbsp; ⮝ &nbsp;  BACK TO TOP  &nbsp;&nbsp;&nbsp;](#ɪ----ᴘʀᴏᴊᴇᴄᴛ-ɪɴꜰᴏ) </kbd>
 </div>
 
 
@@ -230,7 +234,7 @@ An Android app that brings Harry Potter's magic to life with voice-activated spe
 #
 <div align="center">
 
-<kbd>[&nbsp; ⮝ &nbsp;  BACK TO TOP  &nbsp;&nbsp;&nbsp;](#ɪ--ᴘʀᴏᴊᴇᴄᴛ-ɪɴꜰᴏ) </kbd>
+<kbd>[&nbsp; ⮝ &nbsp;  BACK TO TOP  &nbsp;&nbsp;&nbsp;](#ɪ----ᴘʀᴏᴊᴇᴄᴛ-ɪɴꜰᴏ) </kbd>
 </div>
 
 
