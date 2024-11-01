@@ -45,12 +45,12 @@ class HexaAIEngine @Inject constructor(
 
             userInput.contains("lumos", ignoreCase = true) -> {
                 actionGo = HexaActions.FLASHLIGHT_ON
-                return "✨ The light of Lumos illuminates your path! The flashlight is now on. Type 'Nox' to extinguish the light."
+                return "✨ The light of Lumos illuminates your path! \nThe flashlight is now on. \nType 'Nox' to extinguish the light."
             }
 
             userInput.contains("nox", ignoreCase = true) -> {
                 actionGo = HexaActions.FLASHLIGHT_OFF
-                return "🌑 The darkness of Nox has returned. The flashlight is now off."
+                return "🌑 The darkness of Nox has returned. \nThe flashlight is now off."
             }
 
             userInput.contains("bye", ignoreCase = true) -> {
