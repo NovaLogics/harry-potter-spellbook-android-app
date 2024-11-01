@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -117,6 +118,7 @@ fun ScreenUiContent(
                 )
         ) {
 
+            if(uiState.textFieldValue.isEmpty())
             HeaderTitleText()
 
             MediaBanner(
@@ -184,8 +186,9 @@ fun ScreenUiContent(
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
-                .align(Alignment.BottomStart),
-            contentScale = ContentScale.FillWidth
+                .align(Alignment.BottomStart)
+                .height(120.dp),
+            contentScale = ContentScale.FillBounds
         )
 
         Row(
