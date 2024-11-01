@@ -86,6 +86,9 @@ fun SpellCircleScreen(
         },
         onUserInputValueChange = {
             viewModel.handleIntent(CentralIntent.UserInputActions)
+        },
+        onDeviceManagerActions = {
+            viewModel.handleIntent(CentralIntent.DeviceManagerActions(it))
         }
     )
 }
@@ -95,7 +98,8 @@ fun SpellCircleScreen(
 fun ScreenUiContent(
     uiState : CentralUiState,
     onTextFieldValueChange: (String) -> Unit,
-    onUserInputValueChange: () -> Unit
+    onUserInputValueChange: () -> Unit,
+    onDeviceManagerActions: (HexaActions) -> Unit,
 ) {
     val scrollState = rememberScrollState()
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -152,8 +156,8 @@ fun ScreenUiContent(
                 uiState.deviceHexaActions == HexaActions.FLASHLIGHT_OFF
             ) {
                 FlashlightControl(
-                    context = LocalContext.current,
-                    actionGo = uiState.deviceHexaActions
+                    status = uiState.deviceStatus,
+                    onActionChange = onDeviceManagerActions
                 )
             }
 
@@ -262,27 +266,19 @@ fun MediaBanner(
 
 @Composable
 fun FlashlightControl(
-    context: Context,
-    actionGo: HexaActions
+    status: String,
+    onActionChange: (HexaActions)-> Unit
 ) {
-    var isFlashOn by remember { mutableStateOf(false) }
 
-    val cameraManager = remember { context.getSystemService(Context.CAMERA_SERVICE) as CameraManager }
-    val cameraId = remember { cameraManager.cameraIdList.first() }
-
+    val isFlashOn = (status == "ON")
 
     Button(
         onClick = {
-            isFlashOn = !isFlashOn
-            try {
-                cameraManager.setTorchMode(cameraId, isFlashOn)
-            } catch (e: CameraAccessException) {
-                e.printStackTrace()
-            }
+           onActionChange(if (isFlashOn) HexaActions.FLASHLIGHT_OFF else HexaActions.FLASHLIGHT_ON)
         },
         modifier = Modifier.padding(top = dimensionResource(id = R.dimen.padding_xlarge_32dp))
     ) {
-        Text(if (isFlashOn) "Turn Off Flashlight" else "Turn On Flashlight")
+        Text(if(isFlashOn) "Turn Off Flashlight" else "Turn On Flashlight")
     }
 }
 
@@ -309,7 +305,8 @@ private fun SpellCircleScreenPreview() {
         ScreenUiContent(
             uiState = uiState,
             onTextFieldValueChange = {},
-            onUserInputValueChange = {}
+            onUserInputValueChange = {},
+            onDeviceManagerActions = {}
         )
     }
 }
