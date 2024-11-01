@@ -26,6 +26,7 @@ class CentralViewModel @Inject constructor(
         return when (intent) {
             is CentralIntent.LoadData -> currentState.copy(isLoading = true)
             is CentralIntent.UpdateTextField -> currentState.copy(textFieldValue = intent.newValue)
+            is CentralIntent.UserInputActions -> currentState.copy(userMessage = formatUserMessage(intent.inputValue))
             is CentralIntent.DeviceManagerActions -> currentState.copy(deviceHexaActions = intent.action)
             is CentralIntent.ClearError -> currentState.copy(error = null)
         }
@@ -34,8 +35,11 @@ class CentralViewModel @Inject constructor(
     fun handleIntent(intent: CentralIntent) {
         _uiState.value = reduce(_uiState.value, intent)
 
-        if (intent is CentralIntent.LoadData) {
-            loadData()
+        // side-effect handling
+        when (intent) {
+            is CentralIntent.LoadData -> loadData()
+            is CentralIntent.UserInputActions -> handleUserInputActions(intent)
+            else -> {}
         }
     }
 
@@ -54,6 +58,21 @@ class CentralViewModel @Inject constructor(
         }
     }
 
+    private fun formatUserMessage(inputValue: String): String = "> $inputValue"
+
+    private fun handleUserInputActions(intent: CentralIntent.UserInputActions) {
+
+        val response = hexaAi.getResponse(intent.inputValue)
+        val action = hexaAi.getAction()
+
+        _uiState.update { currentUiState ->
+            currentUiState.copy(
+                deviceHexaActions = action,
+                dataAiValue = response,
+                textFieldValue = ""
+            )
+        }
+    }
 
     fun updateListData() {
         val data = "> "+_uiState.value.textFieldValue
