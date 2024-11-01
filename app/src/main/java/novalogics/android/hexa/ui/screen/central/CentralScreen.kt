@@ -120,7 +120,7 @@ fun ScreenUiContent(
             HeaderTitleText()
 
             MediaBanner(
-                drawableResId = R.drawable.img_harry_friends
+                drawableResId = R.drawable.img_banner_main
             )
 
             ElevatedCard(
@@ -283,7 +283,7 @@ fun MediaBanner(
     ) {
         val painterGif = rememberAsyncImagePainter(
             ImageRequest.Builder(LocalContext.current)
-                .data(R.drawable.harry_potter_home)
+                .data(R.drawable.gif_harry_potter_home)
                 .decoderFactory(GifDecoder.Factory())
                 .build()
         )
@@ -305,18 +305,15 @@ fun FlashlightControl(
     status: String,
     onActionChange: (HexaActions)-> Unit
 ) {
-
     val isFlashOn = (status == "ON")
 
     Button(
         onClick = {
-           onActionChange(if (isFlashOn) HexaActions.FLASHLIGHT_OFF else HexaActions.FLASHLIGHT_ON)
+            onActionChange(if (isFlashOn) HexaActions.FLASHLIGHT_OFF else HexaActions.FLASHLIGHT_ON)
         },
-        modifier = Modifier
-            .padding(top = dimensionResource(id = R.dimen.padding_xlarge_32dp))
-
+        modifier = Modifier.padding(top = dimensionResource(id = R.dimen.padding_xlarge_32dp))
     ) {
-        Text(if(isFlashOn) "Turn Off Flashlight" else "Turn On Flashlight")
+        Text(if (isFlashOn) "Turn Off Flashlight" else "Turn On Flashlight")
     }
 }
 
