@@ -61,7 +61,7 @@ An Android app that brings Harry Potter's magic to life with voice-activated spe
 - Internet
 - Flashlight
 
-##  ᴠɪꜱᴜᴀʟ ᴛᴏᴜʀ ᴏꜰ ᴛʜᴇ ᴀᴘᴘ: ꜱᴄʀᴇᴇɴꜱ
+## ɪɪɪ ⁃ ᴠɪꜱᴜᴀʟ ᴛᴏᴜʀ ᴏꜰ ᴛʜᴇ ᴀᴘᴘ: ꜱᴄʀᴇᴇɴꜱ
 
 <p align="center">
 <img 
@@ -99,4 +99,8 @@ An Android app that brings Harry Potter's magic to life with voice-activated spe
 ![ForTheBadge ANDROID](https://forthebadge.com/images/badges/built-for-android.svg)
 ![ForTheBadge GIT](https://forthebadge.com/images/badges/uses-git.svg)
 
-<br>
+  <br>
+
+<kbd>[&nbsp; ⮝ &nbsp;  BACK TO TOP  &nbsp;&nbsp;&nbsp;](#ɪ--ᴘʀᴏᴊᴇᴄᴛ-ɪɴꜰᴏ) </kbd>
+</div>
+
