@@ -17,11 +17,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
@@ -61,6 +64,7 @@ import novalogics.android.hexa.R
 import novalogics.android.hexa.ui.common.component.CustomHeaderComponent
 import novalogics.android.hexa.ui.common.component.StyledText
 import novalogics.android.hexa.ui.common.component.TypewriteText
+import novalogics.android.hexa.ui.common.textSizeResource
 import novalogics.android.hexa.ui.theme.SpellBookTheme
 import novalogics.android.hexa.ui.util.aiEngine.HexaActions
 import novalogics.android.hexa.util.Constants
@@ -117,7 +121,7 @@ fun ScreenUiContent(
                 .verticalScroll(scrollState)
                 .padding(
                     top = dimensionResource(id = R.dimen.padding_regular_8dp),
-                    bottom = dimensionResource(id = R.dimen.padding_xlarge_32dp)
+                    bottom = dimensionResource(id = R.dimen.size_2xlarge_96dp)
                 )
         ) {
 
@@ -127,29 +131,47 @@ fun ScreenUiContent(
                 drawableResId = R.drawable.img_harry_friends
             )
 
-            StyledText(
-                stringValue = uiState.userMessage,
-                letterSpacing = R.dimen.letter_space_small_2dp,
-                style = typography.displayLarge.copy(
-                    shadow = Shadow(
-                        color = colorScheme.onSurface,
-                        offset = Offset(1.0f, 1.0f),
-                        blurRadius = 2f
-                    )
-                ),
-                fontWeight = FontWeight.Bold,
-                fontSize = R.dimen.text_size_large_20sp,
-                color = colorScheme.secondary,
+            ElevatedCard(
                 modifier = Modifier
-                    .padding(
-                        all = dimensionResource(id = R.dimen.padding_medium_16dp),
-                    )
+                    .fillMaxWidth()
+                    .padding(dimensionResource(id = R.dimen.padding_medium_16dp)),
+                colors = CardDefaults.cardColors(colorScheme.background),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = dimensionResource(id = R.dimen.elevation_small_2dp)
+                ),
+                shape =  MaterialTheme.shapes.small,
             )
+            {
+                StyledText(
+                    stringValue = uiState.userMessage,
+                    letterSpacing = R.dimen.letter_space_small_2dp,
+                    style = typography.displayLarge.copy(
+                        shadow = Shadow(
+                            color = colorScheme.onSurface,
+                            offset = Offset(1.0f, 1.0f),
+                            blurRadius = 2f
+                        )
+                    ),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = R.dimen.text_size_large_20sp,
+                    color = colorScheme.secondary,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .padding(
+                            all = dimensionResource(id = R.dimen.padding_regular_8dp),
+                        )
+                        .fillMaxWidth()
+
+                )
+
+            }
+
 
             TypewriteText(
                 text = uiState.dataAiValue,
                 style = typography.displayMedium,
-                modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_medium_16dp))
+                modifier = Modifier
+                    .padding(all = dimensionResource(id = R.dimen.padding_medium_16dp))
             )
 
             if (uiState.deviceHexaActions == HexaActions.FLASHLIGHT_ON ||
@@ -165,12 +187,23 @@ fun ScreenUiContent(
         }
         CustomHeaderComponent()
 
+        Image(
+            painter = painterResource(id = R.drawable.img_bottom3),
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomStart)
+            //  .alpha(0.3F)
+            ,
+            contentScale = ContentScale.FillWidth
+        )
+
         Row(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
                 .padding(all = dimensionResource(id = R.dimen.padding_medium_16dp))
-                .background(colorScheme.background),
+                ,
             verticalAlignment = Alignment.CenterVertically
         ) {
             TextField(
@@ -180,6 +213,9 @@ fun ScreenUiContent(
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done,
                     capitalization = KeyboardCapitalization.Sentences
+                ),
+                textStyle = typography.displayMedium.copy(
+                    fontSize = textSizeResource(id = R.dimen.text_size_large_18sp)
                 ),
                 keyboardActions = KeyboardActions(
                     onDone = {
@@ -198,11 +234,21 @@ fun ScreenUiContent(
                     .weight(1f)
                     .padding(end = dimensionResource(id = R.dimen.padding_regular_8dp))
             )
-            Button(onClick = {
-                onUserInputValueChange.invoke()
-                keyboardController?.hide()
-            }) {
-                Text(text = stringResource(id = R.string.send))
+            ElevatedButton(
+                onClick = {
+                    onUserInputValueChange.invoke()
+                    keyboardController?.hide()
+                },
+                shape = MaterialTheme.shapes.large,
+            ) {
+                Text(
+                    text = stringResource(id = R.string.send).uppercase(),
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(
+                        top = dimensionResource(id = R.dimen.padding_small_4dp),
+                        bottom = dimensionResource(id = R.dimen.padding_small_4dp)
+                    )
+                )
             }
         }
     }
@@ -221,7 +267,7 @@ fun HeaderTitleText() {
                 blurRadius = 2f
             )
         ),
-        fontSize = R.dimen.text_size_large_20sp,
+        fontSize = R.dimen.text_size_xlarge_24sp,
         color = colorScheme.secondary,
         textAlign = TextAlign.Center,
         modifier = Modifier
@@ -241,9 +287,10 @@ fun MediaBanner(
             .padding(dimensionResource(id = R.dimen.padding_regular_8dp))
             .size(182.dp),
         colors = CardDefaults.cardColors(Color.Black),
-        shape = MaterialTheme.shapes.small.copy(all = CornerSize(
-            dimensionResource(id = R.dimen.corner_radius_medium_8dp))
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
         ),
+        shape =  MaterialTheme.shapes.large,
     ) {
         val painterGif = rememberAsyncImagePainter(
             ImageRequest.Builder(LocalContext.current)
@@ -276,7 +323,9 @@ fun FlashlightControl(
         onClick = {
            onActionChange(if (isFlashOn) HexaActions.FLASHLIGHT_OFF else HexaActions.FLASHLIGHT_ON)
         },
-        modifier = Modifier.padding(top = dimensionResource(id = R.dimen.padding_xlarge_32dp))
+        modifier = Modifier
+            .padding(top = dimensionResource(id = R.dimen.padding_xlarge_32dp))
+
     ) {
         Text(if(isFlashOn) "Turn Off Flashlight" else "Turn On Flashlight")
     }
@@ -296,7 +345,7 @@ fun FlashlightControl(
 private fun SpellCircleScreenPreview() {
 
     val uiState = CentralUiState(
-        userMessage = "> Lumos",
+        userMessage = "> Lumos \uD83E\uDD89",
         dataAiValue = "Welcome to Home"
     )
 
