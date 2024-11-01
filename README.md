@@ -234,3 +234,20 @@ An Android app that brings Harry Potter's magic to life with voice-activated spe
 </div>
 
 
+
+#
+# ᴠɪ ⁃ ᴘʀᴏᴊᴇᴄᴛ ɴᴏᴛᴇꜱ
+
+<br> 
+
+____
+
+## 1. Project Log
+
+**This project is still in its early development stage.**
+
+<br>
+
+<hr>
+
+<br>
