@@ -40,6 +40,27 @@ An Android app that brings Harry Potter's magic to life with voice-activated spe
 
 <br>
 
+## ɪɪ ⁃ ᴡʜᴀᴛ ᴜꜱᴇʀꜱ ᴄᴀɴ ᴇxᴘᴇᴄᴛ
+
+### ⭓ Features
+
+- **Magic Spell Control**: Use simple spells like "Lumos" to turn on the flashlight by typing or speaking.
+- **Spell Guide**: Find and learn about popular spells from the Harry Potter world.
+- **Dark and Light Mode**: Choose between light and dark themes for your comfort.
+- **Offline Chatbot**: Chat with a bot anytime, even without internet.
+- **Easy Navigation**: Simple and smooth design for a better experience.
+
+##
+### ⭓ Requirements
+- Android 7.0 and Above
+- Min SDK version 24
+
+
+##
+### ⭓ Permissions
+- Internet
+- Flashlight
+
 ##  ᴠɪꜱᴜᴀʟ ᴛᴏᴜʀ ᴏꜰ ᴛʜᴇ ᴀᴘᴘ: ꜱᴄʀᴇᴇɴꜱ
 
 <p align="center">
