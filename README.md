@@ -62,8 +62,8 @@ An Android app that brings Harry Potter's magic to life with voice-activated spe
 - Flashlight
 
 <br>
+
 <hr>
-<br>
 
 ## ɪɪɪ ⁃ ᴠɪꜱᴜᴀʟ ᴛᴏᴜʀ ᴏꜰ ᴛʜᴇ ᴀᴘᴘ: ꜱᴄʀᴇᴇɴꜱ
 
