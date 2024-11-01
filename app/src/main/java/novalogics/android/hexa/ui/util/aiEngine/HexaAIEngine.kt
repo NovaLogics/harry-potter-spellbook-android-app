@@ -31,6 +31,12 @@ class HexaAIEngine @Inject constructor(
                 return "Glad to hear you're feeling great! What would you like to do next?"
             }
 
+            userInput.contains("like ", ignoreCase = true) &&
+                    (userInput.contains("app", ignoreCase = true) ||
+                    userInput.contains("hexa", ignoreCase = true)) -> {
+                return "So happy to hear that! \uD83D\uDC96 \nThere's plenty more magic where that came from!\uD83E\uDD89✨"
+            }
+
             userInput.contains("help", ignoreCase = true) -> {
                 return "I can help you with simple tasks. Try asking me something!"
             }
@@ -51,6 +57,10 @@ class HexaAIEngine @Inject constructor(
             userInput.contains("nox", ignoreCase = true) -> {
                 actionGo = HexaActions.FLASHLIGHT_OFF
                 return "🌑 The darkness of Nox has returned. \nThe flashlight is now off."
+            }
+
+            userInput.contains("wow", ignoreCase = true) -> {
+                return "✨ Wow indeed! \nThe magic's just getting started!"
             }
 
             userInput.contains("bye", ignoreCase = true) -> {
