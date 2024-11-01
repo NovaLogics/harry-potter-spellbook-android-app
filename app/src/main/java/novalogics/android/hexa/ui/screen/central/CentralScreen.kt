@@ -1,10 +1,7 @@
 package novalogics.android.hexa.ui.screen.central
 
-import android.content.Context
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import android.hardware.camera2.CameraAccessException
-import android.hardware.camera2.CameraManager
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,13 +14,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
@@ -36,9 +31,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -188,13 +180,11 @@ fun ScreenUiContent(
         CustomHeaderComponent()
 
         Image(
-            painter = painterResource(id = R.drawable.img_bottom3),
+            painter = painterResource(id = R.drawable.img_bottom_bar_lines),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
-                .align(Alignment.BottomStart)
-            //  .alpha(0.3F)
-            ,
+                .align(Alignment.BottomStart),
             contentScale = ContentScale.FillWidth
         )
 
@@ -202,8 +192,7 @@ fun ScreenUiContent(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .padding(all = dimensionResource(id = R.dimen.padding_medium_16dp))
-                ,
+                .padding(all = dimensionResource(id = R.dimen.padding_medium_16dp)),
             verticalAlignment = Alignment.CenterVertically
         ) {
             TextField(
