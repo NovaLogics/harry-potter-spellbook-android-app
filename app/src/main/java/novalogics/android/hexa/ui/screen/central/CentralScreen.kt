@@ -84,8 +84,8 @@ fun SpellCircleScreen(
         onTextFieldValueChange = {
             viewModel.handleIntent(CentralIntent.UpdateTextField(it))
         },
-        onListDataValueChange = {
-            viewModel.updateListData()
+        onUserInputValueChange = {
+            viewModel.handleIntent(CentralIntent.UserInputActions)
         }
     )
 }
@@ -95,7 +95,7 @@ fun SpellCircleScreen(
 fun ScreenUiContent(
     uiState : CentralUiState,
     onTextFieldValueChange: (String) -> Unit,
-    onListDataValueChange: () -> Unit
+    onUserInputValueChange: () -> Unit
 ) {
     val scrollState = rememberScrollState()
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -179,7 +179,7 @@ fun ScreenUiContent(
                 ),
                 keyboardActions = KeyboardActions(
                     onDone = {
-                        onListDataValueChange.invoke()
+                        onUserInputValueChange.invoke()
                         keyboardController?.hide()
                     }
                 ),
@@ -195,7 +195,7 @@ fun ScreenUiContent(
                     .padding(end = dimensionResource(id = R.dimen.padding_regular_8dp))
             )
             Button(onClick = {
-                onListDataValueChange.invoke()
+                onUserInputValueChange.invoke()
                 keyboardController?.hide()
             }) {
                 Text(text = stringResource(id = R.string.send))
@@ -317,7 +317,7 @@ private fun SpellCircleScreenPreview() {
         ScreenUiContent(
             uiState = uiState,
             onTextFieldValueChange = {},
-            onListDataValueChange = {}
+            onUserInputValueChange = {}
         )
     }
 }

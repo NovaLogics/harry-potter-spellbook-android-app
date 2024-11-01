@@ -26,7 +26,7 @@ class CentralViewModel @Inject constructor(
         return when (intent) {
             is CentralIntent.LoadData -> currentState.copy(isLoading = true)
             is CentralIntent.UpdateTextField -> currentState.copy(textFieldValue = intent.newValue)
-            is CentralIntent.UserInputActions -> currentState.copy(userMessage = formatUserMessage(intent.inputValue))
+            is CentralIntent.UserInputActions -> currentState.copy(userMessage = formattedUserMessage())
             is CentralIntent.DeviceManagerActions -> currentState.copy(deviceHexaActions = intent.action)
             is CentralIntent.ClearError -> currentState.copy(error = null)
         }
@@ -38,7 +38,7 @@ class CentralViewModel @Inject constructor(
         // side-effect handling
         when (intent) {
             is CentralIntent.LoadData -> loadData()
-            is CentralIntent.UserInputActions -> handleUserInputActions(intent)
+            is CentralIntent.UserInputActions -> handleUserInputActions()
             else -> {}
         }
     }
@@ -46,23 +46,16 @@ class CentralViewModel @Inject constructor(
     private fun loadData() {
         viewModelScope.launch {
             _uiState.update { ui -> ui.copy(isLoading = true) }
-
             //delay(1000)
-
-            _uiState.update { ui ->
-                ui.copy(
-                    isLoading = false,
-                   // dataAiValue = repositoryOffline.getTestData(),
-                )
-            }
+            _uiState.update { ui -> ui.copy(isLoading = false) }
         }
     }
 
-    private fun formatUserMessage(inputValue: String): String = "> $inputValue"
+    private fun formattedUserMessage(): String = "> ${_uiState.value.textFieldValue}"
 
-    private fun handleUserInputActions(intent: CentralIntent.UserInputActions) {
-
-        val response = hexaAi.getResponse(intent.inputValue)
+    private fun handleUserInputActions() {
+        val userInput = _uiState.value.textFieldValue
+        val response = hexaAi.getResponse(userInput)
         val action = hexaAi.getAction()
 
         _uiState.update { currentUiState ->
@@ -74,15 +67,4 @@ class CentralViewModel @Inject constructor(
         }
     }
 
-    fun updateListData() {
-        val data = "> "+_uiState.value.textFieldValue
-        val response = hexaAi.getResponse(data)
-        val action = hexaAi.getAction()
-        _uiState.value = _uiState.value.copy(
-            userMessage = data,
-            deviceHexaActions = action,
-            dataAiValue = response,
-            textFieldValue = ""
-        )
-    }
 }
