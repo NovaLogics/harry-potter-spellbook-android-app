@@ -104,3 +104,95 @@ An Android app that brings Harry Potter's magic to life with voice-activated spe
 <kbd>[&nbsp; ⮝ &nbsp;  BACK TO TOP  &nbsp;&nbsp;&nbsp;](#ɪ--ᴘʀᴏᴊᴇᴄᴛ-ɪɴꜰᴏ) </kbd>
 </div>
 
+
+#
+## ɪᴠ ⁃ ᴘʀᴏᴊᴇᴄᴛ ʙʀᴀɴᴄʜᴇꜱ
+
+<!-- Main / Master / Production Branch -->
+
+> <samp> **PRODUCTION BRANCH :**  </samp>  
+> Stable code for deployment  
+> ➲ [main][branch-main]
+
+> <samp> **STAGING BRANCH :**  </samp>  
+> `FLOW | Staging → Production`  
+> For pre-release testing, which ensures that the code is stable, bug-free, and ready for deployment.  
+
+
+> <samp> **DEVELOPMENT BRANCH :**  </samp>  
+> `FLOW | Development → Release → Staging → Production`  
+> Active codebase for ongoing development efforts  (New features, bug fixes, and improvements..)  
+> ➲ [development][branch-development]
+
+
+
+> <samp> **FEATURE BRANCHES :** N/A  </samp>  
+> `FLOW | Feature → Development → Release → Staging → Production`  
+<!-- 
+> <samp> **FEATURE BRANCHES :**  </samp>  
+> For Isolated feature development (Ensures changes are tested and reviewed before merging into the main workflow)  
+>   
+> feature/  
+> ➲ dark-theme  
+> ➲ offline-db-impl
+-->
+
+
+> <samp> **RELEASE BRANCHES :** N/A  </samp>  
+> `FLOW | Release → Staging → Production`  
+<!-- 
+> <samp> **RELEASE BRANCHES :**  </samp>  
+> Prepares the code for final testing and deployment in a new version release.
+>   
+> release/  
+> ➲ version-number
+-->
+
+
+
+> <samp> **HOTFIX BRANCHES :** N/A  </samp>  
+> `FLOW | Hotfix → Staging → Production`  
+<!-- 
+> <samp> **HOTFIX BRANCHES :**  </samp>  
+> Handles critical fixes in production that need immediate resolution.
+>   
+> hotfix/  
+> ➲ main-screen-crash 
+-->
+
+
+> <samp> **BUGFIX BRANCHES :** N/A  </samp>  
+> `FLOW | Bugfix → Development → Release → Staging → Production` 
+<!-- 
+> <samp> **BUGFIX BRANCHES :**  </samp>  
+> Addresses specific bugs identified during development and testing.
+>   
+> bugfix/  
+> ➲ main-screen-error
+-->
+
+<!-- 
+> <samp> **EXPERIMENTAL BRANCHES :** N/A  </samp>  
+
+> <samp> **EXPERIMENTAL BRANCHES :**  </samp>  
+> Facilitates trial and error to test new ideas and concepts.
+>   
+> experiment/  
+> ➲ main-screen-change-colours
+-->
+<!-- Experimental → Feature → Development → Release → Staging → Main/Production   -->
+
+
+[branch-main]:  https://github.com/NovaLogics/hexa-harry-potter-android-app/tree/main
+[branch-development]:  https://github.com/NovaLogics/hexa-harry-potter-android-app/tree/development
+[branch-staging]:  https://github.com/NovaLogics/hexa-harry-potter-android-app/tree/staging
+
+[branch-feature-NAME]:  https://github.com/NovaLogics/hexa-harry-potter-android-app/tree/staging
+
+[branch-hotfix-NAME]:  https://github.com/NovaLogics/hexa-harry-potter-android-app/tree/staging
+
+[branch-bugfix-NAME]:  https://github.com/NovaLogics/hexa-harry-potter-android-app/tree/staging
+
+<br>  
+
+
