@@ -270,14 +270,6 @@ fun FlashlightControl(
     val cameraManager = remember { context.getSystemService(Context.CAMERA_SERVICE) as CameraManager }
     val cameraId = remember { cameraManager.cameraIdList.first() }
 
-    LaunchedEffect(actionGo) {
-        isFlashOn = (actionGo == HexaActions.FLASHLIGHT_ON)
-        try {
-            cameraManager.setTorchMode(cameraId, isFlashOn)
-        } catch (e: CameraAccessException) {
-            e.printStackTrace()
-        }
-    }
 
     Button(
         onClick = {

@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import novalogics.android.hexa.data.repository.LocalDataSource
 import novalogics.android.hexa.ui.util.aiEngine.HexaAIEngine
+import novalogics.android.hexa.ui.util.aiEngine.HexaActions
 import novalogics.android.hexa.ui.util.devicemanager.DeviceManagerUtil
 import javax.inject.Inject
 
@@ -39,6 +40,7 @@ class CentralViewModel @Inject constructor(
         when (intent) {
             is CentralIntent.LoadData -> loadData()
             is CentralIntent.UserInputActions -> handleUserInputActions()
+            is CentralIntent.DeviceManagerActions -> deviceManagerActions(intent.action)
             else -> {}
         }
     }
@@ -56,15 +58,29 @@ class CentralViewModel @Inject constructor(
     private fun handleUserInputActions() {
         val userInput = _uiState.value.textFieldValue
         val response = hexaAi.getResponse(userInput)
-        val action = hexaAi.getAction()
+
+        handleIntent(CentralIntent.DeviceManagerActions(hexaAi.getAction()))
 
         _uiState.update { currentUiState ->
             currentUiState.copy(
-                deviceHexaActions = action,
                 dataAiValue = response,
                 textFieldValue = ""
             )
         }
+    }
+
+    private fun deviceManagerActions(action : HexaActions) {
+        when (action) {
+            HexaActions.NONE -> {}
+            HexaActions.FLASHLIGHT_ON -> handleFlashlightActions(action)
+            HexaActions.FLASHLIGHT_OFF -> handleFlashlightActions(action)
+            else -> {}
+        }
+    }
+
+    private fun handleFlashlightActions(action : HexaActions) {
+        val isFlashOn = (action == HexaActions.FLASHLIGHT_ON)
+        deviceManager.deviceFlashlight(isFlashOn)
     }
 
 }
