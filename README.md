@@ -196,3 +196,41 @@ An Android app that brings Harry Potter's magic to life with voice-activated spe
 <br>  
 
 
+#
+## ᴠ ⁃ ʙᴇʜɪɴᴅ ᴛʜᴇ ᴄᴏᴅᴇ: ᴅᴇᴠ ꜰᴇᴀᴛᴜʀᴇꜱ
+
+### ⭓ App Dependencies/Libraries Overview
+
+<br>
+
+* [Kotlin][0] : Kotlin is statically typed & first-class language for Android Development.
+* [Coroutines][1] : For Asynchronus or non-blocking operations.
+* [Flows][2] : Data Streaming API which is built on top of Coroutines.
+* [Jetpack Compose][3] : Toolkit for building native UI in a declarative way.
+* [Room][4] : Save data in a local database using Room
+* [Retrofit][5] : Type-safe REST client for Android to consume RESTful web services.
+* [Dagger Hilt][6] : Dependency injection library for Android.
+* [Kotlin DSL][7] : For writing gradle script for Kotlin is more readable and offers better compile-time.
+
+[0]:  https://kotlinlang.org/
+[1]:  https://kotlinlang.org/docs/coroutines-overview.html
+[2]:  https://developer.android.com/kotlin/flow
+[3]:  https://developer.android.com/jetpack/compose
+[4]:  https://developer.android.com/training/data-storage/room
+[5]:  https://github.com/square/retrofit
+[6]:  https://dagger.dev/hilt/
+[7]:  https://docs.gradle.org/current/userguide/kotlin_dsl.html
+
+
+#
+### ⭓ Features
+
+1. Development process info &nbsp;|&nbsp;  [ More-> ](#1-project-log)
+
+#
+<div align="center">
+
+<kbd>[&nbsp; ⮝ &nbsp;  BACK TO TOP  &nbsp;&nbsp;&nbsp;](#ɪ--ᴘʀᴏᴊᴇᴄᴛ-ɪɴꜰᴏ) </kbd>
+</div>
+
+
