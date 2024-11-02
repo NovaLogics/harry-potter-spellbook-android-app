@@ -35,7 +35,11 @@ An Android app that brings Harry Potter's magic to life with voice-activated spe
 <br>
 <br>
 
-<img src="./_assets/demo/hexa_app_demo_x544.gif" />
+<img src="./_assets/demo/hexa_app_demo_x544_1.gif"  width="220" height="480" />
+
+<img src="./_assets/screenshots/home_light.png" width="240" height="520" />
+
+<img src="./_assets/demo/hexa_app_demo_x544_2.gif"  width="220" height="480" />
 </div>
 
 <br>
